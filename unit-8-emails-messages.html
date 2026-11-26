@@ -24,7 +24,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 .nav button{background:none;border:1px solid rgba(var(--accent-rgb),.5);color:var(--accent);font-family:'Inter',sans-serif;font-size:1rem;padding:9px 18px;border-radius:24px;cursor:pointer;min-width:46px;min-height:44px;transition:.2s}
 .nav button:hover{background:rgba(var(--accent-rgb),.15);box-shadow:0 0 14px rgba(var(--accent-rgb),.3)}
 .nav .counter{font-family:'Inter',monospace;color:var(--text-dim);font-size:.85rem;min-width:58px;text-align:center}
-.nav .tool{font-size:.82rem;padding:8px 13px;color:var(--text-dim);border-color:rgba(var(--accent-rgb),.24)}
+.nav .tool{font-size:.82rem;padding:8px 13px;color:var(--text-dim);border-color:rgba(var(--accent-rgb),.24)}.nav .icon-btn{padding:9px;min-width:44px;display:inline-flex;align-items:center;justify-content:center}.nav .icon-btn svg{display:block}
 h1{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(2.1rem,4.4vw,3.7rem);line-height:1.12;margin-bottom:.45em;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 18px rgba(var(--accent-rgb),.35))}
 h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(1.35rem,2.7vw,2.05rem);text-transform:uppercase;letter-spacing:.04em;color:var(--accent);margin-bottom:.55em}
 h3{font-family:'Oswald',sans-serif;font-weight:600;font-size:1.15rem;color:var(--accent2);margin:.7em 0 .35em}
@@ -81,7 +81,7 @@ body.show-l1 .l1-word{background:rgba(251,191,36,.09)}
 <h1>Emails &amp; Messages</h1>
 <p class="subtitle">Openers, closers, polite requests, and the tone that holds it <span class="l1-word" data-l1="一緒に">together</span>.</p>
 <p class="small"></p>
-<p class="start-prompt">Press &rarr; or Space to begin. Theme changes the colours.</p>
+<p class="start-prompt">Press &rarr; or Space to begin. The palette icon changes colours.</p>
 </div></section><section class="slide" data-slide="1" style="background-image:url('https://images.pexels.com/photos/6830868/pexels-photo-6830868.jpeg?auto=compress&cs=tinysrgb&w=1280')">
 <div class="content">
 <span class="section-badge"><span class="l1-word" data-l1="暖かい">Warm</span>-Up</span>
@@ -251,7 +251,7 @@ body.show-l1 .l1-word{background:rgba(251,191,36,.09)}
 <button onclick="prev()" aria-label="Previous slide">&#8592;</button>
 <span class="counter" id="counter">1 / 12</span>
 <button onclick="next()" aria-label="Next slide">&#8594;</button>
-<button class="tool" onclick="cycleTheme()" aria-label="Change theme">Theme</button>
+<button class="tool icon-btn" onclick="cycleTheme()" aria-label="Change theme" title="Change theme"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 2-.9 2-1.9 0-1.1-.8-1.8-.8-2.7 0-1.1.9-1.9 2-1.9h1.6A4.2 4.2 0 0 0 21 10.2C20.4 6 16.6 3 12 3z"/></svg></button>
 </div>
 <script>
 var KEY='u8-emails-messages';
