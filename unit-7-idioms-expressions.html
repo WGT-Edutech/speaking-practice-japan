@@ -1,3250 +1,1629 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://cdn.pixabay.com; connect-src 'self'; media-src 'self' blob:;">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Speaking Practice for Japanese Teens - Idioms &amp; Expressions — Grow and Glow</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
-
 <style>
-
 :root {
-
   /* --- base palette (Ocean) --- */
-
   --bg: #0a1628;        --bg-rgb: 10,22,40;
-
   --blue: #22d3ee;      --blue-rgb: 34,211,238;
-
   --cyan: #67e8f9;      --cyan-rgb: 103,232,249;
-
   --sky: #a5f3fc;       --sky-rgb: 165,243,252;
-
   --indigo: #a78bfa;    --indigo-rgb: 167,139,250;
-
   --purple: #c4b5fd;    --purple-rgb: 196,181,253;
-
   --violet: #ddd6fe;    --violet-rgb: 221,214,254;
-
   --b1-blue: #67e8f9;   --b1-blue-rgb: 103,232,249;
-
   /* --- semantic (fixed across themes: correct / wrong signals) --- */
-
   --green: #34d399;     --green-rgb: 52,211,153;
-
   --lime: #a8e063;      --lime-rgb: 168,224,99;
-
   --red: #f87171;       --red-rgb: 248,113,113;
-
   /* --- text (readability fixed) --- */
-
   --text: #f1f5f9;
-
   --text-dim: #cbd5e1;
-
   --hue-rotate: 0deg;
-
 }
-
-
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-
-
 html, body {
-
   height: 100%;
-
   overflow: hidden;
-
   background: var(--bg);
-
   color: var(--text);
-
   font-family: 'Inter', sans-serif;
-
   font-size: clamp(1rem, 1.5vw, 1.25rem);
-
   line-height: 1.7;
-
 }
-
-
 
 .slide {
-
   position: fixed;
-
   inset: 0;
-
   background-size: cover;
-
   background-position: center;
-
   background-color: var(--bg);
-
   opacity: 0;
-
   pointer-events: none;
-
   transition: opacity .35s ease;
-
   display: flex;
-
   flex-direction: column;
-
   justify-content: flex-start;
-
   padding: 3vh 5vw 10vh;
-
   overflow-y: auto;
-
 }
-
 .slide::-webkit-scrollbar { width: 0; background: transparent; }
-
 .slide { scrollbar-width: none; -ms-overflow-style: none; }
-
 .slide.active { opacity: 1; pointer-events: auto; z-index: 2; }
-
 .slide:not(.active) { z-index: 0; }
 
-
-
 .slide::before {
-
   content: '';
-
   position: absolute;
-
   inset: 0;
-
   background: linear-gradient(90deg,
-
     rgba(var(--bg-rgb),.88) 0%,
-
     rgba(var(--bg-rgb),.55) 50%,
-
     rgba(var(--bg-rgb),.25) 100%);
-
   z-index: 0;
-
 }
-
-
 
 .content {
-
   position: relative;
-
   z-index: 1;
-
   width: min(80vw, 1100px);
-
   max-width: 80vw;
-
   background: rgba(var(--bg-rgb),.75);
-
   border: 1px solid rgba(var(--blue-rgb),.45);
-
   box-shadow: 0 0 25px rgba(var(--blue-rgb),.25), 0 0 60px rgba(var(--indigo-rgb),.12);
-
   border-radius: 16px;
-
   padding: 2.5em 3em;
-
   backdrop-filter: blur(8px);
-
   margin: auto 0;
-
 }
-
-
 
 @media (min-width: 1600px) { .content { max-width: 60vw; width: min(60vw, 1100px); } }
-
 @media (max-width: 768px) { .content { max-width: 92vw; padding: 1.5em 1.8em; } }
 
-
-
 /* Progress bar */
-
 .progress-bar {
-
   position: fixed;
-
   top: 0;
-
   left: 0;
-
   height: 3px;
-
   background: linear-gradient(90deg, var(--blue), var(--indigo));
-
   z-index: 200;
-
   transition: width .35s ease;
-
 }
-
-
 
 /* Navigation */
-
 .nav {
-
   position: fixed;
-
   bottom: 24px;
-
   left: 50%;
-
   transform: translateX(-50%);
-
   display: flex;
-
   align-items: center;
-
   gap: 1.2em;
-
   z-index: 200;
-
   background: rgba(var(--bg-rgb),.85);
-
   border: 1px solid rgba(var(--blue-rgb),.3);
-
   border-radius: 40px;
-
   padding: 10px 24px;
-
   backdrop-filter: blur(6px);
-
 }
-
 .nav button {
-
   background: none;
-
   border: 1px solid rgba(var(--blue-rgb),.5);
-
   color: var(--blue);
-
   font-family: 'Inter', sans-serif;
-
   font-size: 1rem;
-
   padding: 8px 18px;
-
   border-radius: 24px;
-
   cursor: pointer;
-
   transition: all .2s;
-
   min-width: 44px;
-
   min-height: 44px;
-
 }
-
 .nav button:hover {
-
   background: rgba(var(--blue-rgb),.15);
-
   box-shadow: 0 0 15px rgba(var(--blue-rgb),.3);
-
 }
-
 .nav .slide-counter {
-
   font-family: 'Inter', monospace;
-
   color: var(--text-dim);
-
   font-size: .85rem;
-
   min-width: 60px;
-
   text-align: center;
-
 }
-
-
 
 /* Typography */
-
 h1 {
-
   font-family: 'Montserrat', sans-serif;
-
   font-weight: 900;
-
   font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-
   background: linear-gradient(135deg, var(--blue), var(--indigo));
-
   -webkit-background-clip: text;
-
   -webkit-text-fill-color: transparent;
-
   background-clip: text;
-
   filter: drop-shadow(0 0 20px rgba(var(--blue-rgb),.4));
-
   margin-bottom: .5em;
-
   line-height: 1.15;
-
 }
-
 h2 {
-
   font-family: 'Oswald', sans-serif;
-
   font-weight: 700;
-
   font-size: clamp(1.4rem, 2.8vw, 2.2rem);
-
   color: var(--blue);
-
   text-transform: uppercase;
-
   letter-spacing: .04em;
-
   margin-bottom: .7em;
-
   text-shadow: 0 0 12px rgba(var(--blue-rgb),.3);
-
 }
-
 h3 {
-
   font-family: 'Oswald', sans-serif;
-
   font-weight: 600;
-
   font-size: clamp(1.1rem, 2vw, 1.5rem);
-
   color: var(--cyan);
-
   margin: 1em 0 .5em;
-
 }
-
 p, li { margin-bottom: .5em; }
-
 .subtitle {
-
   font-size: clamp(1.1rem, 2vw, 1.5rem);
-
   color: var(--text-dim);
-
   margin-top: -.3em;
-
 }
-
-
 
 /* Section badges */
-
 .section-badge {
-
   display: inline-block;
-
   font-size: .7rem;
-
   padding: 3px 10px;
-
   border-radius: 8px;
-
   font-weight: 700;
-
   text-transform: uppercase;
-
   letter-spacing: .08em;
-
   margin-bottom: .6em;
-
 }
-
 .badge-blue { background: rgba(var(--blue-rgb),.15); color: var(--blue); border: 1px solid rgba(var(--blue-rgb),.4); }
-
 .badge-indigo { background: rgba(var(--indigo-rgb),.15); color: var(--indigo); border: 1px solid rgba(var(--indigo-rgb),.4); }
-
 .badge-cyan { background: rgba(var(--b1-blue-rgb),.15); color: var(--cyan); border: 1px solid rgba(var(--b1-blue-rgb),.4); }
-
 .badge-green { background: rgba(var(--green-rgb),.15); color: var(--green); border: 1px solid rgba(var(--green-rgb),.4); }
 
-
-
 /* Question cards */
-
 .question-card {
-
   background: linear-gradient(135deg, rgba(var(--blue-rgb),.06), rgba(var(--indigo-rgb),.06));
-
   border: 1px solid rgba(var(--blue-rgb),.3);
-
   border-radius: 12px;
-
   padding: 1em 1.4em;
-
   margin: .6em 0;
-
 }
-
 .question-card .question-text {
-
   font-weight: 500;
-
   color: var(--text);
-
   margin-bottom: .4em;
-
 }
-
 .follow-ups {
-
   font-size: .85rem;
-
   color: var(--text-dim);
-
   font-style: italic;
-
   margin-top: .4em;
-
   padding-left: 1em;
-
   border-left: 2px solid rgba(var(--blue-rgb),.3);
-
 }
-
-
 
 /* Vocab word tooltips */
-
 .vocab-word {
-
   border-bottom: 2px dotted var(--b1-blue);
-
   cursor: pointer;
-
   position: relative;
-
   color: var(--text);
-
   transition: color .2s;
-
 }
-
 .vocab-word:hover { color: var(--b1-blue); }
-
 .vocab-tooltip {
-
   display: none;
-
   position: absolute;
-
   bottom: calc(100% + 8px);
-
   left: 50%;
-
   transform: translateX(-50%);
-
   background: rgba(var(--bg-rgb),.95);
-
   border: 1px solid var(--b1-blue);
-
   border-radius: 10px;
-
   padding: .6em .9em;
-
   min-width: 220px;
-
   max-width: 300px;
-
   z-index: 100;
-
   box-shadow: 0 0 15px rgba(var(--b1-blue-rgb),.3);
-
 }
-
 .vocab-tooltip .level-badge {
-
   display: inline-block;
-
   font-size: .65rem;
-
   font-weight: 700;
-
   text-transform: uppercase;
-
   padding: 2px 8px;
-
   border-radius: 6px;
-
   background: rgba(var(--b1-blue-rgb),.2);
-
   color: var(--b1-blue);
-
   margin-bottom: .3em;
-
 }
-
 .vocab-tooltip .def-text {
-
   font-size: .85rem;
-
   color: var(--text);
-
   line-height: 1.5;
-
 }
-
 .vocab-tooltip::after {
-
   content: '';
-
   position: absolute;
-
   top: 100%;
-
   left: 50%;
-
   transform: translateX(-50%);
-
   border-width: 6px;
-
   border-style: solid;
-
   border-color: var(--b1-blue) transparent transparent transparent;
-
 }
-
 .vocab-word.active .vocab-tooltip { display: block; }
 
-
-
 /* Model answer */
-
 .model-answer {
-
   background: rgba(var(--green-rgb),.08);
-
   border: 1px solid rgba(var(--green-rgb),.35);
-
   border-radius: 10px;
-
   padding: 1em 1.4em;
-
   margin: .8em 0;
-
 }
-
 .model-answer .answer-label {
-
   font-size: .75rem;
-
   color: var(--green);
-
   font-weight: 700;
-
   text-transform: uppercase;
-
   letter-spacing: .05em;
-
   margin-bottom: .5em;
-
 }
-
 .model-answer .answer-text { color: var(--text); line-height: 1.8; }
-
 .model-answer.hidden-answer { display: none; }
 
-
-
 /* Reveal button */
-
 .reveal-btn {
-
   display: inline-block;
-
   margin-top: .8em;
-
   background: linear-gradient(135deg, rgba(var(--green-rgb),.15), rgba(var(--blue-rgb),.15));
-
   border: 1px solid rgba(var(--green-rgb),.5);
-
   color: var(--green);
-
   font-family: 'Inter', sans-serif;
-
   font-size: .95rem;
-
   padding: 10px 24px;
-
   border-radius: 24px;
-
   cursor: pointer;
-
   transition: all .2s;
-
   min-width: 44px;
-
   min-height: 44px;
-
   font-weight: 600;
-
 }
-
 .reveal-btn:hover {
-
   background: rgba(var(--green-rgb),.25);
-
   box-shadow: 0 0 15px rgba(var(--green-rgb),.3);
-
 }
-
 .reveal-btn:active { transform: translateY(1px) scale(.96); }
-
 .reveal-btn.revealed {
-
   background: linear-gradient(135deg, rgba(var(--green-rgb),.3), rgba(var(--lime-rgb),.2));
-
   border-color: rgba(var(--lime-rgb),.7);
-
   box-shadow: 0 0 20px rgba(var(--lime-rgb),.4);
-
 }
-
-
 
 /* Grammar boxes */
-
 .grammar-box {
-
   background: linear-gradient(135deg, rgba(var(--b1-blue-rgb),.08), rgba(var(--blue-rgb),.08));
-
   border: 2px solid rgba(var(--b1-blue-rgb),.35);
-
   border-radius: 14px;
-
   padding: 1.2em 1.6em;
-
   margin: 1em 0;
-
 }
-
 .grammar-box .rule-label {
-
   font-weight: 700;
-
   color: var(--b1-blue);
-
   font-size: .85rem;
-
   text-transform: uppercase;
-
   letter-spacing: .05em;
-
   margin-bottom: .5em;
-
 }
-
 .grammar-box .rule-formula {
-
   font-family: 'Inter', monospace;
-
   font-size: clamp(1.1rem, 1.8vw, 1.4rem);
-
   color: var(--cyan);
-
   font-weight: 700;
-
   margin-bottom: .4em;
-
 }
-
-
 
 /* Timeline */
-
 .timeline {
-
   display: flex;
-
   flex-direction: column;
-
   gap: .8em;
-
   margin: 1em 0;
-
   padding-left: 1.5em;
-
   border-left: 3px solid rgba(var(--blue-rgb),.4);
-
 }
-
 .timeline-item {
-
   position: relative;
-
   padding-left: 1em;
-
 }
-
 .timeline-item::before {
-
   content: '';
-
   position: absolute;
-
   left: -1.75em;
-
   top: .5em;
-
   width: 10px;
-
   height: 10px;
-
   border-radius: 50%;
-
   background: var(--blue);
-
   box-shadow: 0 0 10px rgba(var(--blue-rgb),.5);
-
 }
-
 .timeline-item .time-text {
-
   font-weight: 700;
-
   color: var(--blue);
-
   font-size: .9rem;
-
 }
-
 .timeline-item .event-text {
-
   color: var(--text);
-
 }
-
-
 
 /* Speaking task box */
-
 .task-box {
-
   background: linear-gradient(135deg, rgba(var(--indigo-rgb),.08), rgba(var(--blue-rgb),.08));
-
   border: 2px solid rgba(var(--indigo-rgb),.4);
-
   border-radius: 14px;
-
   padding: 1.2em 1.6em;
-
   margin: 1em 0;
-
 }
-
 .task-box .task-title {
-
   font-weight: 700;
-
   color: var(--indigo);
-
   font-size: 1.1rem;
-
   margin-bottom: .6em;
-
 }
-
 .task-box .task-instruction { color: var(--text); margin-bottom: .6em; }
 
-
-
 /* Match Game */
-
 .match-game {
-
   display: flex;
-
   flex-direction: column;
-
   gap: 1em;
-
   margin-top: 1em;
-
 }
-
 .match-game .match-columns {
-
   display: flex;
-
   gap: 1.5em;
-
   justify-content: center;
-
   flex-wrap: wrap;
-
 }
-
 .match-game .match-col {
-
   display: flex;
-
   flex-direction: column;
-
   gap: .6em;
-
   min-width: 200px;
-
 }
-
 .match-game .match-btn {
-
   background: rgba(var(--blue-rgb),.1);
-
   border: 1.5px solid rgba(var(--blue-rgb),.4);
-
   color: var(--text);
-
   font-family: 'Inter', sans-serif;
-
   font-size: .95rem;
-
   padding: .7em 1em;
-
   border-radius: 10px;
-
   cursor: pointer;
-
   transition: all .15s;
-
   text-align: left;
-
 }
-
 .match-game .match-btn:hover {
-
   background: rgba(var(--blue-rgb),.2);
-
   box-shadow: 0 0 10px rgba(var(--blue-rgb),.2);
-
 }
-
 .match-game .match-btn.selected {
-
   border-color: var(--blue);
-
   background: rgba(var(--blue-rgb),.25);
-
   box-shadow: 0 0 12px rgba(var(--blue-rgb),.3);
-
 }
-
 .match-game .match-btn.matched {
-
   border-color: var(--green);
-
   background: rgba(var(--green-rgb),.2);
-
   color: var(--green);
-
   cursor: default;
-
 }
-
 .match-game .match-btn.wrong {
-
   border-color: var(--red);
-
   background: rgba(var(--red-rgb),.2);
-
   animation: shake .3s ease;
-
 }
-
 @keyframes shake {
-
   0%, 100% { transform: translateX(0); }
-
   20% { transform: translateX(-4px); }
-
   40% { transform: translateX(4px); }
-
   60% { transform: translateX(-2px); }
-
   80% { transform: translateX(2px); }
-
 }
-
 .match-game .match-status {
-
   text-align: center;
-
   font-size: .9rem;
-
   color: var(--text-dim);
-
   min-height: 1.5em;
-
 }
-
 .win-overlay {
-
   display: none;
-
   position: fixed;
-
   inset: 0;
-
   z-index: 500;
-
   background: rgba(var(--bg-rgb),.7);
-
   align-items: center;
-
   justify-content: center;
-
   flex-direction: column;
-
 }
-
 .win-overlay.show { display: flex; }
-
 .win-text {
-
   font-family: 'Montserrat', sans-serif;
-
   font-weight: 900;
-
   font-size: clamp(2rem, 5vw, 4rem);
-
   color: var(--green);
-
   text-shadow: 0 0 30px rgba(var(--green-rgb),.6);
-
   animation: popIn .5s cubic-bezier(.175,.885,.32,1.275);
-
 }
-
 @keyframes popIn {
-
   0% { transform: scale(0); opacity: 0; }
-
   100% { transform: scale(1); opacity: 1; }
-
 }
-
 .sparkle {
-
   position: fixed;
-
   width: 8px;
-
   height: 8px;
-
   background: var(--blue);
-
   border-radius: 50%;
-
   box-shadow: 0 0 10px var(--cyan), 0 0 20px var(--sky);
-
   pointer-events: none;
-
   z-index: 600;
-
   animation: sparkleFloat 1.2s ease-out forwards;
-
 }
-
 @keyframes sparkleFloat {
-
   0% { transform: translate(0,0) scale(1); opacity: 1; }
-
   100% { transform: translate(var(--sx), var(--sy)) scale(0); opacity: 0; }
-
 }
-
-
 
 /* Reorder words */
-
 .reorder-game {
-
   margin: 1em 0;
-
 }
-
 .reorder-game .reorder-sentence {
-
   background: rgba(var(--b1-blue-rgb),.06);
-
   border: 1px solid rgba(var(--b1-blue-rgb),.3);
-
   border-radius: 12px;
-
   padding: 1em 1.2em;
-
   margin: .8em 0;
-
 }
-
 .reorder-game .reorder-tokens {
-
   display: flex;
-
   flex-wrap: wrap;
-
   gap: .4em;
-
   margin: .5em 0;
-
   min-height: 2.5em;
-
 }
-
 .reorder-game .reorder-token {
-
   background: rgba(var(--blue-rgb),.12);
-
   border: 1.5px solid rgba(var(--blue-rgb),.5);
-
   border-radius: 8px;
-
   padding: .4em .7em;
-
   font-size: .95rem;
-
   cursor: pointer;
-
   transition: all .15s;
-
   color: var(--text);
-
   user-select: none;
-
 }
-
 .reorder-game .reorder-token:hover {
-
   background: rgba(var(--blue-rgb),.25);
-
   transform: translateY(-2px);
-
 }
-
 .reorder-game .reorder-token.placed {
-
   opacity: .3;
-
   pointer-events: none;
-
   text-decoration: line-through;
-
 }
-
 .reorder-game .reorder-slot {
-
   display: flex;
-
   flex-wrap: wrap;
-
   gap: .4em;
-
   min-height: 2.5em;
-
   padding: .5em;
-
   background: rgba(var(--green-rgb),.06);
-
   border: 1px dashed rgba(var(--green-rgb),.3);
-
   border-radius: 8px;
-
 }
-
 .reorder-game .reorder-slot .reorder-token {
-
   background: rgba(var(--green-rgb),.15);
-
   border-color: var(--green);
-
   cursor: pointer;
-
 }
-
 .reorder-game .reorder-slot .reorder-token:hover {
-
   background: rgba(var(--green-rgb),.3);
-
 }
-
 .reorder-game .reorder-answer {
-
   margin-top: .5em;
-
   font-size: .9rem;
-
   color: var(--green);
-
   font-weight: 600;
-
 }
-
 .reorder-game .reorder-answer.hidden-answer { display: none; }
-
 .reorder-game .reorder-btn {
-
   background: rgba(var(--blue-rgb),.1);
-
   border: 1px solid rgba(var(--blue-rgb),.4);
-
   color: var(--blue);
-
   font-family: 'Inter', sans-serif;
-
   font-size: .8rem;
-
   padding: 6px 14px;
-
   border-radius: 16px;
-
   cursor: pointer;
-
   transition: all .15s;
-
   min-width: 44px;
-
   min-height: 44px;
-
   margin-right: .5em;
-
   margin-top: .5em;
-
 }
-
 .reorder-game .reorder-btn:hover {
-
   background: rgba(var(--blue-rgb),.2);
-
 }
-
 .reorder-game .reorder-btn.reset-btn {
-
   border-color: rgba(var(--red-rgb),.4);
-
   color: var(--red);
-
 }
-
-
 
 /* Compare Pictures */
-
 .compare-pictures {
-
   display: flex;
-
   gap: 1.5em;
-
   justify-content: center;
-
   flex-wrap: wrap;
-
   margin: 1em 0;
-
 }
-
 .compare-pictures .compare-card {
-
   background: rgba(var(--blue-rgb),.06);
-
   border: 1px solid rgba(var(--blue-rgb),.3);
-
   border-radius: 12px;
-
   padding: 1em;
-
   min-width: 200px;
-
   max-width: 350px;
-
   text-align: center;
-
 }
-
 .compare-pictures .compare-img {
-
   width: 100%;
-
   height: 160px;
-
   object-fit: cover;
-
   border-radius: 8px;
-
   margin-bottom: .6em;
-
 }
-
 .compare-pictures .compare-label {
-
   font-weight: 700;
-
   color: var(--blue);
-
   font-size: 1rem;
-
 }
-
 .compare-questions {
-
   margin-top: 1em;
-
 }
-
 .compare-questions .compare-q {
-
   font-weight: 500;
-
   color: var(--text);
-
   margin-bottom: .3em;
-
 }
-
-
 
 /* Theme cycle button */
-
 .theme-cycle-btn {
-
   position: fixed; top: 1em; right: 1em; z-index: 20;
-
   width: 44px; height: 44px; border-radius: 50%;
-
-  background: 255,255,255,0.032);
-
-  border: 1.5px solid 255,255,255,0.096);
-
+  background: rgba(255,255,255,0.032);
+  border: 1.5px solid rgba(255,255,255,0.096);
   cursor: pointer;
-
   backdrop-filter: blur(10px);
-
   transition: all .3s ease;
-
   display: flex; align-items: center; justify-content: center;
-
 }
-
-.theme-cycle-btn:hover { background: 255,255,255,0.064); transform: scale(1.1); }
-
+.theme-cycle-btn:hover { background: rgba(255,255,255,0.064); transform: scale(1.1); }
 .theme-icon-fill { fill: var(--blue); transition: fill .3s ease; }
 
-
-
 /* Mark Complete */
-
 .mark-complete-btn {
-
   background: rgba(var(--green-rgb),.1);
-
   border: 1px solid rgba(var(--green-rgb),.4);
-
   color: var(--green);
-
   font-family: 'Inter', sans-serif;
-
   font-size: .95rem;
-
   padding: 10px 24px;
-
   border-radius: 24px;
-
   cursor: pointer;
-
   transition: all .25s;
-
   font-weight: 600;
-
 }
-
 .mark-complete-btn:hover {
-
   background: rgba(var(--green-rgb),.2);
-
   box-shadow: 0 0 15px rgba(var(--green-rgb),.3);
-
 }
-
 .mark-complete-btn.completed {
-
   background: rgba(var(--green-rgb),.25);
-
   border-color: rgba(var(--green-rgb),.7);
-
   box-shadow: 0 0 20px rgba(var(--green-rgb),.4);
-
 }
-
 .start-prompt {
-
   color: var(--text-dim);
-
   font-size: .9rem;
-
   margin-top: 1em;
-
   animation: pulse 2s ease-in-out infinite;
-
 }
-
 @keyframes pulse {
-
   0%, 100% { opacity: .6; }
-
   50% { opacity: 1; }
-
 }
-
 .goals-list { list-style: none; padding: 0; }
-
 .goals-list li {
-
   padding: .4em 0 .4em 1.5em;
-
   position: relative;
-
 }
-
 .goals-list li::before {
-
   content: '>';
-
   position: absolute;
-
   left: 0;
-
   color: var(--blue);
-
   font-weight: 700;
-
 }
-
-
 
 /* Fun grid */
-
 .fun-grid {
-
   display: grid;
-
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-
   gap: 1em;
-
   margin-top: 1em;
-
 }
-
 .fun-card {
-
   background: rgba(var(--blue-rgb),.08);
-
   border: 1px solid rgba(var(--blue-rgb),.3);
-
   border-radius: 12px;
-
   padding: 1em;
-
   text-align: center;
-
   transition: transform .2s, box-shadow .2s;
-
 }
-
 .fun-card:hover {
-
   transform: translateY(-4px);
-
   box-shadow: 0 8px 24px rgba(var(--blue-rgb),.2);
-
 }
-
 .fun-card .fun-img {
-
   width: 100%;
-
   height: 120px;
-
   object-fit: cover;
-
   border-radius: 8px;
-
   margin-bottom: .6em;
-
   opacity: .9;
-
 }
-
 .fun-card .fun-name {
-
   font-weight: 700;
-
   color: var(--blue);
-
   font-size: 1.1rem;
-
 }
-
 .fun-card .fun-desc {
-
   font-size: .85rem;
-
   color: var(--text-dim);
-
   margin-top: .3em;
-
 }
-
-
 
 /* JP hints */
-
 .l1-toggle-btn {
-
   position: fixed;
-
   top: 1em;
-
   left: 1em;
-
   z-index: 20;
-
-  background: 255,255,255,0.032);
-
-  border: 1.5px solid 255,255,255,0.096);
-
+  background: rgba(255,255,255,0.032);
+  border: 1.5px solid rgba(255,255,255,0.096);
   color: var(--text-dim);
-
   font-family: 'Inter', sans-serif;
-
   font-size: .7rem;
-
   padding: 8px 14px;
-
   border-radius: 20px;
-
   cursor: pointer;
-
   backdrop-filter: blur(10px);
-
   transition: all .3s ease;
-
   min-width: 44px;
-
   min-height: 44px;
-
   text-transform: uppercase;
-
   letter-spacing: .05em;
-
 }
-
 .l1-toggle-btn:hover {
-
-  background: 255,255,255,0.064);
-
+  background: rgba(255,255,255,0.064);
   transform: scale(1.05);
-
 }
-
 .l1-toggle-btn.active {
-
   background: rgba(var(--b1-blue-rgb),0.15);
-
   border-color: var(--b1-blue);
-
   color: var(--b1-blue);
-
 }
-
-
 
 @media (max-width: 768px) {
-
   .theme-cycle-btn { top: .7em; right: .7em; }
-
   h1 { font-size: 1.8rem; }
-
   h2 { font-size: 1.3rem; }
-
   .nav { bottom: 12px; padding: 8px 16px; gap: .6em; }
-
   .nav button { padding: 6px 12px; font-size: .85rem; }
-
   .match-game .match-columns { flex-direction: column; align-items: center; }
-
   .compare-pictures { flex-direction: column; align-items: center; }
-
 }
-
-
 
 /* Theme palettes */
-
 /* Every element reads these variables, so cycling the theme button
-
    repaints panels, borders, glows, badges, buttons, scrims and cards. */
-
 [data-theme="2"] { /* Forest */
-
   --bg: #0c1a1a;     --bg-rgb: 12,26,26;
-
   --blue: #34d399;   --blue-rgb: 52,211,153;
-
   --cyan: #2dd4bf;   --cyan-rgb: 45,212,191;
-
   --sky: #5eead4;    --sky-rgb: 94,234,212;
-
   --indigo: #6ee7b7; --indigo-rgb: 110,231,183;
-
   --purple: #a7f3d0; --purple-rgb: 167,243,208;
-
   --violet: #d1fae5; --violet-rgb: 209,250,229;
-
   --b1-blue: #a7f3d0; --b1-blue-rgb: 167,243,208;
-
 }
-
 [data-theme="3"] { /* Violet */
-
   --bg: #1a0f2e;     --bg-rgb: 26,15,46;
-
   --blue: #a78bfa;   --blue-rgb: 167,139,250;
-
   --cyan: #c4b5fd;   --cyan-rgb: 196,181,253;
-
   --sky: #ddd6fe;    --sky-rgb: 221,214,254;
-
   --indigo: #c4b5fd; --indigo-rgb: 196,181,253;
-
   --purple: #ddd6fe; --purple-rgb: 221,214,254;
-
   --violet: #ede9fe; --violet-rgb: 237,233,254;
-
   --b1-blue: #a5b4fc; --b1-blue-rgb: 165,180,252;
-
 }
-
 [data-theme="4"] { /* Crimson */
-
   --bg: #1a0a0f;     --bg-rgb: 26,10,15;
-
   --blue: #fb7185;   --blue-rgb: 251,113,133;
-
   --cyan: #f472b6;   --cyan-rgb: 244,114,182;
-
   --sky: #f9a8d4;    --sky-rgb: 249,168,212;
-
   --indigo: #fda4af; --indigo-rgb: 253,164,175;
-
   --purple: #fbcfe8; --purple-rgb: 251,207,232;
-
   --violet: #fce7f3; --violet-rgb: 252,231,243;
-
   --b1-blue: #fbcfe8; --b1-blue-rgb: 251,207,232;
-
 }
-
 [data-theme="5"] { /* Deep Ocean */
-
   --bg: #06141a;     --bg-rgb: 6,20,26;
-
   --blue: #22d3ee;   --blue-rgb: 34,211,238;
-
   --cyan: #2dd4bf;   --cyan-rgb: 45,212,191;
-
   --sky: #a5f3fc;    --sky-rgb: 165,243,252;
-
   --indigo: #67e8f9; --indigo-rgb: 103,232,249;
-
   --purple: #c4b5fd; --purple-rgb: 196,181,253;
-
   --violet: #ddd6fe; --violet-rgb: 221,214,254;
-
   --b1-blue: #22d3ee; --b1-blue-rgb: 34,211,238;
-
 }
-
 [data-theme="6"] { /* Sunset */
-
   --bg: #1a1405;     --bg-rgb: 26,20,5;
-
   --blue: #f97316;   --blue-rgb: 249,115,22;
-
   --cyan: #fb923c;   --cyan-rgb: 251,146,60;
-
   --sky: #fdba74;    --sky-rgb: 253,186,116;
-
   --indigo: #fed7aa; --indigo-rgb: 254,215,170;
-
   --purple: #ffedd5; --purple-rgb: 255,237,213;
-
   --violet: #fff7ed; --violet-rgb: 255,247,237;
-
   --b1-blue: #ffedd5; --b1-blue-rgb: 255,237,213;
-
 }
-
-
 
 /* JP hints */
-
 .jp-hint {
-
   font-size: .8rem;
-
   color: var(--text-dim);
-
   font-style: italic;
-
   margin-top: .2em;
-
   padding-left: .2em;
-
   display: none;
-
 }
-
 .jp-hint.visible { display: block; }
-
 
 .l1-word{border-bottom:1px dotted #fbbf24;cursor:help;position:relative}
 .l1-word:hover{color:#fbbf24}
 body.show-l1 .l1-word:hover::after{content:attr(data-l1);position:absolute;left:0;bottom:calc(100% + 8px);width:max-content;max-width:300px;white-space:normal;background:#0a1628;border:1px solid #fbbf24;border-radius:8px;padding:7px 10px;font-size:.82rem;color:#fff;z-index:50;box-shadow:0 6px 20px rgba(0,0,0,.55);line-height:1.5}
 body.show-l1 .l1-word{background:rgba(251,191,36,.09)}
 </style>
-
 </head>
-
 <body>
-
 <div class="progress-bar" id="progressBar" style="width: 8.3%;"></div>
 
-
-
 <!-- SLIDE 1: Title -->
-
 <section class="slide active" data-slide="0" style="background-image:url('https://cdn.pixabay.com/photo/2021/04/28/21/01/speech-balloon-6214971_1280.jpg'); background-color:var(--bg);">
-
-  <div class="content" style="text-align:center; margin-left:auto;">
-
+  <div class="content" style="text-align:center;">
     <h1>IDIOMS &amp; EXPRESSIONS</h1>
-
     <p class="subtitle">Everyday <span class="l1-word" data-l1="英語">English</span> That Doesn't Mean <span class="l1-word" data-l1="何">What</span> It Says</p>
-
     <p style="color:var(--text-dim); font-size:clamp(.9rem,1.3vw,1.1rem); margin:.5em 0 1.2em;">
-
       <span class="l1-word" data-l1="学ぶ">learn</span> the whole phrase — A2 <span class="l1-word" data-l1="語彙">Vocabulary</span> &amp; Speaking
-
     </p>
-
     <div style="display:flex; gap:12px; justify-content:center; margin-top:1.2em;">
-
       
-
     </div>
-
     <p class="start-prompt">Press &rarr; or Space to <span class="l1-word" data-l1="始める">start</span></p>
-
   </div>
-
 </section>
-
-
 
 <!-- SLIDE 2: Warm-Up -->
-
 <section class="slide" data-slide="1" style="background-image:url('https://cdn.pixabay.com/photo/2022/06/21/14/15/girls-7275922_1280.jpg'); background-color:var(--bg);">
-
   <div class="content">
-
     <span class="section-badge badge-blue"><span class="l1-word" data-l1="暖かい">Warm</span>-Up</span>
-
     <h2><span class="l1-word" data-l1="する">Do</span> You <span class="l1-word" data-l1="知る">Know</span> These <span class="l1-word" data-l1="すでに">Already</span>?</h2>
-
     <p style="color:var(--text-dim); margin-bottom:.8em;">These questions all contain an <strong>idiom</strong>. Guess the meaning, <span class="l1-word" data-l1="次に">then</span> <span class="l1-word" data-l1="答える">answer</span> with a partner.</p>
-
     <div class="question-card">
-
       <p class="question-text">1. <span class="l1-word" data-l1="持つ">Have</span> you ever felt "under the <span class="l1-word" data-l1="天気">weather</span>"? <span class="l1-word" data-l1="何">What</span> did you <span class="l1-word" data-l1="する">do</span>?</p>
-
       <button class="reveal-btn" onclick="revealAnswer(this)">Reveal Model <span class="l1-word" data-l1="答える">Answer</span></button>
-
       <div class="model-answer hidden-answer">
-
         <div class="answer-label">Model <span class="l1-word" data-l1="答える">Answer</span></div>
-
         <div class="answer-text">Yes, I felt under the <span class="l1-word" data-l1="天気">weather</span> <span class="l1-word" data-l1="最後">last</span> winter. I had a headache and a sore throat, <span class="l1-word" data-l1="だから">so</span> I stayed in <span class="l1-word" data-l1="ベッド">bed</span> and drank <span class="l1-word" data-l1="暑い">hot</span> <span class="l1-word" data-l1="お茶">tea</span>.</div>
-
       </div>
-
     </div>
-
     <div class="question-card">
-
       <p class="question-text">2. <span class="l1-word" data-l1="どちら">Which</span> subject at <span class="l1-word" data-l1="学校">school</span> is "a piece of <span class="l1-word" data-l1="ケーキ">cake</span>" for you?</p>
-
       <button class="reveal-btn" onclick="revealAnswer(this)">Reveal Model <span class="l1-word" data-l1="答える">Answer</span></button>
-
       <div class="model-answer hidden-answer">
-
         <div class="answer-label">Model <span class="l1-word" data-l1="答える">Answer</span></div>
-
         <div class="answer-text">Science is a piece of <span class="l1-word" data-l1="ケーキ">cake</span> for me. I <span class="l1-word" data-l1="理解する">understand</span> it quickly and I <span class="l1-word" data-l1="いつも">always</span> get <span class="l1-word" data-l1="良い">good</span> marks on the tests.</div>
-
       </div>
-
     </div>
-
     <div class="question-card">
-
       <p class="question-text">3. Is it <span class="l1-word" data-l1="難しい">hard</span> for you to "<span class="l1-word" data-l1="壊れる">break</span> the ice" with someone <span class="l1-word" data-l1="新しい">new</span>?</p>
-
       <button class="reveal-btn" onclick="revealAnswer(this)">Reveal Model <span class="l1-word" data-l1="答える">Answer</span></button>
-
       <div class="model-answer hidden-answer">
-
         <div class="answer-label">Model <span class="l1-word" data-l1="答える">Answer</span></div>
-
         <div class="answer-text">Yes, it is <span class="l1-word" data-l1="難しい">hard</span> for me. I am shy, <span class="l1-word" data-l1="だから">so</span> I usually <span class="l1-word" data-l1="待つ">wait</span> for the other <span class="l1-word" data-l1="人">person</span> to <span class="l1-word" data-l1="話す">speak</span> <span class="l1-word" data-l1="最初">first</span>.</div>
-
       </div>
-
     </div>
-
     <div class="question-card">
-
       <p class="question-text">4. <span class="l1-word" data-l1="いつ">When</span> were you <span class="l1-word" data-l1="最後">last</span> "on <span class="l1-word" data-l1="雲">cloud</span> nine"?</p>
-
       <button class="reveal-btn" onclick="revealAnswer(this)">Reveal Model <span class="l1-word" data-l1="答える">Answer</span></button>
-
       <div class="model-answer hidden-answer">
-
         <div class="answer-label">Model <span class="l1-word" data-l1="答える">Answer</span></div>
-
         <div class="answer-text">I was on <span class="l1-word" data-l1="雲">cloud</span> nine <span class="l1-word" data-l1="いつ">when</span> my <span class="l1-word" data-l1="チーム">team</span> won the football <span class="l1-word" data-l1="試合">match</span>. I was <span class="l1-word" data-l1="だから">so</span> <span class="l1-word" data-l1="幸せな">happy</span> that I could not <span class="l1-word" data-l1="止める">stop</span> smiling all <span class="l1-word" data-l1="日">day</span>.</div>
-
       </div>
-
     </div>
-
     <div class="question-card">
-
       <p class="question-text">5. <span class="l1-word" data-l1="何">What</span> <span class="l1-word" data-l1="時間">time</span> <span class="l1-word" data-l1="する">do</span> you usually "hit the sack" on a <span class="l1-word" data-l1="学校">school</span> <span class="l1-word" data-l1="夜">night</span>?</p>
-
       <button class="reveal-btn" onclick="revealAnswer(this)">Reveal Model <span class="l1-word" data-l1="答える">Answer</span></button>
-
       <div class="model-answer hidden-answer">
-
         <div class="answer-label">Model <span class="l1-word" data-l1="答える">Answer</span></div>
-
         <div class="answer-text">I usually hit the sack at about eleven o'clock, <span class="l1-word" data-l1="しかし">but</span> I <span class="l1-word" data-l1="時々">sometimes</span> stay up until midnight <span class="l1-word" data-l1="いつ">when</span> I am watching anime.</div>
-
       </div>
-
     </div>
-
   </div>
-
 </section>
-
-
 
 <!-- SLIDE 3: What Is an Idiom? -->
-
 <section class="slide" data-slide="2" style="background-image:url('https://cdn.pixabay.com/photo/2015/03/30/12/39/dictionary-698538_1280.jpg'); background-color:var(--bg);">
-
   <div class="content">
-
     <span class="section-badge badge-indigo"><span class="l1-word" data-l1="文法">Grammar</span>: Idioms</span>
-
     <h2><span class="l1-word" data-l1="何">What</span> Is an Idiom?</h2>
-
     <div class="grammar-box">
-
       <div class="rule-label">Idiom Rule</div>
-
       <div class="rule-formula">An idiom = a group of words with <strong>one <span class="l1-word" data-l1="特別な">special</span> meaning</strong></div>
-
       <p style="font-size:.85rem; color:var(--text-dim);">
-
         
-
       </p>
-
     </div>
-
     <div class="timeline">
-
       <div class="timeline-item">
-
         <div class="time-text">Literal</div>
-
         <div class="event-text">"It is raining cats and dogs." → It is raining animals?!</div>
-
       </div>
-
       <div class="timeline-item">
-
         <div class="time-text">Real meaning</div>
-
         <div class="event-text">It is raining <strong>very heavily</strong>. (No animals fall from the <span class="l1-word" data-l1="空">sky</span>!)</div>
-
       </div>
-
       <div class="timeline-item">
-
         <div class="time-text">The <span class="l1-word" data-l1="間違い">mistake</span></div>
-
         <div class="event-text"><span class="l1-word" data-l1="する">Do</span> <strong>not</strong> translate an idiom <span class="l1-word" data-l1="単語">word</span> by <span class="l1-word" data-l1="単語">word</span>.</div>
-
       </div>
-
       <div class="timeline-item">
-
         <div class="time-text">The rule</div>
-
         <div class="event-text"><span class="l1-word" data-l1="学ぶ">Learn</span> the <strong>whole phrase</strong>, not the individual words.</div>
-
       </div>
-
     </div>
-
     <p style="font-size:.85rem; color:var(--text-dim); margin-top:.5em;">
-
       Native speakers use idioms in almost every conversation — <span class="l1-word" data-l1="だから">so</span> they are a <span class="l1-word" data-l1="速い">fast</span> <span class="l1-word" data-l1="方法">way</span> to sound natural.<br>
-
       
-
     </p>
-
   </div>
-
 </section>
-
-
 
 <!-- SLIDE 4: Idiom Set 1 -->
-
 <section class="slide" data-slide="3" style="background-image:url('https://cdn.pixabay.com/photo/2018/07/25/16/22/rain-3561754_1280.jpg'); background-color:var(--bg);">
-
   <div class="content">
-
     <span class="section-badge badge-cyan">Idiom Set 1: <span class="l1-word" data-l1="天気">Weather</span> &amp; Feelings</span>
-
     <h2><span class="l1-word" data-l1="学ぶ">Learn</span> These Six</h2>
-
     <div class="timeline">
-
       <div class="timeline-item">
-
         <div class="time-text">raining cats and dogs</div>
-
         <div class="event-text">raining <strong>very heavily</strong></div>
-
       </div>
-
       <div class="timeline-item">
-
         <div class="time-text">under the <span class="l1-word" data-l1="天気">weather</span></div>
-
         <div class="event-text">feeling <strong>a little sick</strong></div>
-
       </div>
-
       <div class="timeline-item">
-
         <div class="time-text">on <span class="l1-word" data-l1="雲">cloud</span> nine</div>
-
         <div class="event-text"><strong>extremely <span class="l1-word" data-l1="幸せな">happy</span></strong></div>
-
       </div>
-
       <div class="timeline-item">
-
         <div class="time-text">feeling blue</div>
-
         <div class="event-text">feeling <strong><span class="l1-word" data-l1="悲しい">sad</span></strong></div>
-
       </div>
-
       <div class="timeline-item">
-
         <div class="time-text"><span class="l1-word" data-l1="壊れる">break</span> the ice</div>
-
         <div class="event-text"><strong><span class="l1-word" data-l1="始める">start</span> a conversation</strong> in a shy situation</div>
-
       </div>
-
       <div class="timeline-item">
-
         <div class="time-text">a piece of <span class="l1-word" data-l1="ケーキ">cake</span></div>
-
         <div class="event-text">something <strong>very <span class="l1-word" data-l1="簡単な">easy</span></strong></div>
-
       </div>
-
     </div>
-
     <p style="font-size:.85rem; color:var(--text-dim); margin-top:.5em;">
-
       <span class="l1-word" data-l1="言う">Say</span> each one out <span class="l1-word" data-l1="うるさい">loud</span> three times. <span class="l1-word" data-l1="次に">Then</span> cover the meanings and <span class="l1-word" data-l1="テスト">test</span> yourself.<br>
-
       
-
     </p>
-
   </div>
-
 </section>
-
-
 
 <!-- SLIDE 5: Match Game 1 -->
-
 <section class="slide" data-slide="4" style="background-image:url('https://cdn.pixabay.com/photo/2017/09/10/18/25/question-2736480_1280.jpg'); background-color:var(--bg);">
-
   <div class="content">
-
     <span class="section-badge badge-blue">Vocab <span class="l1-word" data-l1="ゲーム">Game</span> 1: <span class="l1-word" data-l1="天気">Weather</span> &amp; Feelings</span>
-
     <h2><span class="l1-word" data-l1="試合">Match</span> the Idiom to Its Meaning!</h2>
-
     <p style="margin-bottom:1em; color:var(--text-dim);">Click an idiom from Column A, <span class="l1-word" data-l1="次に">then</span> click its meaning from Column B.</p>
-
     <div class="match-game" id="matchGame1">
-
       <div class="match-columns">
-
         <div class="match-col" id="colA1"></div>
-
         <div class="match-col" id="colB1"></div>
-
       </div>
-
       <div class="match-status" id="matchStatus1"></div>
-
     </div>
-
     <div class="win-overlay" id="winOverlay1">
-
       <div class="win-text">Amazing!</div>
-
       <button class="reveal-btn" style="margin-top:1.5em;" onclick="closeWin('winOverlay1')">Continue &rarr;</button>
-
     </div>
-
   </div>
-
 </section>
-
-
 
 <!-- SLIDE 6: Compare Pictures — Feelings -->
-
 <section class="slide" data-slide="5" style="background-image:url('https://cdn.pixabay.com/photo/2020/04/24/10/23/pier-5086290_1280.jpg'); background-color:var(--bg);">
-
   <div class="content">
-
     <span class="section-badge badge-cyan"><span class="l1-word" data-l1="比べる">Compare</span> Pictures: Feelings</span>
-
     <h2><span class="l1-word" data-l1="どちら">Which</span> Idiom Fits?</h2>
-
     <p style="color:var(--text-dim); margin-bottom:.8em;"><span class="l1-word" data-l1="見る">Look</span> at both pictures. Use an idiom from Set 1 to <span class="l1-word" data-l1="説明する">describe</span> each <span class="l1-word" data-l1="人">person</span>.</p>
-
     <div class="compare-pictures">
-
       <div class="compare-card">
-
         <img class="compare-img" src="https://cdn.pixabay.com/photo/2017/10/10/21/49/blogger-2838945_1280.jpg" alt="A person holding their head, looking tired and unwell with a headache" loading="lazy" onerror="this.style.display='none'">
-
         <div class="compare-label"><span class="l1-word" data-l1="絵">Picture</span> 1: Unwell</div>
-
       </div>
-
       <div class="compare-card">
-
         <img class="compare-img" src="https://cdn.pixabay.com/photo/2016/01/18/17/27/birthday-1147011_1280.jpg" alt="A teenage girl in a pink dress at a birthday party, looking very happy" loading="lazy" onerror="this.style.display='none'">
-
         <div class="compare-label"><span class="l1-word" data-l1="絵">Picture</span> 2: <span class="l1-word" data-l1="幸せな">Happy</span></div>
-
       </div>
-
     </div>
-
     <div class="compare-questions">
-
       <p class="compare-q">1. In <span class="l1-word" data-l1="絵">Picture</span> 1, <span class="l1-word" data-l1="どう">how</span> is the <span class="l1-word" data-l1="人">person</span> feeling? <span class="l1-word" data-l1="どちら">Which</span> idiom from Set 1 can you use?</p>
-
       <p class="compare-q">2. In <span class="l1-word" data-l1="絵">Picture</span> 2, <span class="l1-word" data-l1="どう">how</span> does the girl <span class="l1-word" data-l1="感じる">feel</span>? <span class="l1-word" data-l1="どちら">Which</span> idiom fits?</p>
-
       <p class="compare-q">3. <span class="l1-word" data-l1="もし">If</span> you are "under the <span class="l1-word" data-l1="天気">weather</span>", <span class="l1-word" data-l1="何">what</span> <span class="l1-word" data-l1="する">do</span> you usually <span class="l1-word" data-l1="する">do</span>?</p>
-
       <p class="compare-q">4. <span class="l1-word" data-l1="伝える">Tell</span> me about a <span class="l1-word" data-l1="日">day</span> <span class="l1-word" data-l1="いつ">when</span> you were "on <span class="l1-word" data-l1="雲">cloud</span> nine".</p>
-
       <p class="compare-q">5. <span class="l1-word" data-l1="どちら">Which</span> feeling is easier for you to talk about — <span class="l1-word" data-l1="幸せな">happy</span> or <span class="l1-word" data-l1="悲しい">sad</span>? <span class="l1-word" data-l1="なぜ">Why</span>?</p>
-
     </div>
-
     <button class="reveal-btn" onclick="revealAnswer(this)">Reveal Model <span class="l1-word" data-l1="答える">Answer</span></button>
-
     <div class="model-answer hidden-answer">
-
       <div class="answer-label">Model <span class="l1-word" data-l1="答える">Answer</span></div>
-
       <div class="answer-text">In <span class="l1-word" data-l1="絵">Picture</span> 1, the <span class="l1-word" data-l1="人">person</span> looks very <span class="l1-word" data-l1="疲れた">tired</span> and unwell. He is holding his head, <span class="l1-word" data-l1="だから">so</span> he probably has a headache. I <span class="l1-word" data-l1="思う">think</span> he is feeling under the <span class="l1-word" data-l1="天気">weather</span>. In <span class="l1-word" data-l1="絵">Picture</span> 2, the girl is at a birthday party and she looks extremely <span class="l1-word" data-l1="幸せな">happy</span>, <span class="l1-word" data-l1="だから">so</span> she is on <span class="l1-word" data-l1="雲">cloud</span> nine. <span class="l1-word" data-l1="もし">If</span> I am under the <span class="l1-word" data-l1="天気">weather</span>, I usually stay in <span class="l1-word" data-l1="ベッド">bed</span> and drink <span class="l1-word" data-l1="暑い">hot</span> <span class="l1-word" data-l1="お茶">tea</span>. I was on <span class="l1-word" data-l1="雲">cloud</span> nine <span class="l1-word" data-l1="いつ">when</span> I passed my <span class="l1-word" data-l1="英語">English</span> <span class="l1-word" data-l1="テスト">test</span>. I <span class="l1-word" data-l1="見つける">find</span> it easier to talk about <span class="l1-word" data-l1="幸せな">happy</span> feelings, <span class="l1-word" data-l1="なぜなら">because</span> I <span class="l1-word" data-l1="好き">like</span> making other <span class="l1-word" data-l1="人々">people</span> smile.</div>
-
     </div>
-
   </div>
-
 </section>
-
-
 
 <!-- SLIDE 7: Match Game 2 -->
-
 <section class="slide" data-slide="6" style="background-image:url('https://cdn.pixabay.com/photo/2018/03/13/22/53/puzzle-3223941_1280.jpg'); background-color:var(--bg);">
-
   <div class="content">
-
     <span class="section-badge badge-blue">Vocab <span class="l1-word" data-l1="ゲーム">Game</span> 2: Everyday Life</span>
-
     <h2><span class="l1-word" data-l1="試合">Match</span> the Idiom to Its Meaning!</h2>
-
     <p style="margin-bottom:1em; color:var(--text-dim);">Click an idiom from Column A, <span class="l1-word" data-l1="次に">then</span> click its meaning from Column B.</p>
-
     <div class="match-game" id="matchGame2">
-
       <div class="match-columns">
-
         <div class="match-col" id="colA2"></div>
-
         <div class="match-col" id="colB2"></div>
-
       </div>
-
       <div class="match-status" id="matchStatus2"></div>
-
     </div>
-
     <div class="win-overlay" id="winOverlay2">
-
       <div class="win-text">Fantastic!</div>
-
       <button class="reveal-btn" style="margin-top:1.5em;" onclick="closeWin('winOverlay2')">Continue &rarr;</button>
-
     </div>
-
   </div>
-
 </section>
-
-
 
 <!-- SLIDE 8: Reorder Words — Idioms -->
-
 <section class="slide" data-slide="7" style="background-image:url('https://cdn.pixabay.com/photo/2017/08/01/00/38/man-2562325_1280.jpg'); background-color:var(--bg);">
-
   <div class="content">
-
     <span class="section-badge badge-indigo">Reorder Words: Idioms</span>
-
     <h2>Put the Words in Order!</h2>
-
     <p style="margin-bottom:.5em; color:var(--text-dim);">Click the words in the right order to <span class="l1-word" data-l1="作る">make</span> a <span class="l1-word" data-l1="文">sentence</span> with an idiom.</p>
-
     <div class="reorder-game" id="reorderGame1"></div>
-
   </div>
-
 </section>
-
-
 
 <!-- SLIDE 9: Compare Pictures — Everyday Life -->
-
 <section class="slide" data-slide="8" style="background-image:url('https://cdn.pixabay.com/photo/2016/11/22/23/55/car-1851299_1280.jpg'); background-color:var(--bg);">
-
   <div class="content">
-
     <span class="section-badge badge-cyan"><span class="l1-word" data-l1="比べる">Compare</span> Pictures: Everyday Life</span>
-
     <h2><span class="l1-word" data-l1="お金">Money</span> &amp; Decisions</h2>
-
     <p style="color:var(--text-dim); margin-bottom:.8em;">Use an idiom from Set 2 to <span class="l1-word" data-l1="説明する">describe</span> each <span class="l1-word" data-l1="絵">picture</span>.</p>
-
     <div class="compare-pictures">
-
       <div class="compare-card">
-
         <img class="compare-img" src="https://cdn.pixabay.com/photo/2023/06/03/18/12/benz-8038240_1280.jpg" alt="A silver luxury Mercedes car parked on a street" loading="lazy" onerror="this.style.display='none'">
-
         <div class="compare-label"><span class="l1-word" data-l1="絵">Picture</span> 1: Expensive Car</div>
-
       </div>
-
       <div class="compare-card">
-
         <img class="compare-img" src="https://cdn.pixabay.com/photo/2020/11/27/18/59/tennis-5782695_1280.jpg" alt="A tennis court with a racket and tennis balls" loading="lazy" onerror="this.style.display='none'">
-
         <div class="compare-label"><span class="l1-word" data-l1="絵">Picture</span> 2: Tennis Court</div>
-
       </div>
-
     </div>
-
     <div class="compare-questions">
-
       <p class="compare-q">1. In <span class="l1-word" data-l1="絵">Picture</span> 1, <span class="l1-word" data-l1="何">what</span> kind of car is this? <span class="l1-word" data-l1="どちら">Which</span> idiom describes its <span class="l1-word" data-l1="値段">price</span>?</p>
-
       <p class="compare-q">2. In <span class="l1-word" data-l1="絵">Picture</span> 2, <span class="l1-word" data-l1="どこ">where</span> are we? <span class="l1-word" data-l1="何">What</span> does "the ball is in your court" mean?</p>
-
       <p class="compare-q">3. <span class="l1-word" data-l1="持つ">Have</span> you ever bought something that "cost an arm and a leg"?</p>
-
       <p class="compare-q">4. <span class="l1-word" data-l1="いつ">When</span> was the <span class="l1-word" data-l1="最後">last</span> <span class="l1-word" data-l1="時間">time</span> someone said to you "the ball is in your court"?</p>
-
       <p class="compare-q">5. <span class="l1-word" data-l1="どちら">Which</span> of these two would you <span class="l1-word" data-l1="好き">like</span> to <span class="l1-word" data-l1="持つ">have</span> — the car or the <span class="l1-word" data-l1="授業">lesson</span>? <span class="l1-word" data-l1="なぜ">Why</span>?</p>
-
     </div>
-
     <button class="reveal-btn" onclick="revealAnswer(this)">Reveal Model <span class="l1-word" data-l1="答える">Answer</span></button>
-
     <div class="model-answer hidden-answer">
-
       <div class="answer-label">Model <span class="l1-word" data-l1="答える">Answer</span></div>
-
       <div class="answer-text">In <span class="l1-word" data-l1="絵">Picture</span> 1, I can <span class="l1-word" data-l1="見る">see</span> a silver Mercedes. It is a very expensive car, <span class="l1-word" data-l1="だから">so</span> it costs an arm and a leg. In <span class="l1-word" data-l1="絵">Picture</span> 2, we are on a tennis court. "The ball is in your court" means that it is now your turn to <span class="l1-word" data-l1="決める">decide</span> or to act. I once bought a <span class="l1-word" data-l1="電話">phone</span> that cost an arm and a leg, <span class="l1-word" data-l1="しかし">but</span> I <span class="l1-word" data-l1="まだ">still</span> use it every <span class="l1-word" data-l1="日">day</span>. My <span class="l1-word" data-l1="先生">teacher</span> told me "the ball is in your court" <span class="l1-word" data-l1="いつ">when</span> I had to <span class="l1-word" data-l1="選ぶ">choose</span> between two clubs. I would <span class="l1-word" data-l1="好き">like</span> to <span class="l1-word" data-l1="持つ">have</span> the car, <span class="l1-word" data-l1="なぜなら">because</span> I could drive to <span class="l1-word" data-l1="学校">school</span> and I would <span class="l1-word" data-l1="決して">never</span> be late.</div>
-
     </div>
-
   </div>
-
 </section>
-
-
 
 <!-- SLIDE 10: Reorder Words — Phrasal Verbs -->
-
 <section class="slide" data-slide="9" style="background-image:url('https://cdn.pixabay.com/photo/2017/11/27/07/02/time-2980690_1280.jpg'); background-color:var(--bg);">
-
   <div class="content">
-
     <span class="section-badge badge-indigo">Reorder Words: Phrasal Verbs</span>
-
     <h2>Put the Words in Order!</h2>
-
     <p style="margin-bottom:.5em; color:var(--text-dim);">Click the words in the right order to <span class="l1-word" data-l1="作る">make</span> a <span class="l1-word" data-l1="文">sentence</span> with a phrasal verb.</p>
-
     <div class="reorder-game" id="reorderGame2"></div>
-
   </div>
-
 </section>
-
-
 
 <!-- SLIDE 11: Fun Grid -->
-
 <section class="slide" data-slide="10" style="background-image:url('https://cdn.pixabay.com/photo/2020/02/07/14/22/dream-4827288_1280.jpg'); background-color:var(--bg);">
-
   <div class="content">
-
     <span class="section-badge badge-green">Fun Grid</span>
-
     <h2>Idiom of the <span class="l1-word" data-l1="日">Day</span></h2>
-
     <p style="margin-bottom:1em; color:var(--text-dim);"><span class="l1-word" data-l1="読む">Read</span> each <span class="l1-word" data-l1="例">example</span> out <span class="l1-word" data-l1="うるさい">loud</span>, <span class="l1-word" data-l1="次に">then</span> <span class="l1-word" data-l1="作る">make</span> your own <span class="l1-word" data-l1="文">sentence</span> with the <span class="l1-word" data-l1="同じ">same</span> idiom.</p>
-
     <div class="fun-grid">
-
       <div class="fun-card">
-
         <img class="fun-img" src="https://cdn.pixabay.com/photo/2017/06/04/10/18/heavy-rains-2370689_1280.jpg" alt="Heavy rain falling during a summer storm" loading="lazy" onerror="this.style.display='none'">
-
         <div class="fun-name">raining cats and dogs</div>
-
         <div class="fun-desc"><span class="l1-word" data-l1="見る">Look</span> outside! It is raining cats and dogs.</div>
-
       </div>
-
       <div class="fun-card">
-
         <img class="fun-img" src="https://cdn.pixabay.com/photo/2016/02/29/00/19/cake-1227842_1280.jpg" alt="A slice of cream cake on a plate" loading="lazy" onerror="this.style.display='none'">
-
         <div class="fun-name">a piece of <span class="l1-word" data-l1="ケーキ">cake</span></div>
-
         <div class="fun-desc">The <span class="l1-word" data-l1="英語">English</span> <span class="l1-word" data-l1="テスト">test</span> was a piece of <span class="l1-word" data-l1="ケーキ">cake</span> for me.</div>
-
       </div>
-
       <div class="fun-card">
-
         <img class="fun-img" src="https://cdn.pixabay.com/photo/2017/05/13/03/46/person-2308639_1280.jpg" alt="A person lying in bed under the covers" loading="lazy" onerror="this.style.display='none'">
-
         <div class="fun-name">hit the sack</div>
-
         <div class="fun-desc">I am <span class="l1-word" data-l1="だから">so</span> <span class="l1-word" data-l1="疲れた">tired</span>. I am going to hit the sack.</div>
-
       </div>
-
       <div class="fun-card">
-
         <img class="fun-img" src="https://cdn.pixabay.com/photo/2016/11/19/12/32/diamond-1839031_1280.jpg" alt="A diamond ring, something very expensive" loading="lazy" onerror="this.style.display='none'">
-
         <div class="fun-name">cost an arm and a leg</div>
-
         <div class="fun-desc">That <span class="l1-word" data-l1="新しい">new</span> <span class="l1-word" data-l1="電話">phone</span> costs an arm and a leg.</div>
-
       </div>
-
       <div class="fun-card">
-
         <img class="fun-img" src="https://cdn.pixabay.com/photo/2016/02/11/20/45/ice-cubes-1194508_1280.jpg" alt="Ice cubes in a glass" loading="lazy" onerror="this.style.display='none'">
-
         <div class="fun-name"><span class="l1-word" data-l1="壊れる">break</span> the ice</div>
-
         <div class="fun-desc">A funny <span class="l1-word" data-l1="質問">question</span> can <span class="l1-word" data-l1="壊れる">break</span> the ice at a <span class="l1-word" data-l1="新しい">new</span> <span class="l1-word" data-l1="学校">school</span>.</div>
-
       </div>
-
       <div class="fun-card">
-
         <img class="fun-img" src="https://cdn.pixabay.com/photo/2022/11/05/08/35/krampus-7571381_1280.jpg" alt="A person wearing a traditional devil mask and costume" loading="lazy" onerror="this.style.display='none'">
-
         <div class="fun-name"><span class="l1-word" data-l1="話す">speak</span> of the devil</div>
-
         <div class="fun-desc"><span class="l1-word" data-l1="話す">Speak</span> of the devil! Here comes Takuya now.</div>
-
       </div>
-
     </div>
-
   </div>
-
 </section>
-
-
 
 <!-- SLIDE 12: Wrap-Up + Homework -->
-
 <section class="slide" data-slide="11" style="background-image:url('https://cdn.pixabay.com/photo/2015/07/28/22/05/child-865116_1280.jpg'); background-color:var(--bg);">
-
   <div class="content">
-
     <span class="section-badge badge-green">Wrap-Up &amp; <span class="l1-word" data-l1="宿題">Homework</span></span>
-
     <h2>Well Done!</h2>
-
     <div class="task-box">
-
       <div class="task-title">Reflect</div>
-
       <p class="task-instruction"><span class="l1-word" data-l1="どちら">Which</span> idiom is your favourite? <span class="l1-word" data-l1="伝える">Tell</span> your partner <span class="l1-word" data-l1="なぜ">why</span> — and use it in a <span class="l1-word" data-l1="文">sentence</span>.</p>
-
     </div>
-
     <h3>Written <span class="l1-word" data-l1="宿題">Homework</span></h3>
-
     <ul class="goals-list">
-
       <li><span class="l1-word" data-l1="書く">Write</span> <strong>four sentences</strong>, each using a <span class="l1-word" data-l1="異なる">different</span> idiom from <span class="l1-word" data-l1="今日">today</span>.</li>
-
       <li>Underline the idiom in each <span class="l1-word" data-l1="文">sentence</span> <span class="l1-word" data-l1="だから">so</span> I can <span class="l1-word" data-l1="見つける">find</span> it easily.</li>
-
     </ul>
-
     <h3>Speaking <span class="l1-word" data-l1="宿題">Homework</span></h3>
-
     <ul class="goals-list">
-
       <li>With a partner, record a <strong>one-<span class="l1-word" data-l1="分">minute</span> skit</strong> using <strong>three</strong> idioms.</li>
-
       <li>Perform it for the <span class="l1-word" data-l1="授業">class</span> <span class="l1-word" data-l1="次の">next</span> <span class="l1-word" data-l1="授業">lesson</span> — you can use <strong>idiom charades</strong> instead of speaking!</li>
-
     </ul>
-
     <p style="font-size:.85rem; color:var(--text-dim); margin-top:.8em;">
-
       
-
     </p>
-
   </div>
-
 </section>
 
-
-
 <!-- Theme cycle button -->
-
 <div class="theme-cycle-btn" id="themeCycleBtn" title="Click to cycle theme" tabindex="0" role="button" aria-label="Cycle color theme">
-
   <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
-
     <path class="theme-icon-fill" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.8 0 3.5-0.5 5-1.4-1.8-0.9-3-2.8-3-4.8 0-2.8 2.2-5 5-5 2 0 3.6 1.2 4.4 3C23.3 6.9 18.3 2 12 2z"/>
-
   </svg>
-
 </div>
-
-
 
 <!-- JP toggle -->
 
 
-
-
-
 <!-- Navigation -->
-
 <div class="nav"><button class="tool" id="l1Btn" onclick="toggleL1()" aria-label="Toggle Japanese word translations">L1</button>
-
   <button id="prevBtn" aria-label="Previous slide">Prev</button>
-
   <span class="slide-counter" id="slideCounter">1 / 12</span>
-
   <button id="nextBtn" aria-label="Next slide"><span class="l1-word" data-l1="次の">Next</span></button>
-
 </div>
 
-
-
 <script>
-
 // ========== AUDIO ==========
-
 let audioCtx = null, reverbNode = null;
-
 function ensureAudio() {
-
   if (!audioCtx) {
-
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
     var rate = audioCtx.sampleRate;
-
     var length = rate * 1.2;
-
     var impulse = audioCtx.createBuffer(2, length, rate);
-
     for (var ch = 0; ch < 2; ch++) {
-
       var data = impulse.getChannelData(ch);
-
       for (var i = 0; i < length; i++) {
-
         data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, 2.5);
-
       }
-
     }
-
     reverbNode = audioCtx.createConvolver();
-
     reverbNode.buffer = impulse;
-
     var reverbGain = audioCtx.createGain();
-
     reverbGain.gain.value = 0.4;
-
     reverbNode.connect(reverbGain);
-
     reverbGain.connect(audioCtx.destination);
-
   }
-
   if (audioCtx.state === 'suspended') audioCtx.resume();
-
 }
-
 function playSwish(direction) {
-
   ensureAudio();
-
   var now = audioCtx.currentTime;
-
   var bufferSize = Math.floor(audioCtx.sampleRate * 0.18);
-
   var buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-
   var data = buffer.getChannelData(0);
-
   for (var i = 0; i < bufferSize; i++) {
-
     var env = Math.sin((i / bufferSize) * Math.PI);
-
     data[i] = (Math.random() * 2 - 1) * env;
-
   }
-
   var src = audioCtx.createBufferSource();
-
   src.buffer = buffer;
-
   var filter = audioCtx.createBiquadFilter();
-
   filter.type = 'bandpass';
-
   filter.Q.value = 8;
-
   if (direction === 'forward') {
-
     filter.frequency.setValueAtTime(800, now);
-
     filter.frequency.exponentialRampToValueAtTime(4000, now + 0.15);
-
   } else {
-
     filter.frequency.setValueAtTime(4000, now);
-
     filter.frequency.exponentialRampToValueAtTime(800, now + 0.15);
-
   }
-
   var gain = audioCtx.createGain();
-
   gain.gain.setValueAtTime(0, now);
-
   gain.gain.linearRampToValueAtTime(0.12, now + 0.02);
-
   gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
-
   var dryGain = audioCtx.createGain();
-
   dryGain.gain.value = 0.6;
-
   var wetGain = audioCtx.createGain();
-
   wetGain.gain.value = 0.4;
-
   src.connect(filter);
-
   filter.connect(gain);
-
   gain.connect(dryGain);
-
   gain.connect(wetGain);
-
   dryGain.connect(audioCtx.destination);
-
   wetGain.connect(reverbNode);
-
   src.start(now);
-
   src.stop(now + 0.2);
-
   var osc = audioCtx.createOscillator();
-
   osc.type = 'sine';
-
   var oscGain = audioCtx.createGain();
-
   if (direction === 'forward') {
-
     osc.frequency.setValueAtTime(600, now);
-
     osc.frequency.exponentialRampToValueAtTime(1200, now + 0.1);
-
   } else {
-
     osc.frequency.setValueAtTime(1200, now);
-
     osc.frequency.exponentialRampToValueAtTime(600, now + 0.1);
-
   }
-
   oscGain.gain.setValueAtTime(0, now);
-
   oscGain.gain.linearRampToValueAtTime(0.04, now + 0.02);
-
   oscGain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
-
   osc.connect(oscGain);
-
   oscGain.connect(audioCtx.destination);
-
   osc.start(now);
-
   osc.stop(now + 0.15);
-
 }
-
 function playDing() {
-
   ensureAudio();
-
   var now = audioCtx.currentTime;
-
   var osc = audioCtx.createOscillator();
-
   osc.type = 'sine';
-
   osc.frequency.setValueAtTime(880, now);
-
   var gain = audioCtx.createGain();
-
   gain.gain.setValueAtTime(0, now);
-
   gain.gain.linearRampToValueAtTime(0.15, now + 0.02);
-
   gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
-
   osc.connect(gain);
-
   gain.connect(audioCtx.destination);
-
   osc.start(now);
-
   osc.stop(now + 0.4);
-
 }
-
 function playWinSound() {
-
   ensureAudio();
-
   var now = audioCtx.currentTime;
-
   var notes = [523.25, 659.25, 783.99, 1046.50];
-
   notes.forEach(function(freq, i) {
-
     var osc = audioCtx.createOscillator();
-
     osc.type = 'sine';
-
     osc.frequency.value = freq;
-
     var gain = audioCtx.createGain();
-
     gain.gain.setValueAtTime(0, now + i * 0.12);
-
     gain.gain.linearRampToValueAtTime(0.1, now + i * 0.12 + 0.02);
-
     gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.12 + 0.4);
-
     osc.connect(gain);
-
     gain.connect(audioCtx.destination);
-
     osc.start(now + i * 0.12);
-
     osc.stop(now + i * 0.12 + 0.4);
-
   });
-
 }
-
 function playWrongSound() {
-
   ensureAudio();
-
   var now = audioCtx.currentTime;
-
   var osc = audioCtx.createOscillator();
-
   osc.type = 'sawtooth';
-
   osc.frequency.setValueAtTime(200, now);
-
   osc.frequency.exponentialRampToValueAtTime(100, now + 0.2);
-
   var gain = audioCtx.createGain();
-
   gain.gain.setValueAtTime(0, now);
-
   gain.gain.linearRampToValueAtTime(0.08, now + 0.02);
-
   gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
-
   osc.connect(gain);
-
   gain.connect(audioCtx.destination);
-
   osc.start(now);
-
   osc.stop(now + 0.25);
-
 }
-
-
 
 // ========== SPARKLES ==========
-
 function spawnSparkles(x, y) {
-
   for (var i = 0; i < 20; i++) {
-
     var el = document.createElement('div');
-
     el.className = 'sparkle';
-
     var angle = Math.random() * Math.PI * 2;
-
     var dist = 60 + Math.random() * 120;
-
     var sx = Math.cos(angle) * dist + 'px';
-
     var sy = Math.sin(angle) * dist + 'px';
-
     el.style.cssText = 'left:' + x + 'px;top:' + y + 'px;--sx:' + sx + ';--sy:' + sy + ';background:hsl(' + (Math.random()*60+200) + ',80%,70%)';
-
     document.body.appendChild(el);
-
     setTimeout(function() { el.remove(); }, 1200);
-
   }
-
 }
-
 document.addEventListener('click', function(e) {
-
   if (!e.target.closest('.vocab-word')) {
-
     document.querySelectorAll('.vocab-word.active').forEach(function(w) { w.classList.remove('active'); });
-
   }
-
 });
-
-
 
 // ========== REVEAL ==========
-
 function revealAnswer(btn) {
-
   var answer = btn.nextElementSibling;
-
   if (!answer) return;
-
   if (answer.classList.contains('hidden-answer')) {
-
     answer.classList.remove('hidden-answer');
-
     btn.textContent = 'Hide Answer';
-
     btn.classList.add('revealed');
-
   } else {
-
     answer.classList.add('hidden-answer');
-
     btn.textContent = 'Reveal Model Answer';
-
     btn.classList.remove('revealed');
-
   }
-
 }
-
-
 
 // ========== MARK COMPLETE ==========
-
 function toggleMarkComplete(btn) {
-
   var deckId = 'idioms-expressions-4themes';
-
   var progress = JSON.parse(localStorage.getItem('esl-progress') || '{}');
-
   if (btn.classList.contains('completed')) {
-
     btn.classList.remove('completed');
-
     btn.textContent = 'Mark Complete';
-
     if (progress[deckId]) progress[deckId].completed = false;
-
   } else {
-
     btn.classList.add('completed');
-
     btn.textContent = 'Completed!';
-
     if (!progress[deckId]) progress[deckId] = {};
-
     progress[deckId].completed = true;
-
     progress[deckId].date = new Date().toISOString().split('T')[0];
-
   }
-
   localStorage.setItem('esl-progress', JSON.stringify(progress));
-
 }
-
 (function restoreProgress() {
-
   var deckId = 'idioms-expressions-4themes';
-
   var progress = JSON.parse(localStorage.getItem('esl-progress') || '{}');
-
   document.querySelectorAll('.mark-complete-btn').forEach(function(btn) {
-
     if (progress[deckId] && progress[deckId].completed) {
-
       btn.classList.add('completed');
-
       btn.textContent = 'Completed!';
-
     }
-
   });
-
 })();
 
-
-
 // ========== JP HINTS ==========
-
 var l1Visible = false;
-
 function toggleL1(btn) {
-
   l1Visible = !l1Visible;
-
   document.querySelectorAll('.jp-hint').forEach(function(el) {
-
     el.classList.toggle('visible', l1Visible);
-
   });
-
   btn.classList.toggle('active', l1Visible);
-
   btn.title = l1Visible ? 'Hide Japanese' : 'Show Japanese translations';
-
 }
-
-
 
 // ========== NAVIGATION ==========
-
 var slides = document.querySelectorAll('.slide');
-
 var current = 0;
-
 var prevBtn = document.getElementById('prevBtn');
-
 var nextBtn = document.getElementById('nextBtn');
-
 var slideCounter = document.getElementById('slideCounter');
-
 var progressBar = document.getElementById('progressBar');
 
-
-
 function update() {
-
   slides.forEach(function(s, i) { s.classList.toggle('active', i === current); });
-
   slideCounter.textContent = (current + 1) + ' / ' + slides.length;
-
   progressBar.style.width = (((current + 1) / slides.length) * 100) + '%';
-
   var isTitle = current === 0;
-
   document.getElementById('themeCycleBtn').style.display = isTitle ? 'flex' : 'none';
-
 }
-
-
 
 prevBtn.addEventListener('click', function() {
-
   if (current > 0) { current--; playSwish('back'); } update();
-
 });
-
 nextBtn.addEventListener('click', function() {
-
   if (current < slides.length - 1) { current++; playSwish('forward'); } update();
-
 });
-
 document.addEventListener('keydown', function(e) {
-
   if (e.key === 'ArrowRight' || e.key === ' ') {
-
     e.preventDefault();
-
     if (current < slides.length - 1) { current++; playSwish('forward'); } update();
-
   }
-
   if (e.key === 'ArrowLeft') {
-
     if (current > 0) { current--; playSwish('back'); } update();
-
   }
-
 });
-
 update();
 
-
-
 // ========== THEME CYCLE ==========
-
 var currentTheme = parseInt(localStorage.getItem('ielts-theme')) || 1;
-
 function applyTheme(n) {
-
   currentTheme = n;
-
   if (n === 1) document.body.removeAttribute('data-theme');
-
   else document.body.setAttribute('data-theme', n);
-
   localStorage.setItem('ielts-theme', n);
-
 }
-
 document.getElementById('themeCycleBtn').addEventListener('click', function() {
-
   var next = currentTheme === 6 ? 1 : currentTheme + 1;
-
   applyTheme(next);
-
 });
-
 applyTheme(currentTheme);
 
-
-
 // ========== MATCH GAME ENGINE ==========
-
 function initMatchGame(gameId, pairs) {
-
   var colA = document.getElementById('colA' + gameId);
-
   var colB = document.getElementById('colB' + gameId);
-
   var status = document.getElementById('matchStatus' + gameId);
-
   var overlay = document.getElementById('winOverlay' + gameId);
-
   var selectedA = null;
-
   var selectedB = null;
-
   var matchedCount = 0;
-
   var aItems = pairs.map(function(p, i) { return { text: p[0], id: i }; }).sort(function() { return Math.random() - 0.5; });
-
   var bItems = pairs.map(function(p, i) { return { text: p[1], id: i }; }).sort(function() { return Math.random() - 0.5; });
-
   function renderCol(items, side) {
-
     items.forEach(function(item) {
-
       var btn = document.createElement('button');
-
       btn.className = 'match-btn';
-
       btn.textContent = item.text;
-
       btn.dataset.id = item.id;
-
       btn.dataset.side = side;
-
       btn.onclick = function() { handleClick(btn, side); };
-
       if (side === 'A') colA.appendChild(btn);
-
       else colB.appendChild(btn);
-
     });
-
   }
-
   function handleClick(btn, side) {
-
     if (btn.classList.contains('matched')) return;
-
     if (side === 'A') {
-
       if (selectedA) selectedA.classList.remove('selected');
-
       selectedA = btn;
-
       btn.classList.add('selected');
-
       playDing();
-
     } else {
-
       if (selectedB) selectedB.classList.remove('selected');
-
       selectedB = btn;
-
       btn.classList.add('selected');
-
       playDing();
-
     }
-
     if (selectedA && selectedB) {
-
       if (selectedA.dataset.id === selectedB.dataset.id) {
-
         selectedA.classList.remove('selected');
-
         selectedB.classList.remove('selected');
-
         selectedA.classList.add('matched');
-
         selectedB.classList.add('matched');
-
         selectedA = null;
-
         selectedB = null;
-
         matchedCount++;
-
         status.textContent = matchedCount + ' / ' + pairs.length + ' matched!';
-
         if (matchedCount === pairs.length) {
-
           setTimeout(function() {
-
             var rect = status.getBoundingClientRect();
-
             spawnSparkles(rect.left + rect.width/2, rect.top + rect.height/2);
-
             playWinSound();
-
             overlay.classList.add('show');
-
           }, 300);
-
         }
-
       } else {
-
         var wrongA = selectedA;
-
         var wrongB = selectedB;
-
         wrongA.classList.add('wrong');
-
         wrongB.classList.add('wrong');
-
         playWrongSound();
-
         status.textContent = 'Not a match. Try again!';
-
         setTimeout(function() {
-
           wrongA.classList.remove('wrong', 'selected');
-
           wrongB.classList.remove('wrong', 'selected');
-
           selectedA = null;
-
           selectedB = null;
-
         }, 500);
-
       }
-
     }
-
   }
-
   renderCol(aItems, 'A');
-
   renderCol(bItems, 'B');
-
 }
-
 function closeWin(id) {
-
   document.getElementById(id).classList.remove('show');
-
 }
-
-
 
 // ========== MATCH GAME DATA ==========
-
 // Idiom Set 1: Weather & Feelings
-
 initMatchGame('1', [
-
   ['raining cats and dogs', 'raining very heavily'],
-
   ['under the weather', 'feeling a little sick'],
-
   ['on cloud nine', 'extremely happy'],
-
   ['feeling blue', 'feeling sad'],
-
   ['break the ice', 'start a conversation in a shy situation'],
-
   ['a piece of cake', 'something very easy']
-
 ]);
-
 // Idiom Set 2: Everyday Life
-
 initMatchGame('2', [
-
   ['hit the sack', 'go to bed'],
-
   ['call it a day', 'stop working for today'],
-
   ["pull someone's leg", 'joke with someone'],
-
   ['cost an arm and a leg', 'be very expensive'],
-
   ['the ball is in your court', 'it is your decision now'],
-
   ['speak of the devil', 'the person we just talked about appears']
-
 ]);
-
-
 
 // ========== REORDER ENGINE ==========
-
 function initReorderGame(gameId, sentences) {
-
   var container = document.getElementById('reorderGame' + gameId);
-
   sentences.forEach(function(s, idx) {
-
     var div = document.createElement('div');
-
     div.className = 'reorder-sentence';
-
     var tokens = s.scramble.split(' ');
-
     var answer = s.answer;
-
     var tokenBtns = [];
-
     var slotDiv = document.createElement('div');
-
     slotDiv.className = 'reorder-slot';
-
     slotDiv.id = 'reorderSlot' + gameId + '_' + idx;
-
     var poolDiv = document.createElement('div');
-
     poolDiv.className = 'reorder-tokens';
-
     poolDiv.id = 'reorderPool' + gameId + '_' + idx;
-
     tokens.forEach(function(word, ti) {
-
       var btn = document.createElement('span');
-
       btn.className = 'reorder-token';
-
       btn.textContent = word;
-
       btn.dataset.word = word;
-
       btn.dataset.index = ti;
-
       btn.onclick = function() { moveToken(btn, poolDiv, slotDiv, gameId, idx); };
-
       poolDiv.appendChild(btn);
-
       tokenBtns.push(btn);
-
     });
-
     var answerDiv = document.createElement('div');
-
     answerDiv.className = 'reorder-answer hidden-answer';
-
     answerDiv.id = 'reorderAnswer' + gameId + '_' + idx;
-
     answerDiv.textContent = 'Answer: ' + answer;
-
     var btnRow = document.createElement('div');
-
     btnRow.style.marginTop = '.5em';
-
     var checkBtn = document.createElement('button');
-
     checkBtn.className = 'reorder-btn';
-
     checkBtn.textContent = 'Check';
-
     checkBtn.onclick = function() { checkReorder(slotDiv, answerDiv, answer); };
-
     var revealBtn = document.createElement('button');
-
     revealBtn.className = 'reorder-btn';
-
     revealBtn.textContent = 'Reveal';
-
     revealBtn.onclick = function() { answerDiv.classList.toggle('hidden-answer'); };
-
     var resetBtn = document.createElement('button');
-
     resetBtn.className = 'reorder-btn reset-btn';
-
     resetBtn.textContent = 'Reset';
-
     resetBtn.onclick = function() { resetReorder(poolDiv, slotDiv, answerDiv, tokenBtns); };
-
     btnRow.appendChild(checkBtn);
-
     btnRow.appendChild(revealBtn);
-
     btnRow.appendChild(resetBtn);
-
     div.appendChild(poolDiv);
-
     div.appendChild(slotDiv);
-
     div.appendChild(answerDiv);
-
     div.appendChild(btnRow);
-
     container.appendChild(div);
-
   });
-
 }
-
 function moveToken(btn, pool, slot, gameId, idx) {
-
   if (btn.parentElement === pool) {
-
     slot.appendChild(btn);
-
     btn.classList.add('placed');
-
   } else {
-
     pool.appendChild(btn);
-
     btn.classList.remove('placed');
-
   }
-
 }
-
 function checkReorder(slot, answerDiv, correct) {
-
   var words = [];
-
   slot.querySelectorAll('.reorder-token').forEach(function(t) { words.push(t.dataset.word); });
-
   var userAnswer = words.join(' ');
-
   if (userAnswer.toLowerCase() === correct.toLowerCase()) {
-
     slot.style.borderColor = 'var(--green)';
-
     slot.style.background = 'rgba(var(--green-rgb),.1)';
-
     answerDiv.classList.remove('hidden-answer');
-
     playWinSound();
-
   } else {
-
     slot.style.borderColor = 'var(--red)';
-
     slot.style.background = 'rgba(var(--red-rgb),.1)';
-
     playWrongSound();
-
     setTimeout(function() {
-
       slot.style.borderColor = 'rgba(var(--green-rgb),.3)';
-
       slot.style.background = 'rgba(var(--green-rgb),.06)';
-
     }, 1000);
-
   }
-
 }
-
 function resetReorder(pool, slot, answerDiv, tokenBtns) {
-
   tokenBtns.forEach(function(btn) {
-
     pool.appendChild(btn);
-
     btn.classList.remove('placed');
-
   });
-
   slot.style.borderColor = 'rgba(var(--green-rgb),.3)';
-
   slot.style.background = 'rgba(var(--green-rgb),.06)';
-
   answerDiv.classList.add('hidden-answer');
-
 }
-
-
 
 // ========== REORDER GAME DATA ==========
-
 // Idioms
-
 initReorderGame('1', [
-
   { scramble: 'hit I the sack early', answer: 'I hit the sack early' },
-
   { scramble: 'This and arm leg bag cost an a', answer: 'This bag cost an arm and a leg' },
-
   { scramble: 'dogs cats raining and outside is It', answer: 'It is raining cats and dogs outside' },
-
   { scramble: 'is on today nine cloud She', answer: 'She is on cloud nine today' },
-
 ]);
-
 // Phrasal verbs
-
 initReorderGame('2', [
-
   { scramble: 'to the I look weekend forward', answer: 'I look forward to the weekend' },
-
   { scramble: 'ran of out milk morning this We', answer: 'We ran out of milk this morning' },
-
   { scramble: 'leg Please my don\'t pull', answer: 'Please don\'t pull my leg' },
-
   { scramble: 'a They called it after day lunch', answer: 'They called it a day after lunch' },
-
 ]);
-
 </script>
-
 <script>
 
 function toggleL1(){document.body.classList.toggle('show-l1');var on=document.body.classList.contains('show-l1');var b=document.getElementById('l1Btn');if(b){b.textContent=on?'L1 ON':'L1';b.style.color=on?'#fbbf24':''}try{localStorage.setItem(location.pathname+'-l1',on?'1':'0')}catch(e){}}
@@ -3252,6 +1631,4 @@ try{if(localStorage.getItem(location.pathname+'-l1')==='1')document.body.classLi
 
 </script>
 </body>
-
 </html>
-
