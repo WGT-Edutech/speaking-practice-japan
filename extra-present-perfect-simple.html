@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speaking Practice for Japanese Teens - Present Perfect Simple — 4 Themes</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* --- base palette (Ocean) --- */
+  --bg: #0a1628;        --bg-rgb: 10,22,40;
+  --blue: #22d3ee;      --blue-rgb: 34,211,238;
+  --cyan: #67e8f9;      --cyan-rgb: 103,232,249;
+  --sky: #a5f3fc;       --sky-rgb: 165,243,252;
+  --indigo: #a78bfa;    --indigo-rgb: 167,139,250;
+  --purple: #c4b5fd;    --purple-rgb: 196,181,253;
+  --violet: #ddd6fe;    --violet-rgb: 221,214,254;
+  --b1-blue: #67e8f9;   --b1-blue-rgb: 103,232,249;
+  /* --- semantic (fixed across themes: correct / wrong signals) --- */
+  --green: #34d399;     --green-rgb: 52,211,153;
+  --lime: #a8e063;      --lime-rgb: 168,224,99;
+  --red: #f87171;       --red-rgb: 248,113,113;
+  /* --- text (readability fixed) --- */
+  --text: #f1f5f9;
+  --text-dim: #cbd5e1;
+  --hue-rotate: 0deg;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.7;
+}
+
+.slide {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--bg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 3vh 5vw 10vh;
+  overflow-y: auto;
+}
+.slide::-webkit-scrollbar { width: 0; background: transparent; }
+.slide { scrollbar-width: none; -ms-overflow-style: none; }
+.slide.active { opacity: 1; pointer-events: auto; z-index: 2; }
+.slide:not(.active) { z-index: 0; }
+
+.slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    rgba(var(--bg-rgb),.88) 0%,
+    rgba(var(--bg-rgb),.55) 50%,
+    rgba(var(--bg-rgb),.25) 100%);
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  width: min(80vw, 1100px);
+  max-width: 80vw;
+  background: rgba(var(--bg-rgb),.75);
+  border: 1px solid rgba(var(--blue-rgb),.45);
+  box-shadow: 0 0 25px rgba(var(--blue-rgb),.25), 0 0 60px rgba(var(--indigo-rgb),.12);
+  border-radius: 16px;
+  padding: 2.5em 3em;
+  backdrop-filter: blur(8px);
+  margin: auto 0;
+}
+
+@media (min-width: 1600px) { .content { max-width: 60vw; width: min(60vw, 1100px); } }
+@media (max-width: 768px) { .content { max-width: 92vw; padding: 1.5em 1.8em; } }
+
+/* Progress bar */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--indigo));
+  z-index: 200;
+  transition: width .35s ease;
+}
+
+/* Navigation */
+.nav {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1.2em;
+  z-index: 200;
+  background: rgba(var(--bg-rgb),.85);
+  border: 1px solid rgba(var(--blue-rgb),.3);
+  border-radius: 40px;
+  padding: 10px 24px;
+  backdrop-filter: blur(6px);
+}
+.nav button {
+  background: none;
+  border: 1px solid rgba(var(--blue-rgb),.5);
+  color: var(--blue);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  padding: 8px 18px;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all .2s;
+  min-width: 44px;
+  min-height: 44px;
+}
+.nav button:hover {
+  background: rgba(var(--blue-rgb),.15);
+  box-shadow: 0 0 15px rgba(var(--blue-rgb),.3);
+}
+.nav .slide-counter {
+  font-family: 'Inter', monospace;
+  color: var(--text-dim);
+  font-size: .85rem;
+  min-width: 60px;
+  text-align: center;
+}
+
+/* Typography */
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  background: linear-gradient(135deg, var(--blue), var(--indigo));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(var(--blue-rgb),.4));
+  margin-bottom: .5em;
+  line-height: 1.15;
+}
+h2 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: .7em;
+  text-shadow: 0 0 12px rgba(var(--blue-rgb),.3);
+}
+h3 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: var(--cyan);
+  margin: 1em 0 .5em;
+}
+p, li { margin-bottom: .5em; }
+.subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: var(--text-dim);
+  margin-top: -.3em;
+}
+
+/* Section badges */
+.section-badge {
+  display: inline-block;
+  font-size: .7rem;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: .6em;
+}
+.badge-blue { background: rgba(var(--blue-rgb),.15); color: var(--blue); border: 1px solid rgba(var(--blue-rgb),.4); }
+.badge-indigo { background: rgba(var(--indigo-rgb),.15); color: var(--indigo); border: 1px solid rgba(var(--indigo-rgb),.4); }
+.badge-cyan { background: rgba(var(--b1-blue-rgb),.15); color: var(--cyan); border: 1px solid rgba(var(--b1-blue-rgb),.4); }
+.badge-green { background: rgba(var(--green-rgb),.15); color: var(--green); border: 1px solid rgba(var(--green-rgb),.4); }
+
+/* Question cards */
+.question-card {
+  background: linear-gradient(135deg, rgba(var(--blue-rgb),.06), rgba(var(--indigo-rgb),.06));
+  border: 1px solid rgba(var(--blue-rgb),.3);
+  border-radius: 12px;
+  padding: 1em 1.4em;
+  margin: .6em 0;
+}
+.question-card .question-text {
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: .4em;
+}
+.follow-ups {
+  font-size: .85rem;
+  color: var(--text-dim);
+  font-style: italic;
+  margin-top: .4em;
+  padding-left: 1em;
+  border-left: 2px solid rgba(var(--blue-rgb),.3);
+}
+
+/* Vocab word tooltips */
+.vocab-word {
+  border-bottom: 2px dotted var(--b1-blue);
+  cursor: pointer;
+  position: relative;
+  color: var(--text);
+  transition: color .2s;
+}
+.vocab-word:hover { color: var(--b1-blue); }
+.vocab-tooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(var(--bg-rgb),.95);
+  border: 1px solid var(--b1-blue);
+  border-radius: 10px;
+  padding: .6em .9em;
+  min-width: 220px;
+  max-width: 300px;
+  z-index: 100;
+  box-shadow: 0 0 15px rgba(var(--b1-blue-rgb),.3);
+}
+.vocab-tooltip .level-badge {
+  display: inline-block;
+  font-size: .65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(var(--b1-blue-rgb),.2);
+  color: var(--b1-blue);
+  margin-bottom: .3em;
+}
+.vocab-tooltip .def-text {
+  font-size: .85rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+.vocab-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: var(--b1-blue) transparent transparent transparent;
+}
+.vocab-word.active .vocab-tooltip { display: block; }
+
+/* Model answer */
+.model-answer {
+  background: rgba(var(--green-rgb),.08);
+  border: 1px solid rgba(var(--green-rgb),.35);
+  border-radius: 10px;
+  padding: 1em 1.4em;
+  margin: .8em 0;
+}
+.model-answer .answer-label {
+  font-size: .75rem;
+  color: var(--green);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: .5em;
+}
+.model-answer .answer-text { color: var(--text); line-height: 1.8; }
+.model-answer.hidden-answer { display: none; }
+
+/* Reveal button */
+.reveal-btn {
+  display: inline-block;
+  margin-top: .8em;
+  background: linear-gradient(135deg, rgba(var(--green-rgb),.15), rgba(var(--blue-rgb),.15));
+  border: 1px solid rgba(var(--green-rgb),.5);
+  color: var(--green);
+  font-family: 'Inter', sans-serif;
+  font-size: .95rem;
+  padding: 10px 24px;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all .2s;
+  min-width: 44px;
+  min-height: 44px;
+  font-weight: 600;
+}
+.reveal-btn:hover {
+  background: rgba(var(--green-rgb),.25);
+  box-shadow: 0 0 15px rgba(var(--green-rgb),.3);
+}
+.reveal-btn:active { transform: translateY(1px) scale(.96); }
+.reveal-btn.revealed {
+  background: linear-gradient(135deg, rgba(var(--green-rgb),.3), rgba(var(--lime-rgb),.2));
+  border-color: rgba(var(--lime-rgb),.7);
+  box-shadow: 0 0 20px rgba(var(--lime-rgb),.4);
+}
+
+/* Grammar boxes */
+.grammar-box {
+  background: linear-gradient(135deg, rgba(var(--b1-blue-rgb),.08), rgba(var(--blue-rgb),.08));
+  border: 2px solid rgba(var(--b1-blue-rgb),.35);
+  border-radius: 14px;
+  padding: 1.2em 1.6em;
+  margin: 1em 0;
+}
+.grammar-box .rule-label {
+  font-weight: 700;
+  color: var(--b1-blue);
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: .5em;
+}
+.grammar-box .rule-formula {
+  font-family: 'Inter', monospace;
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  color: var(--cyan);
+  font-weight: 700;
+  margin-bottom: .4em;
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: .8em;
+  margin: 1em 0;
+  padding-left: 1.5em;
+  border-left: 3px solid rgba(var(--blue-rgb),.4);
+}
+.timeline-item {
+  position: relative;
+  padding-left: 1em;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -1.75em;
+  top: .5em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 10px rgba(var(--blue-rgb),.5);
+}
+.timeline-item .time-text {
+  font-weight: 700;
+  color: var(--blue);
+  font-size: .9rem;
+}
+.timeline-item .event-text {
+  color: var(--text);
+}
+
+/* Speaking task box */
+.task-box {
+  background: linear-gradient(135deg, rgba(var(--indigo-rgb),.08), rgba(var(--blue-rgb),.08));
+  border: 2px solid rgba(var(--indigo-rgb),.4);
+  border-radius: 14px;
+  padding: 1.2em 1.6em;
+  margin: 1em 0;
+}
+.task-box .task-title {
+  font-weight: 700;
+  color: var(--indigo);
+  font-size: 1.1rem;
+  margin-bottom: .6em;
+}
+.task-box .task-instruction { color: var(--text); margin-bottom: .6em; }
+
+/* Match Game */
+.match-game {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 1em;
+}
+.match-game .match-columns {
+  display: flex;
+  gap: 1.5em;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.match-game .match-col {
+  display: flex;
+  flex-direction: column;
+  gap: .6em;
+  min-width: 200px;
+}
+.match-game .match-btn {
+  background: rgba(var(--blue-rgb),.1);
+  border: 1.5px solid rgba(var(--blue-rgb),.4);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: .95rem;
+  padding: .7em 1em;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all .15s;
+  text-align: left;
+}
+.match-game .match-btn:hover {
+  background: rgba(var(--blue-rgb),.2);
+  box-shadow: 0 0 10px rgba(var(--blue-rgb),.2);
+}
+.match-game .match-btn.selected {
+  border-color: var(--blue);
+  background: rgba(var(--blue-rgb),.25);
+  box-shadow: 0 0 12px rgba(var(--blue-rgb),.3);
+}
+.match-game .match-btn.matched {
+  border-color: var(--green);
+  background: rgba(var(--green-rgb),.2);
+  color: var(--green);
+  cursor: default;
+}
+.match-game .match-btn.wrong {
+  border-color: var(--red);
+  background: rgba(var(--red-rgb),.2);
+  animation: shake .3s ease;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+}
+.match-game .match-status {
+  text-align: center;
+  font-size: .9rem;
+  color: var(--text-dim);
+  min-height: 1.5em;
+}
+.win-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(var(--bg-rgb),.7);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.win-overlay.show { display: flex; }
+.win-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: var(--green);
+  text-shadow: 0 0 30px rgba(var(--green-rgb),.6);
+  animation: popIn .5s cubic-bezier(.175,.885,.32,1.275);
+}
+@keyframes popIn {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.sparkle {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: var(--blue);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--cyan), 0 0 20px var(--sky);
+  pointer-events: none;
+  z-index: 600;
+  animation: sparkleFloat 1.2s ease-out forwards;
+}
+@keyframes sparkleFloat {
+  0% { transform: translate(0,0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--sx), var(--sy)) scale(0); opacity: 0; }
+}
+
+/* Reorder words */
+.reorder-game {
+  margin: 1em 0;
+}
+.reorder-game .reorder-sentence {
+  background: rgba(var(--b1-blue-rgb),.06);
+  border: 1px solid rgba(var(--b1-blue-rgb),.3);
+  border-radius: 12px;
+  padding: 1em 1.2em;
+  margin: .8em 0;
+}
+.reorder-game .reorder-tokens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4em;
+  margin: .5em 0;
+  min-height: 2.5em;
+}
+.reorder-game .reorder-token {
+  background: rgba(var(--blue-rgb),.12);
+  border: 1.5px solid rgba(var(--blue-rgb),.5);
+  border-radius: 8px;
+  padding: .4em .7em;
+  font-size: .95rem;
+  cursor: pointer;
+  transition: all .15s;
+  color: var(--text);
+  user-select: none;
+}
+.reorder-game .reorder-token:hover {
+  background: rgba(var(--blue-rgb),.25);
+  transform: translateY(-2px);
+}
+.reorder-game .reorder-token.placed {
+  opacity: .3;
+  pointer-events: none;
+  text-decoration: line-through;
+}
+.reorder-game .reorder-slot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4em;
+  min-height: 2.5em;
+  padding: .5em;
+  background: rgba(var(--green-rgb),.06);
+  border: 1px dashed rgba(var(--green-rgb),.3);
+  border-radius: 8px;
+}
+.reorder-game .reorder-slot .reorder-token {
+  background: rgba(var(--green-rgb),.15);
+  border-color: var(--green);
+  cursor: pointer;
+}
+.reorder-game .reorder-slot .reorder-token:hover {
+  background: rgba(var(--green-rgb),.3);
+}
+.reorder-game .reorder-answer {
+  margin-top: .5em;
+  font-size: .9rem;
+  color: var(--green);
+  font-weight: 600;
+}
+.reorder-game .reorder-answer.hidden-answer { display: none; }
+.reorder-game .reorder-btn {
+  background: rgba(var(--blue-rgb),.1);
+  border: 1px solid rgba(var(--blue-rgb),.4);
+  color: var(--blue);
+  font-family: 'Inter', sans-serif;
+  font-size: .8rem;
+  padding: 6px 14px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all .15s;
+  min-width: 44px;
+  min-height: 44px;
+  margin-right: .5em;
+  margin-top: .5em;
+}
+.reorder-game .reorder-btn:hover {
+  background: rgba(var(--blue-rgb),.2);
+}
+.reorder-game .reorder-btn.reset-btn {
+  border-color: rgba(var(--red-rgb),.4);
+  color: var(--red);
+}
+
+/* Compare Pictures */
+.compare-pictures {
+  display: flex;
+  gap: 1.5em;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 1em 0;
+}
+.compare-pictures .compare-card {
+  background: rgba(var(--blue-rgb),.06);
+  border: 1px solid rgba(var(--blue-rgb),.3);
+  border-radius: 12px;
+  padding: 1em;
+  min-width: 200px;
+  max-width: 350px;
+  text-align: center;
+}
+.compare-pictures .compare-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: .6em;
+}
+.compare-pictures .compare-label {
+  font-weight: 700;
+  color: var(--blue);
+  font-size: 1rem;
+}
+.compare-questions {
+  margin-top: 1em;
+}
+.compare-questions .compare-q {
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: .3em;
+}
+
+/* Theme cycle button */
+.theme-cycle-btn {
+  position: fixed; top: 1em; right: 1em; z-index: 20;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all .3s ease;
+  display: flex; align-items: center; justify-content: center;
+}
+.theme-cycle-btn:hover { background: rgba(255,255,255,0.08); transform: scale(1.1); }
+.theme-icon-fill { fill: var(--blue); transition: fill .3s ease; }
+
+/* Mark Complete */
+.mark-complete-btn {
+  background: rgba(var(--green-rgb),.1);
+  border: 1px solid rgba(var(--green-rgb),.4);
+  color: var(--green);
+  font-family: 'Inter', sans-serif;
+  font-size: .95rem;
+  padding: 10px 24px;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all .25s;
+  font-weight: 600;
+}
+.mark-complete-btn:hover {
+  background: rgba(var(--green-rgb),.2);
+  box-shadow: 0 0 15px rgba(var(--green-rgb),.3);
+}
+.mark-complete-btn.completed {
+  background: rgba(var(--green-rgb),.25);
+  border-color: rgba(var(--green-rgb),.7);
+  box-shadow: 0 0 20px rgba(var(--green-rgb),.4);
+}
+.start-prompt {
+  color: var(--text-dim);
+  font-size: .9rem;
+  margin-top: 1em;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: .6; }
+  50% { opacity: 1; }
+}
+.goals-list { list-style: none; padding: 0; }
+.goals-list li {
+  padding: .4em 0 .4em 1.5em;
+  position: relative;
+}
+.goals-list li::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+  font-weight: 700;
+}
+
+/* Fun grid */
+.fun-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1em;
+  margin-top: 1em;
+}
+.fun-card {
+  background: rgba(var(--blue-rgb),.08);
+  border: 1px solid rgba(var(--blue-rgb),.3);
+  border-radius: 12px;
+  padding: 1em;
+  text-align: center;
+  transition: transform .2s, box-shadow .2s;
+}
+.fun-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(var(--blue-rgb),.2);
+}
+.fun-card .fun-img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: .6em;
+  opacity: .9;
+}
+.fun-card .fun-name {
+  font-weight: 700;
+  color: var(--blue);
+  font-size: 1.1rem;
+}
+.fun-card .fun-desc {
+  font-size: .85rem;
+  color: var(--text-dim);
+  margin-top: .3em;
+}
+
+/* JP hints */
+.l1-toggle-btn {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  z-index: 20;
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  color: var(--text-dim);
+  font-family: 'Inter', sans-serif;
+  font-size: .7rem;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all .3s ease;
+  min-width: 44px;
+  min-height: 44px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.l1-toggle-btn:hover {
+  background: rgba(255,255,255,0.08);
+  transform: scale(1.05);
+}
+.l1-toggle-btn.active {
+  background: rgba(var(--b1-blue-rgb),0.15);
+  border-color: var(--b1-blue);
+  color: var(--b1-blue);
+}
+
+@media (max-width: 768px) {
+  .theme-cycle-btn { top: .7em; right: .7em; }
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.3rem; }
+  .nav { bottom: 12px; padding: 8px 16px; gap: .6em; }
+  .nav button { padding: 6px 12px; font-size: .85rem; }
+  .match-game .match-columns { flex-direction: column; align-items: center; }
+  .compare-pictures { flex-direction: column; align-items: center; }
+}
+
+/* Theme palettes */
+/* Every element reads these variables, so cycling the theme button
+   repaints panels, borders, glows, badges, buttons, scrims and cards. */
+[data-theme="2"] { /* Forest */
+  --bg: #0c1a1a;     --bg-rgb: 12,26,26;
+  --blue: #34d399;   --blue-rgb: 52,211,153;
+  --cyan: #2dd4bf;   --cyan-rgb: 45,212,191;
+  --sky: #5eead4;    --sky-rgb: 94,234,212;
+  --indigo: #6ee7b7; --indigo-rgb: 110,231,183;
+  --purple: #a7f3d0; --purple-rgb: 167,243,208;
+  --violet: #d1fae5; --violet-rgb: 209,250,229;
+  --b1-blue: #a7f3d0; --b1-blue-rgb: 167,243,208;
+}
+[data-theme="3"] { /* Violet */
+  --bg: #1a0f2e;     --bg-rgb: 26,15,46;
+  --blue: #a78bfa;   --blue-rgb: 167,139,250;
+  --cyan: #c4b5fd;   --cyan-rgb: 196,181,253;
+  --sky: #ddd6fe;    --sky-rgb: 221,214,254;
+  --indigo: #c4b5fd; --indigo-rgb: 196,181,253;
+  --purple: #ddd6fe; --purple-rgb: 221,214,254;
+  --violet: #ede9fe; --violet-rgb: 237,233,254;
+  --b1-blue: #a5b4fc; --b1-blue-rgb: 165,180,252;
+}
+[data-theme="4"] { /* Crimson */
+  --bg: #1a0a0f;     --bg-rgb: 26,10,15;
+  --blue: #fb7185;   --blue-rgb: 251,113,133;
+  --cyan: #f472b6;   --cyan-rgb: 244,114,182;
+  --sky: #f9a8d4;    --sky-rgb: 249,168,212;
+  --indigo: #fda4af; --indigo-rgb: 253,164,175;
+  --purple: #fbcfe8; --purple-rgb: 251,207,232;
+  --violet: #fce7f3; --violet-rgb: 252,231,243;
+  --b1-blue: #fbcfe8; --b1-blue-rgb: 251,207,232;
+}
+[data-theme="5"] { /* Deep Ocean */
+  --bg: #06141a;     --bg-rgb: 6,20,26;
+  --blue: #22d3ee;   --blue-rgb: 34,211,238;
+  --cyan: #2dd4bf;   --cyan-rgb: 45,212,191;
+  --sky: #a5f3fc;    --sky-rgb: 165,243,252;
+  --indigo: #67e8f9; --indigo-rgb: 103,232,249;
+  --purple: #c4b5fd; --purple-rgb: 196,181,253;
+  --violet: #ddd6fe; --violet-rgb: 221,214,254;
+  --b1-blue: #22d3ee; --b1-blue-rgb: 34,211,238;
+}
+[data-theme="6"] { /* Sunset */
+  --bg: #1a1405;     --bg-rgb: 26,20,5;
+  --blue: #f97316;   --blue-rgb: 249,115,22;
+  --cyan: #fb923c;   --cyan-rgb: 251,146,60;
+  --sky: #fdba74;    --sky-rgb: 253,186,116;
+  --indigo: #fed7aa; --indigo-rgb: 254,215,170;
+  --purple: #ffedd5; --purple-rgb: 255,237,213;
+  --violet: #fff7ed; --violet-rgb: 255,247,237;
+  --b1-blue: #ffedd5; --b1-blue-rgb: 255,237,213;
+}
+
+.l1-word{border-bottom:1px dotted #fbbf24;cursor:help;position:relative}
+.l1-word:hover{color:#fbbf24}
+body.show-l1 .l1-word:hover::after{content:attr(data-l1);position:absolute;left:0;bottom:calc(100% + 8px);width:max-content;max-width:300px;white-space:normal;background:#0a1628;border:1px solid #fbbf24;border-radius:8px;padding:7px 10px;font-size:.82rem;color:#fff;z-index:50;box-shadow:0 6px 20px rgba(0,0,0,.55);line-height:1.5}
+body.show-l1 .l1-word{background:rgba(251,191,36,.09)}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar" style="width: 8.3%;"></div>
+
+<!-- SLIDE 1: Title -->
+<section class="slide active" data-slide="0" style="background-image:url('https://cdn.pixabay.com/photo/2019/08/28/14/24/tokyo-4436914_1280.jpg'); background-color:var(--bg);">
+  <div class="content" style="text-align:center;">
+    <h1>PRESENT PERFECT SIMPLE</h1>
+    <p class="subtitle">Life Experiences, <span class="l1-word" data-l1="旅行">Travel</span>, Hobbies & <span class="l1-word" data-l1="学校">School</span></p>
+    <p style="color:var(--text-dim); font-size:clamp(.9rem,1.3vw,1.1rem); margin:.5em 0 1.2em;">
+      <span class="l1-word" data-l1="持つ">have</span>/has + past participle — A2 <span class="l1-word" data-l1="文法">Grammar</span> & Speaking
+    </p>
+    <div style="display:flex; gap:12px; justify-content:center; margin-top:1.2em;">
+      <button class="mark-complete-btn" id="markCompleteBtn" onclick="toggleMarkComplete(this)">Mark Complete</button>
+    </div>
+    <p class="start-prompt">Press &rarr; or Space to <span class="l1-word" data-l1="始める">start</span></p>
+  </div>
+</section>
+
+<!-- SLIDE 2: Warm-Up -->
+<section class="slide" data-slide="1" style="background-image:url('https://cdn.pixabay.com/photo/2017/10/01/14/14/street-2805643_1280.jpg'); background-color:var(--bg);">
+  <div class="content">
+    <span class="section-badge badge-blue"><span class="l1-word" data-l1="暖かい">Warm</span>-Up</span>
+    <h2><span class="l1-word" data-l1="持つ">Have</span> You Ever...?</h2>
+    <p style="color:var(--text-dim); margin-bottom:.8em;"><span class="l1-word" data-l1="答える">Answer</span> these questions with a partner. Use "Yes, I <span class="l1-word" data-l1="持つ">have</span>" or "No, I haven't."</p>
+    <div class="question-card">
+      <p class="question-text">1. <span class="l1-word" data-l1="持つ">Have</span> you ever eaten something <span class="l1-word" data-l1="奇妙な">strange</span> at a festival?</p>
+      <button class="reveal-btn" onclick="revealAnswer(this)">Reveal Model <span class="l1-word" data-l1="答える">Answer</span></button>
+      <div class="model-answer hidden-answer">
+        <div class="answer-label">Model <span class="l1-word" data-l1="答える">Answer</span></div>
+        <div class="answer-text">Yes, I <span class="l1-word" data-l1="持つ">have</span>! I <span class="l1-word" data-l1="持つ">have</span> tried takoyaki and chocolate-covered bananas at <span class="l1-word" data-l1="学校">school</span> festivals. They were delicious!</div>
+      </div>
+    </div>
+    <div class="question-card">
+      <p class="question-text">2. <span class="l1-word" data-l1="持つ">Have</span> you ever watched a movie without subtitles in <span class="l1-word" data-l1="英語">English</span>?</p>
+      <button class="reveal-btn" onclick="revealAnswer(this)">Reveal Model <span class="l1-word" data-l1="答える">Answer</span></button>
+      <div class="model-answer hidden-answer">
+        <div class="answer-label">Model <span class="l1-word" data-l1="答える">Answer</span></div>
+        <div class="answer-text">No, I haven't. <span class="l1-word" data-l1="しかし">But</span> I <span class="l1-word" data-l1="持つ">have</span> watched anime with <span class="l1-word" data-l1="英語">English</span> subtitles, and I <span class="l1-word" data-l1="持つ">have</span> understood most of it!</div>
+      </div>
+    </div>
+    <div class="question-card">
+      <p class="question-text">3. <span class="l1-word" data-l1="持つ">Have</span> you ever played a <span class="l1-word" data-l1="スポーツ">sport</span> in another country?</p>
+      <button class="reveal-btn" onclick="revealAnswer(this)">Reveal Model <span class="l1-word" data-l1="答える">Answer</span></button>
+      <div class="model-answer hidden-answer">
+        <div class="answer-label">Model <span class="l1-word" data-l1="答える">Answer</span></div>
+        <div class="answer-text">Yes, I <span class="l1-word" data-l1="持つ">have</span>. I <span class="l1-word" data-l1="持つ">have</span> played soccer at a park in Australia with my <span class="l1-word" data-l1="いとこ">cousin</span>'s friends.</div>
+      </div>
+    </div>
+    <div class="question-card">
+      <p class="question-text">4. <span class="l1-word" data-l1="持つ">Have</span> you ever sung a <span class="l1-word" data-l1="歌">song</span> at karaoke in front of strangers?</p>
+      <button class="reveal-btn" onclick="revealAnswer(this)">Reveal Model <span class="l1-word" data-l1="答える">Answer</span></button>
+      <div class="model-answer hidden-answer">
+        <div class="answer-label">Model <span class="l1-word" data-l1="答える">Answer</span></div>
+        <div class="answer-text">Yes, I <span class="l1-word" data-l1="持つ">have</span>! I <span class="l1-word" data-l1="持つ">have</span> sung "Lemon" by Kenshi Yonezu in front of my <span class="l1-word" data-l1="授業">class</span>. Everyone clapped!</div>
+      </div>
+    </div>
+    <div class="question-card">
+      <p class="question-text">5. <span class="l1-word" data-l1="持つ">Have</span> you ever travelled on the Shinkansen for more than 3 hours?</p>
+      <button class="reveal-btn" onclick="revealAnswer(this)">Reveal Model <span class="l1-word" data-l1="答える">Answer</span></button>
+      <div class="model-answer hidden-answer">
+        <div class="answer-label">Model <span class="l1-word" data-l1="答える">Answer</span></div>
+        <div class="answer-text">Yes, I <span class="l1-word" data-l1="持つ">have</span>. I <span class="l1-word" data-l1="持つ">have</span> ridden the Shinkansen from Tokyo to Osaka for about 2.5 hours. The view from the <span class="l1-word" data-l1="窓">window</span> was amazing!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: Grammar Intro -->
+<section class="slide" data-slide="2" style="background-image:url('https://cdn.pixabay.com/photo/2016/08/17/11/11/guitar-1600151_1280.jpg'); background-color:var(--bg);">
+  <div class="content">
+    <span class="section-badge badge-indigo"><span class="l1-word" data-l1="文法">Grammar</span>: Present Perfect Simple</span>
+    <h2>Actions With a Connection to Now</h2>
+    <div class="grammar-box">
+      <div class="rule-label">Present Perfect Simple Rule</div>
+      <div class="rule-formula">Subject + <strong><span class="l1-word" data-l1="持つ">have</span>/has</strong> + <strong>past participle</strong></div>
+      <p style="font-size:.85rem; color:var(--text-dim);">
+      </p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="time-text">Past</div>
+        <div class="event-text">I visited Tokyo. → I <strong><span class="l1-word" data-l1="持つ">have</span> visited</strong> Tokyo.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-text">Past</div>
+        <div class="event-text">She finished her <span class="l1-word" data-l1="宿題">homework</span>. → She <strong>has finished</strong> her <span class="l1-word" data-l1="宿題">homework</span>.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-text">Past</div>
+        <div class="event-text">They saw the <span class="l1-word" data-l1="新しい">new</span> anime. → They <strong><span class="l1-word" data-l1="持つ">have</span> seen</strong> the <span class="l1-word" data-l1="新しい">new</span> anime.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-text">Now</div>
+        <div class="event-text">We <strong><span class="l1-word" data-l1="持つ">have</span> learned</strong> <span class="l1-word" data-l1="英語">English</span> for 3 years!</div>
+      </div>
+    </div>
+    <p style="font-size:.85rem; color:var(--text-dim); margin-top:.5em;">
+      Use this tense to talk about experiences, completed actions, and things that started in the past and continue now.<br>
+    </p>
+  </div>
+</section>
+
+<!-- SLIDE 4: Life Experiences — Match Game -->
+<section class="slide" data-slide="3" style="background-image:url('https://cdn.pixabay.com/photo/2023/09/12/08/03/people-8248223_1280.jpg'); background-color:var(--bg);">
+  <div class="content">
+    <span class="section-badge badge-blue">Vocab <span class="l1-word" data-l1="ゲーム">Game</span> 1: Life Experiences</span>
+    <h2><span class="l1-word" data-l1="試合">Match</span> the Words!</h2>
+    <p style="margin-bottom:1em; color:var(--text-dim);">Click a <span class="l1-word" data-l1="単語">word</span> from Column A, <span class="l1-word" data-l1="次に">then</span> click its meaning from Column B.</p>
+    <div class="match-game" id="matchGame1">
+      <div class="match-columns">
+        <div class="match-col" id="colA1"></div>
+        <div class="match-col" id="colB1"></div>
+      </div>
+      <div class="match-status" id="matchStatus1"></div>
+    </div>
+    <div class="win-overlay" id="winOverlay1">
+      <div class="win-text">Amazing!</div>
+      <button class="reveal-btn" style="margin-top:1.5em;" onclick="closeWin('winOverlay1')">Continue &rarr;</button>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: Life Experiences — Compare Pictures -->
+<section class="slide" data-slide="4" style="background-image:url('https://cdn.pixabay.com/photo/2017/09/30/19/46/vitoria-2803366_1280.jpg'); background-color:var(--bg);">
+  <div class="content">
+    <span class="section-badge badge-cyan"><span class="l1-word" data-l1="比べる">Compare</span> Pictures: Life Experiences</span>
+    <h2><span class="l1-word" data-l1="何">What</span> <span class="l1-word" data-l1="持つ">Have</span> You Seen?</h2>
+    <p style="color:var(--text-dim); margin-bottom:.8em;"><span class="l1-word" data-l1="見る">Look</span> at both pictures. Use present perfect to <span class="l1-word" data-l1="比べる">compare</span> <span class="l1-word" data-l1="何">what</span> you can <span class="l1-word" data-l1="見る">see</span>.</p>
+    <div class="compare-pictures">
+      <div class="compare-card">
+        <img class="compare-img" src="https://cdn.pixabay.com/photo/2017/09/30/19/46/vitoria-2803366_1280.jpg" alt="A man in a red shirt raising his fist on a football field" loading="lazy" onerror="this.style.display='none'">
+        <div class="compare-label"><span class="l1-word" data-l1="絵">Picture</span> 1: Football</div>
+      </div>
+      <div class="compare-card">
+        <img class="compare-img" src="https://cdn.pixabay.com/photo/2023/09/20/20/18/busker-8265571_1280.jpg" alt="A man playing a guitar on a street" loading="lazy" onerror="this.style.display='none'">
+        <div class="compare-label"><span class="l1-word" data-l1="絵">Picture</span> 2: Guitar</div>
+      </div>
+    </div>
+    <div class="compare-questions">
+      <p class="compare-q">1. In <span class="l1-word" data-l1="絵">Picture</span> 1, <span class="l1-word" data-l1="何">what</span> is the man doing on the field? <span class="l1-word" data-l1="持つ">Have</span> you ever celebrated a win <span class="l1-word" data-l1="好き">like</span> that?</p>
+      <p class="compare-q">2. In <span class="l1-word" data-l1="絵">Picture</span> 2, <span class="l1-word" data-l1="何">what</span> is the <span class="l1-word" data-l1="人">person</span> doing? <span class="l1-word" data-l1="持つ">Have</span> you ever tried to <span class="l1-word" data-l1="遊ぶ／演奏する">play</span> a string instrument?</p>
+      <p class="compare-q">3. <span class="l1-word" data-l1="どちら">Which</span> of these two activities is usually done as a <span class="l1-word" data-l1="チーム">team</span>? <span class="l1-word" data-l1="持つ">Have</span> you ever played in a <span class="l1-word" data-l1="チーム">team</span>?</p>
+      <p class="compare-q">4. The man in <span class="l1-word" data-l1="絵">Picture</span> 1 is out on his own. <span class="l1-word" data-l1="持つ">Have</span> you ever played a <span class="l1-word" data-l1="スポーツ">sport</span> without a <span class="l1-word" data-l1="チーム">team</span>?</p>
+      <p class="compare-q">5. <span class="l1-word" data-l1="もし">If</span> you could <span class="l1-word" data-l1="試す">try</span> one of these, <span class="l1-word" data-l1="どちら">which</span> would you <span class="l1-word" data-l1="選ぶ">choose</span>? <span class="l1-word" data-l1="持つ">Have</span> you ever done the other one?</p>
+    </div>
+    <button class="reveal-btn" onclick="revealAnswer(this)">Reveal Model <span class="l1-word" data-l1="答える">Answer</span></button>
+    <div class="model-answer hidden-answer">
+      <div class="answer-label">Model <span class="l1-word" data-l1="答える">Answer</span></div>
+      <div class="answer-text">In <span class="l1-word" data-l1="絵">Picture</span> 1, I can <span class="l1-word" data-l1="見る">see</span> one man on a football field. He is wearing a red shirt with the number 10 on it, and he has just raised his fist, <span class="l1-word" data-l1="だから">so</span> his <span class="l1-word" data-l1="チーム">team</span> has probably just scored. In <span class="l1-word" data-l1="絵">Picture</span> 2, I can <span class="l1-word" data-l1="見る">see</span> one man playing a guitar on a <span class="l1-word" data-l1="通り">street</span>. I <span class="l1-word" data-l1="持つ">have</span> played football in a <span class="l1-word" data-l1="チーム">team</span> for three years, <span class="l1-word" data-l1="しかし">but</span> I <span class="l1-word" data-l1="持つ">have</span> <span class="l1-word" data-l1="決して">never</span> tried to <span class="l1-word" data-l1="遊ぶ／演奏する">play</span> the guitar. <span class="l1-word" data-l1="もし">If</span> I could <span class="l1-word" data-l1="試す">try</span> one of these, I would <span class="l1-word" data-l1="選ぶ">choose</span> the guitar, <span class="l1-word" data-l1="なぜなら">because</span> I <span class="l1-word" data-l1="持つ">have</span> wanted to <span class="l1-word" data-l1="学ぶ">learn</span> for a long <span class="l1-word" data-l1="時間">time</span>.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: Travel — Match Game -->
+<section class="slide" data-slide="5" style="background-image:url('https://cdn.pixabay.com/photo/2018/12/20/12/32/japan-3885874_1280.jpg'); background-color:var(--bg);">
+  <div class="content">
+    <span class="section-badge badge-blue">Vocab <span class="l1-word" data-l1="ゲーム">Game</span> 2: <span class="l1-word" data-l1="旅行">Travel</span></span>
+    <h2><span class="l1-word" data-l1="試合">Match</span> the Words!</h2>
+    <p style="margin-bottom:1em; color:var(--text-dim);">Click a <span class="l1-word" data-l1="単語">word</span> from Column A, <span class="l1-word" data-l1="次に">then</span> click its meaning from Column B.</p>
+    <div class="match-game" id="matchGame2">
+      <div class="match-columns">
+        <div class="match-col" id="colA2"></div>
+        <div class="match-col" id="colB2"></div>
+      </div>
+      <div class="match-status" id="matchStatus2"></div>
+    </div>
+    <div class="win-overlay" id="winOverlay2">
+      <div class="win-text">Fantastic!</div>
+      <button class="reveal-btn" style="margin-top:1.5em;" onclick="closeWin('winOverlay2')">Continue &rarr;</button>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7: Hobbies & Achievements — Reorder Words -->
+<section class="slide" data-slide="6" style="background-image:url('https://cdn.pixabay.com/photo/2025/07/21/20/16/musician-9727163_1280.jpg'); background-color:var(--bg);">
+  <div class="content">
+    <span class="section-badge badge-indigo">Reorder Words: Hobbies & Achievements</span>
+    <h2>Put the Words in Order!</h2>
+    <p style="margin-bottom:.5em; color:var(--text-dim);">Click words in the right order to <span class="l1-word" data-l1="作る">make</span> a present perfect <span class="l1-word" data-l1="文">sentence</span>.</p>
+    <div class="reorder-game" id="reorderGame1"></div>
+  </div>
+</section>
+
+<!-- SLIDE 8: Hobbies & Achievements — Compare Pictures -->
+<section class="slide" data-slide="7" style="background-image:url('https://cdn.pixabay.com/photo/2016/07/21/03/49/soccer-1531817_1280.jpg'); background-color:var(--bg);">
+  <div class="content">
+    <span class="section-badge badge-cyan"><span class="l1-word" data-l1="比べる">Compare</span> Pictures: Hobbies</span>
+    <h2><span class="l1-word" data-l1="何">What</span> <span class="l1-word" data-l1="持つ">Have</span> You Seen?</h2>
+    <p style="color:var(--text-dim); margin-bottom:.8em;"><span class="l1-word" data-l1="見る">Look</span> at both pictures. Use present perfect to <span class="l1-word" data-l1="比べる">compare</span> <span class="l1-word" data-l1="何">what</span> you can <span class="l1-word" data-l1="見る">see</span>.</p>
+    <div class="compare-pictures">
+      <div class="compare-card">
+        <img class="compare-img" src="https://cdn.pixabay.com/photo/2016/08/17/11/11/guitar-1600151_1280.jpg" alt="Guitar" loading="lazy" onerror="this.style.display='none'">
+        <div class="compare-label"><span class="l1-word" data-l1="絵">Picture</span> 1: Guitar</div>
+      </div>
+      <div class="compare-card">
+        <img class="compare-img" src="https://cdn.pixabay.com/photo/2016/07/21/18/11/football-1533210_1280.jpg" alt="Football" loading="lazy" onerror="this.style.display='none'">
+        <div class="compare-label"><span class="l1-word" data-l1="絵">Picture</span> 2: Football</div>
+      </div>
+    </div>
+    <div class="compare-questions">
+      <p class="compare-q">1. In <span class="l1-word" data-l1="絵">Picture</span> 1, <span class="l1-word" data-l1="何">what</span> is the <span class="l1-word" data-l1="人">person</span> doing with the guitar? <span class="l1-word" data-l1="持つ">Have</span> you ever learned to <span class="l1-word" data-l1="遊ぶ／演奏する">play</span> a musical instrument?</p>
+      <p class="compare-q">2. In <span class="l1-word" data-l1="絵">Picture</span> 2, <span class="l1-word" data-l1="何">what</span> are the players doing on the field? <span class="l1-word" data-l1="持つ">Have</span> you ever watched a football <span class="l1-word" data-l1="試合">match</span> in <span class="l1-word" data-l1="人">person</span>?</p>
+      <p class="compare-q">3. <span class="l1-word" data-l1="どちら">Which</span> <span class="l1-word" data-l1="絵">picture</span> shows an indoor activity? <span class="l1-word" data-l1="持つ">Have</span> you ever practised something at <span class="l1-word" data-l1="家">home</span> for a long <span class="l1-word" data-l1="時間">time</span>?</p>
+      <p class="compare-q">4. <span class="l1-word" data-l1="どちら">Which</span> <span class="l1-word" data-l1="絵">picture</span> shows an outdoor activity? <span class="l1-word" data-l1="持つ">Have</span> you ever played a <span class="l1-word" data-l1="スポーツ">sport</span> outside with friends?</p>
+      <p class="compare-q">5. <span class="l1-word" data-l1="どちら">Which</span> of these hobbies would you <span class="l1-word" data-l1="好き">like</span> to <span class="l1-word" data-l1="試す">try</span>? <span class="l1-word" data-l1="持つ">Have</span> you ever tried the other one?</p>
+    </div>
+    <button class="reveal-btn" onclick="revealAnswer(this)">Reveal Model <span class="l1-word" data-l1="答える">Answer</span></button>
+    <div class="model-answer hidden-answer">
+      <div class="answer-label">Model <span class="l1-word" data-l1="答える">Answer</span></div>
+      <div class="answer-text">In <span class="l1-word" data-l1="絵">Picture</span> 1, I can <span class="l1-word" data-l1="見る">see</span> a man playing a guitar indoors. In <span class="l1-word" data-l1="絵">Picture</span> 2, I can <span class="l1-word" data-l1="見る">see</span> a <span class="l1-word" data-l1="チーム">team</span> of football players on a field. I <span class="l1-word" data-l1="持つ">have</span> learned to <span class="l1-word" data-l1="遊ぶ／演奏する">play</span> the piano, and I <span class="l1-word" data-l1="持つ">have</span> tried the guitar once, <span class="l1-word" data-l1="しかし">but</span> I <span class="l1-word" data-l1="持つ">have</span> <span class="l1-word" data-l1="決して">never</span> played in a band. I <span class="l1-word" data-l1="持つ">have</span> played soccer outside with my friends many times.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9: School Life — Match Game -->
+<section class="slide" data-slide="8" style="background-image:url('https://cdn.pixabay.com/photo/2012/02/22/20/08/classroom-15593_1280.jpg'); background-color:var(--bg);">
+  <div class="content">
+    <span class="section-badge badge-blue">Vocab <span class="l1-word" data-l1="ゲーム">Game</span> 3: <span class="l1-word" data-l1="学校">School</span> Life</span>
+    <h2><span class="l1-word" data-l1="試合">Match</span> the Words!</h2>
+    <p style="margin-bottom:1em; color:var(--text-dim);">Click a <span class="l1-word" data-l1="単語">word</span> from Column A, <span class="l1-word" data-l1="次に">then</span> click its meaning from Column B.</p>
+    <div class="match-game" id="matchGame3">
+      <div class="match-columns">
+        <div class="match-col" id="colA3"></div>
+        <div class="match-col" id="colB3"></div>
+      </div>
+      <div class="match-status" id="matchStatus3"></div>
+    </div>
+    <div class="win-overlay" id="winOverlay3">
+      <div class="win-text">Brilliant!</div>
+      <button class="reveal-btn" style="margin-top:1.5em;" onclick="closeWin('winOverlay3')">Continue &rarr;</button>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10: Mixed Review — Reorder Words -->
+<section class="slide" data-slide="9" style="background-image:url('https://cdn.pixabay.com/photo/2016/02/19/12/13/back-to-school-1210124_1280.jpg'); background-color:var(--bg);">
+  <div class="content">
+    <span class="section-badge badge-green">Mixed Review</span>
+    <h2>Put the Words in Order!</h2>
+    <p style="margin-bottom:.5em; color:var(--text-dim);">Click words in the right order. These mix all 4 themes!</p>
+    <div class="reorder-game" id="reorderGame2"></div>
+  </div>
+</section>
+
+<!-- SLIDE 11: Fun Grid -->
+<section class="slide" data-slide="10" style="background-image:url('https://cdn.pixabay.com/photo/2019/08/28/14/24/tokyo-4436914_1280.jpg'); background-color:var(--bg);">
+  <div class="content">
+    <span class="section-badge badge-green">Fun Grid</span>
+    <h2><span class="l1-word" data-l1="何">What</span> <span class="l1-word" data-l1="持つ">Have</span> You Done?</h2>
+    <p style="margin-bottom:1em; color:var(--text-dim);">Use these ideas to talk about your experiences!</p>
+    <div class="fun-grid">
+      <div class="fun-card">
+        <img class="fun-img" src="https://cdn.pixabay.com/photo/2018/12/20/12/32/japan-3885874_1280.jpg" alt="Travel" loading="lazy" onerror="this.style.display='none'">
+        <div class="fun-name"><span class="l1-word" data-l1="旅行">Travel</span></div>
+        <div class="fun-desc">I <span class="l1-word" data-l1="持つ">have</span> been to Tokyo three times.</div>
+      </div>
+      <div class="fun-card">
+        <img class="fun-img" src="https://cdn.pixabay.com/photo/2016/07/21/03/49/soccer-1531817_1280.jpg" alt="Sports" loading="lazy" onerror="this.style.display='none'">
+        <div class="fun-name">Sports</div>
+        <div class="fun-desc">I <span class="l1-word" data-l1="持つ">have</span> played soccer since I was 8.</div>
+      </div>
+      <div class="fun-card">
+        <img class="fun-img" src="https://cdn.pixabay.com/photo/2016/08/17/11/11/guitar-1600151_1280.jpg" alt="Music" loading="lazy" onerror="this.style.display='none'">
+        <div class="fun-name"><span class="l1-word" data-l1="音楽">Music</span></div>
+        <div class="fun-desc">I <span class="l1-word" data-l1="持つ">have</span> learned to <span class="l1-word" data-l1="遊ぶ／演奏する">play</span> 3 songs on the guitar.</div>
+      </div>
+      <div class="fun-card">
+        <img class="fun-img" src="https://cdn.pixabay.com/photo/2023/09/12/08/03/people-8248223_1280.jpg" alt="Friends" loading="lazy" onerror="this.style.display='none'">
+        <div class="fun-name">Friends</div>
+        <div class="fun-desc">I <span class="l1-word" data-l1="持つ">have</span> made many <span class="l1-word" data-l1="新しい">new</span> friends at <span class="l1-word" data-l1="学校">school</span>.</div>
+      </div>
+      <div class="fun-card">
+        <img class="fun-img" src="https://cdn.pixabay.com/photo/2025/07/21/20/16/musician-9727163_1280.jpg" alt="Musician" loading="lazy" onerror="this.style.display='none'">
+        <div class="fun-name">Musician</div>
+        <div class="fun-desc">I <span class="l1-word" data-l1="持つ">have</span> played many concerts in Tokyo.</div>
+      </div>
+      <div class="fun-card">
+        <img class="fun-img" src="https://cdn.pixabay.com/photo/2012/02/22/20/08/classroom-15593_1280.jpg" alt="School" loading="lazy" onerror="this.style.display='none'">
+        <div class="fun-name"><span class="l1-word" data-l1="学校">School</span></div>
+        <div class="fun-desc">I <span class="l1-word" data-l1="持つ">have</span> studied <span class="l1-word" data-l1="英語">English</span> for 3 years.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Theme cycle button -->
+<div class="theme-cycle-btn" id="themeCycleBtn" title="Click to cycle theme" tabindex="0" role="button" aria-label="Cycle color theme">
+  <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
+    <path class="theme-icon-fill" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.8 0 3.5-0.5 5-1.4-1.8-0.9-3-2.8-3-4.8 0-2.8 2.2-5 5-5 2 0 3.6 1.2 4.4 3C23.3 6.9 18.3 2 12 2z"/>
+  </svg>
+</div>
+
+<!-- Navigation -->
+<div class="nav"><button class="tool" id="l1Btn" onclick="toggleL1()" aria-label="Toggle Japanese word translations">L1</button>
+  <button id="prevBtn" aria-label="Previous slide">Prev</button>
+  <span class="slide-counter" id="slideCounter">1 / 12</span>
+  <button id="nextBtn" aria-label="Next slide"><span class="l1-word" data-l1="次の">Next</span></button>
+</div>
+
+<script>
+// ========== AUDIO ==========
+let audioCtx = null, reverbNode = null;
+function ensureAudio() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var rate = audioCtx.sampleRate;
+    var length = rate * 1.2;
+    var impulse = audioCtx.createBuffer(2, length, rate);
+    for (var ch = 0; ch < 2; ch++) {
+      var data = impulse.getChannelData(ch);
+      for (var i = 0; i < length; i++) {
+        data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, 2.5);
+      }
+    }
+    reverbNode = audioCtx.createConvolver();
+    reverbNode.buffer = impulse;
+    var reverbGain = audioCtx.createGain();
+    reverbGain.gain.value = 0.4;
+    reverbNode.connect(reverbGain);
+    reverbGain.connect(audioCtx.destination);
+  }
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+}
+function playSwish(direction) {
+  ensureAudio();
+  var now = audioCtx.currentTime;
+  var bufferSize = Math.floor(audioCtx.sampleRate * 0.18);
+  var buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+  var data = buffer.getChannelData(0);
+  for (var i = 0; i < bufferSize; i++) {
+    var env = Math.sin((i / bufferSize) * Math.PI);
+    data[i] = (Math.random() * 2 - 1) * env;
+  }
+  var src = audioCtx.createBufferSource();
+  src.buffer = buffer;
+  var filter = audioCtx.createBiquadFilter();
+  filter.type = 'bandpass';
+  filter.Q.value = 8;
+  if (direction === 'forward') {
+    filter.frequency.setValueAtTime(800, now);
+    filter.frequency.exponentialRampToValueAtTime(4000, now + 0.15);
+  } else {
+    filter.frequency.setValueAtTime(4000, now);
+    filter.frequency.exponentialRampToValueAtTime(800, now + 0.15);
+  }
+  var gain = audioCtx.createGain();
+  gain.gain.setValueAtTime(0, now);
+  gain.gain.linearRampToValueAtTime(0.12, now + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+  var dryGain = audioCtx.createGain();
+  dryGain.gain.value = 0.6;
+  var wetGain = audioCtx.createGain();
+  wetGain.gain.value = 0.4;
+  src.connect(filter);
+  filter.connect(gain);
+  gain.connect(dryGain);
+  gain.connect(wetGain);
+  dryGain.connect(audioCtx.destination);
+  wetGain.connect(reverbNode);
+  src.start(now);
+  src.stop(now + 0.2);
+  var osc = audioCtx.createOscillator();
+  osc.type = 'sine';
+  var oscGain = audioCtx.createGain();
+  if (direction === 'forward') {
+    osc.frequency.setValueAtTime(600, now);
+    osc.frequency.exponentialRampToValueAtTime(1200, now + 0.1);
+  } else {
+    osc.frequency.setValueAtTime(1200, now);
+    osc.frequency.exponentialRampToValueAtTime(600, now + 0.1);
+  }
+  oscGain.gain.setValueAtTime(0, now);
+  oscGain.gain.linearRampToValueAtTime(0.04, now + 0.02);
+  oscGain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+  osc.connect(oscGain);
+  oscGain.connect(audioCtx.destination);
+  osc.start(now);
+  osc.stop(now + 0.15);
+}
+function playDing() {
+  ensureAudio();
+  var now = audioCtx.currentTime;
+  var osc = audioCtx.createOscillator();
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(880, now);
+  var gain = audioCtx.createGain();
+  gain.gain.setValueAtTime(0, now);
+  gain.gain.linearRampToValueAtTime(0.15, now + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start(now);
+  osc.stop(now + 0.4);
+}
+function playWinSound() {
+  ensureAudio();
+  var now = audioCtx.currentTime;
+  var notes = [523.25, 659.25, 783.99, 1046.50];
+  notes.forEach(function(freq, i) {
+    var osc = audioCtx.createOscillator();
+    osc.type = 'sine';
+    osc.frequency.value = freq;
+    var gain = audioCtx.createGain();
+    gain.gain.setValueAtTime(0, now + i * 0.12);
+    gain.gain.linearRampToValueAtTime(0.1, now + i * 0.12 + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.12 + 0.4);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start(now + i * 0.12);
+    osc.stop(now + i * 0.12 + 0.4);
+  });
+}
+function playWrongSound() {
+  ensureAudio();
+  var now = audioCtx.currentTime;
+  var osc = audioCtx.createOscillator();
+  osc.type = 'sawtooth';
+  osc.frequency.setValueAtTime(200, now);
+  osc.frequency.exponentialRampToValueAtTime(100, now + 0.2);
+  var gain = audioCtx.createGain();
+  gain.gain.setValueAtTime(0, now);
+  gain.gain.linearRampToValueAtTime(0.08, now + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start(now);
+  osc.stop(now + 0.25);
+}
+
+// ========== SPARKLES ==========
+function spawnSparkles(x, y) {
+  for (var i = 0; i < 20; i++) {
+    var el = document.createElement('div');
+    el.className = 'sparkle';
+    var angle = Math.random() * Math.PI * 2;
+    var dist = 60 + Math.random() * 120;
+    var sx = Math.cos(angle) * dist + 'px';
+    var sy = Math.sin(angle) * dist + 'px';
+    el.style.cssText = 'left:' + x + 'px;top:' + y + 'px;--sx:' + sx + ';--sy:' + sy + ';background:hsl(' + (Math.random()*60+200) + ',80%,70%)';
+    document.body.appendChild(el);
+    setTimeout(function() { el.remove(); }, 1200);
+  }
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.vocab-word')) {
+    document.querySelectorAll('.vocab-word.active').forEach(function(w) { w.classList.remove('active'); });
+  }
+});
+
+// ========== REVEAL ==========
+function revealAnswer(btn) {
+  var answer = btn.nextElementSibling;
+  if (!answer) return;
+  if (answer.classList.contains('hidden-answer')) {
+    answer.classList.remove('hidden-answer');
+    btn.textContent = 'Hide Answer';
+    btn.classList.add('revealed');
+  } else {
+    answer.classList.add('hidden-answer');
+    btn.textContent = 'Reveal Model Answer';
+    btn.classList.remove('revealed');
+  }
+}
+
+// ========== MARK COMPLETE ==========
+function toggleMarkComplete(btn) {
+  var deckId = 'present-perfect-simple-4themes';
+  var progress = JSON.parse(localStorage.getItem('esl-progress') || '{}');
+  if (btn.classList.contains('completed')) {
+    btn.classList.remove('completed');
+    btn.textContent = 'Mark Complete';
+    if (progress[deckId]) progress[deckId].completed = false;
+  } else {
+    btn.classList.add('completed');
+    btn.textContent = 'Completed!';
+    if (!progress[deckId]) progress[deckId] = {};
+    progress[deckId].completed = true;
+    progress[deckId].date = new Date().toISOString().split('T')[0];
+  }
+  localStorage.setItem('esl-progress', JSON.stringify(progress));
+}
+(function restoreProgress() {
+  var deckId = 'present-perfect-simple-4themes';
+  var progress = JSON.parse(localStorage.getItem('esl-progress') || '{}');
+  document.querySelectorAll('.mark-complete-btn').forEach(function(btn) {
+    if (progress[deckId] && progress[deckId].completed) {
+      btn.classList.add('completed');
+      btn.textContent = 'Completed!';
+    }
+  });
+})();
+
+// ========== NAVIGATION ==========
+var slides = document.querySelectorAll('.slide');
+var current = 0;
+var prevBtn = document.getElementById('prevBtn');
+var nextBtn = document.getElementById('nextBtn');
+var slideCounter = document.getElementById('slideCounter');
+var progressBar = document.getElementById('progressBar');
+
+function update() {
+  slides.forEach(function(s, i) { s.classList.toggle('active', i === current); });
+  slideCounter.textContent = (current + 1) + ' / ' + slides.length;
+  progressBar.style.width = (((current + 1) / slides.length) * 100) + '%';
+  var isTitle = current === 0;
+  document.getElementById('themeCycleBtn').style.display = isTitle ? 'flex' : 'none';
+}
+
+prevBtn.addEventListener('click', function() {
+  if (current > 0) { current--; playSwish('back'); } update();
+});
+nextBtn.addEventListener('click', function() {
+  if (current < slides.length - 1) { current++; playSwish('forward'); } update();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowRight' || e.key === ' ') {
+    e.preventDefault();
+    if (current < slides.length - 1) { current++; playSwish('forward'); } update();
+  }
+  if (e.key === 'ArrowLeft') {
+    if (current > 0) { current--; playSwish('back'); } update();
+  }
+});
+update();
+
+// ========== THEME CYCLE ==========
+var currentTheme = parseInt(localStorage.getItem('ielts-theme')) || 1;
+function applyTheme(n) {
+  currentTheme = n;
+  if (n === 1) document.body.removeAttribute('data-theme');
+  else document.body.setAttribute('data-theme', n);
+  localStorage.setItem('ielts-theme', n);
+}
+document.getElementById('themeCycleBtn').addEventListener('click', function() {
+  var next = currentTheme === 6 ? 1 : currentTheme + 1;
+  applyTheme(next);
+});
+applyTheme(currentTheme);
+
+// ========== MATCH GAME ENGINE ==========
+function initMatchGame(gameId, pairs) {
+  var colA = document.getElementById('colA' + gameId);
+  var colB = document.getElementById('colB' + gameId);
+  var status = document.getElementById('matchStatus' + gameId);
+  var overlay = document.getElementById('winOverlay' + gameId);
+  var selectedA = null;
+  var selectedB = null;
+  var matchedCount = 0;
+  var aItems = pairs.map(function(p, i) { return { text: p[0], id: i }; }).sort(function() { return Math.random() - 0.5; });
+  var bItems = pairs.map(function(p, i) { return { text: p[1], id: i }; }).sort(function() { return Math.random() - 0.5; });
+  function renderCol(items, side) {
+    items.forEach(function(item) {
+      var btn = document.createElement('button');
+      btn.className = 'match-btn';
+      btn.textContent = item.text;
+      btn.dataset.id = item.id;
+      btn.dataset.side = side;
+      btn.onclick = function() { handleClick(btn, side); };
+      if (side === 'A') colA.appendChild(btn);
+      else colB.appendChild(btn);
+    });
+  }
+  function handleClick(btn, side) {
+    if (btn.classList.contains('matched')) return;
+    if (side === 'A') {
+      if (selectedA) selectedA.classList.remove('selected');
+      selectedA = btn;
+      btn.classList.add('selected');
+      playDing();
+    } else {
+      if (selectedB) selectedB.classList.remove('selected');
+      selectedB = btn;
+      btn.classList.add('selected');
+      playDing();
+    }
+    if (selectedA && selectedB) {
+      if (selectedA.dataset.id === selectedB.dataset.id) {
+        selectedA.classList.remove('selected');
+        selectedB.classList.remove('selected');
+        selectedA.classList.add('matched');
+        selectedB.classList.add('matched');
+        selectedA = null;
+        selectedB = null;
+        matchedCount++;
+        status.textContent = matchedCount + ' / ' + pairs.length + ' matched!';
+        if (matchedCount === pairs.length) {
+          setTimeout(function() {
+            var rect = status.getBoundingClientRect();
+            spawnSparkles(rect.left + rect.width/2, rect.top + rect.height/2);
+            playWinSound();
+            overlay.classList.add('show');
+          }, 300);
+        }
+      } else {
+        var wrongA = selectedA;
+        var wrongB = selectedB;
+        wrongA.classList.add('wrong');
+        wrongB.classList.add('wrong');
+        playWrongSound();
+        status.textContent = 'Not a match. Try again!';
+        setTimeout(function() {
+          wrongA.classList.remove('wrong', 'selected');
+          wrongB.classList.remove('wrong', 'selected');
+          selectedA = null;
+          selectedB = null;
+        }, 500);
+      }
+    }
+  }
+  renderCol(aItems, 'A');
+  renderCol(bItems, 'B');
+}
+function closeWin(id) {
+  document.getElementById(id).classList.remove('show');
+}
+
+// ========== MATCH GAME DATA ==========
+// Pre-shuffled: no answer is next to its vocab word in source
+initMatchGame('1', [
+  ['experience', 'something that happens to you'],
+  ['adventure', 'an exciting or unusual experience'],
+  ['memory', 'something you remember from the past'],
+  ['achievement', 'something you have succeeded in doing'],
+  ['challenge', 'something difficult that tests your ability'],
+  ['opportunity', 'a chance to do something']
+]);
+initMatchGame('2', [
+  ['journey', 'a trip from one place to another'],
+  ['destination', 'the place where you are going'],
+  ['explore', 'to travel around and discover new things'],
+  ['discover', 'to find something for the first time'],
+  ['passport', 'an official document for international travel'],
+  ['souvenir', 'something you buy to remember a place']
+]);
+initMatchGame('3', [
+  ['assignment', 'work given to students to do'],
+  ['presentation', 'a talk giving information about something'],
+  ['semester', 'one of two periods of the school year'],
+  ['graduate', 'to finish a course of study'],
+  ['knowledge', 'information and skills you have learned'],
+  ['subject', 'a thing you study at school']
+]);
+
+// ========== REORDER ENGINE ==========
+function initReorderGame(gameId, sentences) {
+  var container = document.getElementById('reorderGame' + gameId);
+  sentences.forEach(function(s, idx) {
+    var div = document.createElement('div');
+    div.className = 'reorder-sentence';
+    var tokens = s.scramble.split(' ');
+    var answer = s.answer;
+    var tokenBtns = [];
+    var slotDiv = document.createElement('div');
+    slotDiv.className = 'reorder-slot';
+    slotDiv.id = 'reorderSlot' + gameId + '_' + idx;
+    var poolDiv = document.createElement('div');
+    poolDiv.className = 'reorder-tokens';
+    poolDiv.id = 'reorderPool' + gameId + '_' + idx;
+    tokens.forEach(function(word, ti) {
+      var btn = document.createElement('span');
+      btn.className = 'reorder-token';
+      btn.textContent = word;
+      btn.dataset.word = word;
+      btn.dataset.index = ti;
+      btn.onclick = function() { moveToken(btn, poolDiv, slotDiv, gameId, idx); };
+      poolDiv.appendChild(btn);
+      tokenBtns.push(btn);
+    });
+    var answerDiv = document.createElement('div');
+    answerDiv.className = 'reorder-answer hidden-answer';
+    answerDiv.id = 'reorderAnswer' + gameId + '_' + idx;
+    answerDiv.textContent = 'Answer: ' + answer;
+    var btnRow = document.createElement('div');
+    btnRow.style.marginTop = '.5em';
+    var checkBtn = document.createElement('button');
+    checkBtn.className = 'reorder-btn';
+    checkBtn.textContent = 'Check';
+    checkBtn.onclick = function() { checkReorder(slotDiv, answerDiv, answer); };
+    var revealBtn = document.createElement('button');
+    revealBtn.className = 'reorder-btn';
+    revealBtn.textContent = 'Reveal';
+    revealBtn.onclick = function() { answerDiv.classList.toggle('hidden-answer'); };
+    var resetBtn = document.createElement('button');
+    resetBtn.className = 'reorder-btn reset-btn';
+    resetBtn.textContent = 'Reset';
+    resetBtn.onclick = function() { resetReorder(poolDiv, slotDiv, answerDiv, tokenBtns); };
+    btnRow.appendChild(checkBtn);
+    btnRow.appendChild(revealBtn);
+    btnRow.appendChild(resetBtn);
+    div.appendChild(poolDiv);
+    div.appendChild(slotDiv);
+    div.appendChild(answerDiv);
+    div.appendChild(btnRow);
+    container.appendChild(div);
+  });
+}
+function moveToken(btn, pool, slot, gameId, idx) {
+  if (btn.parentElement === pool) {
+    slot.appendChild(btn);
+    btn.classList.add('placed');
+  } else {
+    pool.appendChild(btn);
+    btn.classList.remove('placed');
+  }
+}
+function checkReorder(slot, answerDiv, correct) {
+  var words = [];
+  slot.querySelectorAll('.reorder-token').forEach(function(t) { words.push(t.dataset.word); });
+  var userAnswer = words.join(' ');
+  if (userAnswer.toLowerCase() === correct.toLowerCase()) {
+    slot.style.borderColor = 'var(--green)';
+    slot.style.background = 'rgba(var(--green-rgb),.1)';
+    answerDiv.classList.remove('hidden-answer');
+    playWinSound();
+  } else {
+    slot.style.borderColor = 'var(--red)';
+    slot.style.background = 'rgba(var(--red-rgb),.1)';
+    playWrongSound();
+    setTimeout(function() {
+      slot.style.borderColor = 'rgba(var(--green-rgb),.3)';
+      slot.style.background = 'rgba(var(--green-rgb),.06)';
+    }, 1000);
+  }
+}
+function resetReorder(pool, slot, answerDiv, tokenBtns) {
+  tokenBtns.forEach(function(btn) {
+    pool.appendChild(btn);
+    btn.classList.remove('placed');
+  });
+  slot.style.borderColor = 'rgba(var(--green-rgb),.3)';
+  slot.style.background = 'rgba(var(--green-rgb),.06)';
+  answerDiv.classList.add('hidden-answer');
+}
+
+// ========== REORDER GAME DATA ==========
+// Theme 3: Hobbies & Achievements
+initReorderGame('1', [
+  { scramble: 'guitar the play to learned have I', answer: 'I have learned to play the guitar' },
+  { scramble: 'painting her finished has She', answer: 'She has finished her painting' },
+  { scramble: 'competition the won have They', answer: 'They have won the competition' },
+  { scramble: 'since practiced have I piano the 2020', answer: 'I have practiced the piano since 2020' }
+]);
+// Mixed Review (all 4 themes)
+initReorderGame('2', [
+  { scramble: 'Tokyo to been have I twice', answer: 'I have been to Tokyo twice' },
+  { scramble: 'books three read has She this for month', answer: 'She has read three books this month' },
+  { scramble: 'homework our finished have We already', answer: 'We have finished our homework already' },
+  { scramble: 'sang have I song English a never', answer: 'I have never sung an English song' },
+  { scramble: 'together played have We piano the for years', answer: 'We have played the piano together for years' }
+]);
+</script>
+<script>
+
+function toggleL1(){document.body.classList.toggle('show-l1');var on=document.body.classList.contains('show-l1');var b=document.getElementById('l1Btn');if(b){b.textContent=on?'L1 ON':'L1';b.style.color=on?'#fbbf24':''}try{localStorage.setItem(location.pathname+'-l1',on?'1':'0')}catch(e){}}
+try{if(localStorage.getItem(location.pathname+'-l1')==='1')document.body.classList.add('show-l1')}catch(e){}
+
+</script>
+</body>
+</html>
