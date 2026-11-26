@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.pexels.com https://cdn.pixabay.com; connect-src 'self'; media-src 'self' blob:;">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speaking Practice for Japanese Teens - MY DREAM HOME</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a1628;--bg-rgb:10,22,40;--accent:#22d3ee;--accent-rgb:34,211,238;--accent2:#a78bfa;--accent2-rgb:167,139,250;--text:#f1f5f9;--text-dim:#cbd5e1}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:clamp(1rem,1.45vw,1.22rem);line-height:1.65}
+.slide{position:fixed;inset:0;background-size:cover;background-position:center;background-color:var(--bg);opacity:0;pointer-events:none;transition:opacity .35s ease;display:flex;flex-direction:column;justify-content:flex-start;padding:3vh 5vw 11vh;overflow-y:auto}
+.slide::-webkit-scrollbar{width:0}
+.slide{scrollbar-width:none}
+.slide.active{opacity:1;pointer-events:auto;z-index:2}
+.slide::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(var(--bg-rgb),.9) 0%,rgba(var(--bg-rgb),.62) 48%,rgba(var(--bg-rgb),.2) 100%);z-index:0}
+.content{position:relative;z-index:1;width:min(80vw,1100px);max-width:80vw;background:rgba(var(--bg-rgb),.76);border:1px solid rgba(var(--accent-rgb),.45);box-shadow:0 0 28px rgba(var(--accent-rgb),.22),0 0 70px rgba(var(--accent2-rgb),.12);border-radius:18px;padding:2.1em 2.7em;backdrop-filter:blur(9px);margin:auto 0}
+@media(min-width:1600px){.content{max-width:64vw;width:min(64vw,1100px)}}
+@media(max-width:768px){.content{max-width:92vw;padding:1.4em 1.5em}.slide{padding:2vh 4vw 13vh}}
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:200;transition:width .35s ease}
+.nav{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:.8em;z-index:200;background:rgba(var(--bg-rgb),.88);border:1px solid rgba(var(--accent-rgb),.32);border-radius:40px;padding:8px 18px;backdrop-filter:blur(8px)}
+.nav button{background:none;border:1px solid rgba(var(--accent-rgb),.5);color:var(--accent);font-family:'Inter',sans-serif;font-size:1rem;padding:9px 18px;border-radius:24px;cursor:pointer;min-width:46px;min-height:44px;transition:.2s}
+.nav button:hover{background:rgba(var(--accent-rgb),.15);box-shadow:0 0 14px rgba(var(--accent-rgb),.3)}
+.nav .counter{font-family:'Inter',monospace;color:var(--text-dim);font-size:.85rem;min-width:58px;text-align:center}
+.nav .tool{font-size:.82rem;padding:8px 13px;color:var(--text-dim);border-color:rgba(var(--accent-rgb),.24)}
+h1{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(2.1rem,4.4vw,3.7rem);line-height:1.12;margin-bottom:.45em;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 18px rgba(var(--accent-rgb),.35))}
+h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(1.35rem,2.7vw,2.05rem);text-transform:uppercase;letter-spacing:.04em;color:var(--accent);margin-bottom:.55em}
+h3{font-family:'Oswald',sans-serif;font-weight:600;font-size:1.15rem;color:var(--accent2);margin:.7em 0 .35em}
+p,li{margin-bottom:.45em}
+.subtitle{font-size:clamp(1.05rem,1.9vw,1.4rem);color:var(--text-dim)}
+.section-badge{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--accent);background:rgba(var(--accent-rgb),.13);border:1px solid rgba(var(--accent-rgb),.4);border-radius:8px;padding:4px 11px;margin-bottom:.6em}
+.question-card{background:linear-gradient(135deg,rgba(var(--accent-rgb),.07),rgba(var(--accent2-rgb),.06));border:1px solid rgba(var(--accent-rgb),.26);border-radius:13px;padding:.85em 1.15em;margin:.55em 0}
+.question-text{font-weight:500}
+.follow-ups{font-size:.86rem;color:var(--text-dim);margin-top:.4em;padding-left:.9em;border-left:2px solid rgba(var(--accent-rgb),.45)}
+.follow-ups b{color:var(--accent2);font-weight:600}
+.reveal-btn{margin-top:.5em;background:transparent;border:1px solid rgba(var(--accent-rgb),.45);color:var(--accent);border-radius:20px;padding:6px 14px;font:inherit;font-size:.8rem;cursor:pointer;min-height:38px}
+.reveal-btn:hover{background:rgba(var(--accent-rgb),.14)}
+.model-answer{display:none;margin-top:.55em;padding:.6em .8em;border-left:2px solid var(--accent2);background:rgba(var(--accent2-rgb),.08);border-radius:0 8px 8px 0}
+.model-answer.open{display:block}
+.answer-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent2);font-weight:700;margin-bottom:.25em}
+.vocab-word{border-bottom:2px dotted var(--accent2);cursor:help;position:relative}
+.vocab-word:hover{color:var(--accent2)}
+.vocab-word:hover::after{content:attr(data-def);position:absolute;left:0;bottom:calc(100% + 8px);width:max-content;max-width:290px;white-space:normal;background:var(--bg);border:1px solid var(--accent2);border-radius:8px;padding:7px 10px;font-size:.8rem;color:var(--text);z-index:20;box-shadow:0 6px 20px rgba(0,0,0,.5)}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.7em}
+.vocab-item{background:rgba(var(--accent-rgb),.06);border:1px solid rgba(var(--accent-rgb),.25);border-radius:12px;padding:.7em .9em}
+.vocab-item b{color:var(--accent2);font-size:1.05rem}
+.vocab-item p{font-size:.84rem;color:var(--text-dim);margin:.25em 0 0}
+.question-card .vocab-word{font-weight:600}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6em}
+.match-col{display:flex;flex-direction:column;gap:.5em}
+.match-btn,.token{background:rgba(var(--accent-rgb),.07);border:1px solid rgba(var(--accent-rgb),.35);color:var(--text);border-radius:10px;padding:.55em .8em;font:inherit;font-size:.9rem;cursor:pointer;text-align:left;min-height:44px}
+.match-btn:hover,.token:hover{border-color:var(--accent)}
+.match-btn.done,.token.used{opacity:.35;pointer-events:none;border-color:var(--accent2)}
+.match-btn.selected{border-color:var(--accent2);box-shadow:0 0 0 2px rgba(var(--accent2-rgb),.3)}
+.reorder-row{margin:.7em 0}
+.reorder-target{min-height:46px;border:1px dashed rgba(var(--accent2-rgb),.5);border-radius:10px;padding:.35em .6em;margin-top:.4em;font-size:.92rem;color:var(--accent2)}
+.token-row{display:flex;flex-wrap:wrap;gap:.4em;margin-top:.4em}
+.token{padding:.35em .65em;font-size:.86rem}
+.check-btn{margin-top:.5em;background:rgba(var(--accent-rgb),.14);border:1px solid var(--accent);color:var(--accent);border-radius:20px;padding:7px 16px;font:inherit;font-size:.82rem;cursor:pointer;min-height:40px}
+.mark-complete-btn{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#08121c;border:none;border-radius:24px;padding:11px 24px;font-weight:700;font-size:.9rem;cursor:pointer;min-height:46px}
+.mark-complete-btn.done{background:transparent;border:1px solid var(--green);color:var(--green)}
+.start-prompt{font-size:.82rem;color:var(--text-dim);margin-top:1em}
+ul{padding-left:1.2em}
+.answer-text{font-size:.95rem}
+.small{font-size:.84rem;color:var(--text-dim)}
+
+
+.l1-word{border-bottom:1px dotted #fbbf24;cursor:help;position:relative}
+.l1-word:hover{color:#fbbf24}
+body.show-l1 .l1-word:hover::after{content:attr(data-l1);position:absolute;left:0;bottom:calc(100% + 8px);width:max-content;max-width:300px;white-space:normal;background:#0a1628;border:1px solid #fbbf24;border-radius:8px;padding:7px 10px;font-size:.82rem;color:#fff;z-index:50;box-shadow:0 6px 20px rgba(0,0,0,.55);line-height:1.5}
+body.show-l1 .l1-word{background:rgba(251,191,36,.09)}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar" style="width:8.3%;"></div>
+<section class="slide active" data-slide="0" style="background-image:url('https://images.pexels.com/photos/30580640/pexels-photo-30580640.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Grow and Glow</span>
+<h1>My Dream <span class="l1-word" data-l1="家">Home</span></h1>
+<p class="subtitle">Four slides. Two minutes. Your own design, your own voice.</p>
+<p class="small"></p>
+<button class="mark-complete-btn" id="markCompleteBtn" onclick="toggleMarkComplete(this)">Mark Complete</button>
+<p class="start-prompt">Press &rarr; or Space to begin. Theme changes the colours.</p>
+</div></section><section class="slide" data-slide="1" style="background-image:url('https://images.pexels.com/photos/7765593/pexels-photo-7765593.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge"><span class="l1-word" data-l1="暖かい">Warm</span>-Up</span>
+<h2><span class="l1-word" data-l1="最初">First</span> Impressions</h2>
+<p class="small"><span class="l1-word" data-l1="始める">Start</span> with a <span class="l1-word" data-l1="場所">place</span> you can <span class="l1-word" data-l1="すでに">already</span> <span class="l1-word" data-l1="絵">picture</span>.</p>
+<div class="question-card"><p class="question-text"><span class="l1-word" data-l1="もし">If</span> you could wake up in any <span class="l1-word" data-l1="場所">place</span> <span class="l1-word" data-l1="明日">tomorrow</span>, <span class="l1-word" data-l1="どこ">where</span> would it be?</p>
+<p class="follow-ups"><b><span class="l1-word" data-l1="行く">Go</span> further:</b> <span class="l1-word" data-l1="何">What</span> is the <span class="l1-word" data-l1="最初">first</span> <span class="l1-word" data-l1="もの">thing</span> you would <span class="l1-word" data-l1="見る">see</span> from the <span class="l1-word" data-l1="窓">window</span>?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal <span class="l1-word" data-l1="答える">Answer</span></button>
+<div class="model-answer"><div class="answer-label">Possible <span class="l1-word" data-l1="答える">answer</span></div><div class="answer-text">A <span class="l1-word" data-l1="小さい">small</span> <span class="l1-word" data-l1="家">house</span> near the <span class="l1-word" data-l1="海">sea</span>. I would <span class="l1-word" data-l1="見る">see</span> the <span class="l1-word" data-l1="水">water</span> <span class="l1-word" data-l1="前に">before</span> I saw the <span class="l1-word" data-l1="庭">garden</span>.</div></div></div>
+<div class="question-card"><p class="question-text"><span class="l1-word" data-l1="説明する">Describe</span> your ideal <span class="l1-word" data-l1="部屋">room</span> in three adjectives.</p>
+<p class="follow-ups"><b><span class="l1-word" data-l1="行く">Go</span> further:</b> <span class="l1-word" data-l1="どちら">Which</span> adjective would a <span class="l1-word" data-l1="友達">friend</span> disagree with?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal <span class="l1-word" data-l1="答える">Answer</span></button>
+<div class="model-answer"><div class="answer-label">Possible <span class="l1-word" data-l1="答える">answer</span></div><div class="answer-text"><span class="vocab-word" data-def="full of light"><span class="l1-word" data-l1="明るい">Bright</span></span>, tidy, and calm. My <span class="l1-word" data-l1="友達">friend</span> would <span class="l1-word" data-l1="言う">say</span> calm is impossible with my <span class="l1-word" data-l1="机">desk</span>.</div></div></div>
+</div></section><section class="slide" data-slide="2" style="background-image:url('https://images.pexels.com/photos/29012619/pexels-photo-29012619.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge"><span class="l1-word" data-l1="文法">Grammar</span> in Context</span>
+<h2>Four Slides, Four Patterns</h2>
+<p class="small">Present and future for the <span class="l1-word" data-l1="場所">place</span>. Adjectives and passive for the <span class="l1-word" data-l1="家">house</span>. Modals for <span class="l1-word" data-l1="何">what</span> you can <span class="l1-word" data-l1="する">do</span>. Present perfect for <span class="l1-word" data-l1="誰">who</span> lives there.</p>
+<div class="question-card"><p class="question-text">Slide one: My dream <span class="l1-word" data-l1="家">home</span> is in the mountains. I chose it <span class="l1-word" data-l1="なぜなら">because</span> I <span class="l1-word" data-l1="大好き">love</span> <span class="l1-word" data-l1="雪">snow</span>. <span class="l1-word" data-l1="加える">Add</span> one future <span class="l1-word" data-l1="文">sentence</span>.</p>
+<p class="follow-ups"><b><span class="l1-word" data-l1="行く">Go</span> further:</b> <span class="l1-word" data-l1="何">What</span> future form sounds most natural here?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal <span class="l1-word" data-l1="答える">Answer</span></button>
+<div class="model-answer"><div class="answer-label">Possible <span class="l1-word" data-l1="答える">answer</span></div><div class="answer-text">I will <span class="l1-word" data-l1="使う">spend</span> every winter there. 'Will' sounds <span class="l1-word" data-l1="好き">like</span> a real <span class="l1-word" data-l1="計画">plan</span>, <span class="l1-word" data-l1="ながら">while</span> 'going to' sounds <span class="l1-word" data-l1="好き">like</span> a guess.</div></div></div>
+<div class="question-card"><p class="question-text">Slide two: The walls are painted blue. <span class="l1-word" data-l1="なぜ">Why</span> is passive useful?</p>
+<p class="follow-ups"><b><span class="l1-word" data-l1="行く">Go</span> further:</b> <span class="l1-word" data-l1="何">What</span> would the <span class="l1-word" data-l1="文">sentence</span> be in active voice?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal <span class="l1-word" data-l1="答える">Answer</span></button>
+<div class="model-answer"><div class="answer-label">Possible <span class="l1-word" data-l1="答える">answer</span></div><div class="answer-text">Someone painted the walls blue. Active sounds odd <span class="l1-word" data-l1="なぜなら">because</span> nobody cares <span class="l1-word" data-l1="誰">who</span> did it.</div></div></div>
+</div></section><section class="slide" data-slide="3" style="background-image:url('https://images.pexels.com/photos/7746940/pexels-photo-7746940.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Slide One</span>
+<h2><span class="l1-word" data-l1="どこ">Where</span> Is It?</h2>
+<p class="small">Country, city, or nature. <span class="l1-word" data-l1="あげる">Give</span> a <span class="l1-word" data-l1="理由">reason</span> a listener can <span class="l1-word" data-l1="感じる">feel</span>.</p>
+<div class="question-card"><p class="question-text"><span class="l1-word" data-l1="どこ">Where</span> exactly is your dream <span class="l1-word" data-l1="家">home</span>, and <span class="l1-word" data-l1="なぜ">why</span> there?</p>
+<p class="follow-ups"><b><span class="l1-word" data-l1="行く">Go</span> further:</b> <span class="l1-word" data-l1="何">What</span> would you miss <span class="l1-word" data-l1="もし">if</span> you lived there?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal <span class="l1-word" data-l1="答える">Answer</span></button>
+<div class="model-answer"><div class="answer-label">Possible <span class="l1-word" data-l1="答える">answer</span></div><div class="answer-text">It is in the mountains of Hokkaido. I would miss the convenience of a <span class="l1-word" data-l1="店">shop</span> on every <span class="l1-word" data-l1="角">corner</span>.</div></div></div>
+<div class="question-card"><p class="question-text"><span class="l1-word" data-l1="何">What</span> is the <span class="l1-word" data-l1="旅">journey</span> from your real <span class="l1-word" data-l1="家">home</span> to your dream <span class="l1-word" data-l1="家">home</span> <span class="l1-word" data-l1="好き">like</span>?</p>
+<p class="follow-ups"><b><span class="l1-word" data-l1="行く">Go</span> further:</b> <span class="l1-word" data-l1="どちら">Which</span> part of the <span class="l1-word" data-l1="旅">journey</span> <span class="l1-word" data-l1="する">do</span> you enjoy?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal <span class="l1-word" data-l1="答える">Answer</span></button>
+<div class="model-answer"><div class="answer-label">Possible <span class="l1-word" data-l1="答える">answer</span></div><div class="answer-text">A <span class="l1-word" data-l1="電車">train</span>, <span class="l1-word" data-l1="次に">then</span> a <span class="l1-word" data-l1="バス">bus</span>, <span class="l1-word" data-l1="次に">then</span> a short <span class="l1-word" data-l1="散歩">walk</span>. I enjoy the <span class="l1-word" data-l1="散歩">walk</span> <span class="l1-word" data-l1="なぜなら">because</span> the air changes.</div></div></div>
+</div></section><section class="slide" data-slide="4" style="background-image:url('https://images.pexels.com/photos/3912425/pexels-photo-3912425.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge"><span class="l1-word" data-l1="単語">Word</span> Bank</span>
+<h2>Words for a <span class="l1-word" data-l1="家">Home</span></h2>
+<p class="small">Click a <span class="l1-word" data-l1="単語">word</span>. Use two of them on slide two.</p>
+<div class="vocab-grid">
+<div class="vocab-item"><b><span class="l1-word" data-l1="広々した">spacious</span></b><p>with plenty of <span class="l1-word" data-l1="部屋">room</span></p><p class="small"><span class="l1-word" data-l1="どちら">Which</span> <span class="l1-word" data-l1="部屋">room</span> in your <span class="l1-word" data-l1="家">home</span> feels <span class="vocab-word" data-def="with plenty of room"><span class="l1-word" data-l1="広々した">spacious</span></span>?</p></div>
+<div class="vocab-item"><b><span class="l1-word" data-l1="居心地の良い">cosy</span></b><p><span class="l1-word" data-l1="暖かい">warm</span> and comfortable</p><p class="small"><span class="l1-word" data-l1="どこ">Where</span> is the cosiest <span class="l1-word" data-l1="場所">place</span> you <span class="l1-word" data-l1="知る">know</span>?</p></div>
+<div class="vocab-item"><b><span class="l1-word" data-l1="古びた">shabby</span></b><p><span class="l1-word" data-l1="古い">old</span> and slightly broken</p><p class="small"><span class="l1-word" data-l1="何">What</span> <span class="vocab-word" data-def="old and slightly broken"><span class="l1-word" data-l1="古びた">shabby</span></span> <span class="l1-word" data-l1="もの">thing</span> would you <span class="l1-word" data-l1="続ける">keep</span> in a dream <span class="l1-word" data-l1="家">home</span>?</p></div>
+<div class="vocab-item"><b><span class="l1-word" data-l1="明るい">bright</span></b><p>full of light</p><p class="small"><span class="l1-word" data-l1="どちら">Which</span> <span class="l1-word" data-l1="部屋">room</span> in your <span class="l1-word" data-l1="学校">school</span> is brightest?</p></div>
+<div class="vocab-item"><b><span class="l1-word" data-l1="静かで穏やかな">peaceful</span></b><p>calm and <span class="l1-word" data-l1="静かな">quiet</span></p><p class="small"><span class="l1-word" data-l1="いつ">When</span> does your <span class="l1-word" data-l1="家">home</span> <span class="l1-word" data-l1="感じる">feel</span> <span class="vocab-word" data-def="calm and quiet"><span class="l1-word" data-l1="静かで穏やかな">peaceful</span></span>?</p></div>
+</div>
+</div></section><section class="slide" data-slide="5" style="background-image:url('https://images.pexels.com/photos/31488380/pexels-photo-31488380.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge"><span class="l1-word" data-l1="単語">Word</span> <span class="l1-word" data-l1="ゲーム">Game</span></span>
+<h2><span class="l1-word" data-l1="試合">Match</span> the Meaning</h2>
+<p class="small"><span class="l1-word" data-l1="試合">Match</span> the words. <span class="l1-word" data-l1="次に">Then</span> <span class="l1-word" data-l1="説明する">describe</span> one <span class="l1-word" data-l1="部屋">room</span> with two of them.</p>
+<div class="match-grid"><div class="match-col">
+<button class="match-btn" data-match="spacious" onclick="pickMatch(this)"><span class="l1-word" data-l1="広々した">spacious</span></button>
+<button class="match-btn" data-match="cosy" onclick="pickMatch(this)"><span class="l1-word" data-l1="居心地の良い">cosy</span></button>
+<button class="match-btn" data-match="shabby" onclick="pickMatch(this)"><span class="l1-word" data-l1="古びた">shabby</span></button>
+<button class="match-btn" data-match="peaceful" onclick="pickMatch(this)"><span class="l1-word" data-l1="静かで穏やかな">peaceful</span></button>
+<button class="match-btn" data-match="bright" onclick="pickMatch(this)"><span class="l1-word" data-l1="明るい">bright</span></button>
+</div><div class="match-col">
+<button class="match-btn" data-match="spacious" onclick="pickMatch(this)">with plenty of <span class="l1-word" data-l1="部屋">room</span></button>
+<button class="match-btn" data-match="bright" onclick="pickMatch(this)">full of light</button>
+<button class="match-btn" data-match="cosy" onclick="pickMatch(this)"><span class="l1-word" data-l1="暖かい">warm</span> and comfortable</button>
+<button class="match-btn" data-match="peaceful" onclick="pickMatch(this)">calm and <span class="l1-word" data-l1="静かな">quiet</span></button>
+<button class="match-btn" data-match="shabby" onclick="pickMatch(this)">worn and <span class="l1-word" data-l1="古い">old</span></button>
+</div></div>
+</div></section><section class="slide" data-slide="6" style="background-image:url('https://images.pexels.com/photos/36731470/pexels-photo-36731470.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Slide Two</span>
+<h2>Slides Two & Four</h2>
+<p class="small"><span class="l1-word" data-l1="何">What</span> it looks <span class="l1-word" data-l1="好き">like</span>, and <span class="l1-word" data-l1="誰">who</span> lives there. <span class="l1-word" data-l1="選ぶ">Choose</span> three details for each.</p>
+<div class="question-card"><p class="question-text"><span class="l1-word" data-l1="説明する">Describe</span> the outside of your dream <span class="l1-word" data-l1="家">home</span>.</p>
+<p class="follow-ups"><b><span class="l1-word" data-l1="行く">Go</span> further:</b> <span class="l1-word" data-l1="何">What</span> would a <span class="l1-word" data-l1="隣の人">neighbour</span> <span class="vocab-word" data-def="to see or become aware"><span class="l1-word" data-l1="気づく">notice</span></span> <span class="l1-word" data-l1="最初">first</span>?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal <span class="l1-word" data-l1="答える">Answer</span></button>
+<div class="model-answer"><div class="answer-label">Possible <span class="l1-word" data-l1="答える">answer</span></div><div class="answer-text">It is a <span class="l1-word" data-l1="小さい">small</span> wooden <span class="l1-word" data-l1="家">house</span> with a blue <span class="l1-word" data-l1="ドア">door</span> and a wide <span class="l1-word" data-l1="庭">garden</span>. A <span class="l1-word" data-l1="隣の人">neighbour</span> would <span class="vocab-word" data-def="to see or become aware"><span class="l1-word" data-l1="気づく">notice</span></span> the <span class="l1-word" data-l1="庭">garden</span> <span class="l1-word" data-l1="最初">first</span>.</div></div></div>
+<div class="question-card"><p class="question-text"><span class="l1-word" data-l1="説明する">Describe</span> the <span class="l1-word" data-l1="部屋">room</span> you would <span class="l1-word" data-l1="使う">spend</span> most <span class="l1-word" data-l1="時間">time</span> in.</p>
+<p class="follow-ups"><b><span class="l1-word" data-l1="行く">Go</span> further:</b> <span class="l1-word" data-l1="何">What</span> object would sit on the <span class="l1-word" data-l1="机">desk</span>?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal <span class="l1-word" data-l1="答える">Answer</span></button>
+<div class="model-answer"><div class="answer-label">Possible <span class="l1-word" data-l1="答える">answer</span></div><div class="answer-text">The <span class="l1-word" data-l1="台所">kitchen</span>, <span class="l1-word" data-l1="なぜなら">because</span> it is <span class="vocab-word" data-def="full of light"><span class="l1-word" data-l1="明るい">bright</span></span> and <span class="vocab-word" data-def="with plenty of room"><span class="l1-word" data-l1="広々した">spacious</span></span>. On the <span class="l1-word" data-l1="机">desk</span> there would be a <span class="l1-word" data-l1="小さい">small</span> <span class="l1-word" data-l1="植物">plant</span>.</div></div></div>
+<div class="question-card"><p class="question-text"><span class="l1-word" data-l1="誰">Who</span> lives with you in your dream <span class="l1-word" data-l1="家">home</span>?</p>
+<p class="follow-ups"><b><span class="l1-word" data-l1="行く">Go</span> further:</b> <span class="l1-word" data-l1="どう">How</span> long <span class="l1-word" data-l1="持つ">have</span> you known them?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal <span class="l1-word" data-l1="答える">Answer</span></button>
+<div class="model-answer"><div class="answer-label">Possible <span class="l1-word" data-l1="答える">answer</span></div><div class="answer-text">My <span class="l1-word" data-l1="家族">family</span> and one older <span class="l1-word" data-l1="犬">dog</span>. I <span class="l1-word" data-l1="持つ">have</span> known my best <span class="l1-word" data-l1="友達">friend</span> since <span class="l1-word" data-l1="最初">first</span> <span class="l1-word" data-l1="年">year</span>, and she lives nearby.</div></div></div>
+<div class="question-card"><p class="question-text"><span class="l1-word" data-l1="何">What</span> has changed in your life <span class="l1-word" data-l1="なぜなら">because</span> of the <span class="l1-word" data-l1="人々">people</span> you live with?</p>
+<p class="follow-ups"><b><span class="l1-word" data-l1="行く">Go</span> further:</b> <span class="l1-word" data-l1="何">What</span> <span class="l1-word" data-l1="持つ">have</span> they taught you?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal <span class="l1-word" data-l1="答える">Answer</span></button>
+<div class="model-answer"><div class="answer-label">Possible <span class="l1-word" data-l1="答える">answer</span></div><div class="answer-text">I <span class="l1-word" data-l1="持つ">have</span> become more <span class="vocab-word" data-def="able to wait calmly"><span class="l1-word" data-l1="忍耐強い">patient</span></span>. My <span class="l1-word" data-l1="姉／妹">sister</span> taught me to <span class="l1-word" data-l1="待つ">wait</span> <span class="l1-word" data-l1="前に">before</span> I <span class="l1-word" data-l1="答える">answer</span>.</div></div></div>
+</div></section><section class="slide" data-slide="7" style="background-image:url('https://images.pexels.com/photos/7801145/pexels-photo-7801145.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Slide Three</span>
+<h2><span class="l1-word" data-l1="何">What</span> Can You <span class="l1-word" data-l1="する">Do</span> There?</h2>
+<p class="small">Use modals. Talk about activities inside and outside.</p>
+<div class="question-card"><p class="question-text"><span class="l1-word" data-l1="何">What</span> can you <span class="l1-word" data-l1="する">do</span> in your dream <span class="l1-word" data-l1="家">home</span> that you cannot <span class="l1-word" data-l1="する">do</span> now?</p>
+<p class="follow-ups"><b><span class="l1-word" data-l1="行く">Go</span> further:</b> <span class="l1-word" data-l1="誰">Who</span> would you invite there <span class="l1-word" data-l1="最初">first</span>?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal <span class="l1-word" data-l1="答える">Answer</span></button>
+<div class="model-answer"><div class="answer-label">Possible <span class="l1-word" data-l1="答える">answer</span></div><div class="answer-text">I can swim in the <span class="l1-word" data-l1="庭">garden</span> pool whenever I <span class="l1-word" data-l1="欲しい">want</span>. I would invite my whole <span class="l1-word" data-l1="部活">club</span>.</div></div></div>
+<div class="question-card"><p class="question-text"><span class="l1-word" data-l1="何">What</span> could <span class="l1-word" data-l1="行く">go</span> wrong in this perfect <span class="l1-word" data-l1="場所">place</span>?</p>
+<p class="follow-ups"><b><span class="l1-word" data-l1="行く">Go</span> further:</b> <span class="l1-word" data-l1="どう">How</span> would you <span class="l1-word" data-l1="直す">fix</span> it?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal <span class="l1-word" data-l1="答える">Answer</span></button>
+<div class="model-answer"><div class="answer-label">Possible <span class="l1-word" data-l1="答える">answer</span></div><div class="answer-text">The <span class="l1-word" data-l1="庭">garden</span> would <span class="l1-word" data-l1="必要">need</span> too much <span class="l1-word" data-l1="仕事">work</span>. I would <span class="l1-word" data-l1="聞く">ask</span> my <span class="l1-word" data-l1="家族">family</span> to <span class="l1-word" data-l1="手伝う">help</span> and <span class="l1-word" data-l1="続ける">keep</span> one <span class="l1-word" data-l1="小さい">small</span> <span class="l1-word" data-l1="花">flower</span> <span class="l1-word" data-l1="ベッド">bed</span> only.</div></div></div>
+</div></section><section class="slide" data-slide="8" style="background-image:url('https://images.pexels.com/photos/8761336/pexels-photo-8761336.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge"><span class="l1-word" data-l1="文">Sentence</span> <span class="l1-word" data-l1="ゲーム">Game</span></span>
+<h2>Rebuild the Talk</h2>
+<p class="small">Put the sentences in order. <span class="l1-word" data-l1="次に">Then</span> <span class="l1-word" data-l1="言う">say</span> them with your own details.</p>
+<div class="reorder-row"><p class="small">&#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679;</p><div class="token-row" id="tokens-0">
+<button class="token" onclick="appendToken(this,0)">mountains</button>
+<button class="token" onclick="appendToken(this,0)">the</button>
+<button class="token" onclick="appendToken(this,0)">in</button>
+<button class="token" onclick="appendToken(this,0)">My</button>
+<button class="token" onclick="appendToken(this,0)">is</button>
+<button class="token" onclick="appendToken(this,0)"><span class="l1-word" data-l1="家">home</span></button>
+<button class="token" onclick="appendToken(this,0)">dream</button>
+</div><div class="reorder-target" id="tgt-0" data-answer="My dream home is in the mountains"></div>
+<button class="check-btn" onclick="checkRow(0)"><span class="l1-word" data-l1="確認する">Check</span></button> <button class="check-btn" onclick="resetRow(0)">Reset</button></div>
+<div class="reorder-row"><p class="small">&#9679; &#9679; &#9679; &#9679; &#9679;</p><div class="token-row" id="tokens-1">
+<button class="token" onclick="appendToken(this,1)">are</button>
+<button class="token" onclick="appendToken(this,1)">walls</button>
+<button class="token" onclick="appendToken(this,1)">blue</button>
+<button class="token" onclick="appendToken(this,1)">The</button>
+<button class="token" onclick="appendToken(this,1)">painted</button>
+</div><div class="reorder-target" id="tgt-1" data-answer="The walls are painted blue"></div>
+<button class="check-btn" onclick="checkRow(1)"><span class="l1-word" data-l1="確認する">Check</span></button> <button class="check-btn" onclick="resetRow(1)">Reset</button></div>
+<div class="reorder-row"><p class="small">&#9679; &#9679; &#9679; &#9679; &#9679; &#9679;</p><div class="token-row" id="tokens-2">
+<button class="token" onclick="appendToken(this,2)">the</button>
+<button class="token" onclick="appendToken(this,2)">pool</button>
+<button class="token" onclick="appendToken(this,2)">You</button>
+<button class="token" onclick="appendToken(this,2)">can</button>
+<button class="token" onclick="appendToken(this,2)">swim</button>
+<button class="token" onclick="appendToken(this,2)">in</button>
+</div><div class="reorder-target" id="tgt-2" data-answer="You can swim in the pool"></div>
+<button class="check-btn" onclick="checkRow(2)"><span class="l1-word" data-l1="確認する">Check</span></button> <button class="check-btn" onclick="resetRow(2)">Reset</button></div>
+<div class="reorder-row"><p class="small">&#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679;</p><div class="token-row" id="tokens-3">
+<button class="token" onclick="appendToken(this,3)"><span class="l1-word" data-l1="持つ">have</span></button>
+<button class="token" onclick="appendToken(this,3)">here</button>
+<button class="token" onclick="appendToken(this,3)">for</button>
+<button class="token" onclick="appendToken(this,3)">lived</button>
+<button class="token" onclick="appendToken(this,3)">years</button>
+<button class="token" onclick="appendToken(this,3)">I</button>
+<button class="token" onclick="appendToken(this,3)">two</button>
+</div><div class="reorder-target" id="tgt-3" data-answer="I have lived here for two years"></div>
+<button class="check-btn" onclick="checkRow(3)"><span class="l1-word" data-l1="確認する">Check</span></button> <button class="check-btn" onclick="resetRow(3)">Reset</button></div>
+</div></section><section class="slide" data-slide="9" style="background-image:url('https://images.pexels.com/photos/5940846/pexels-photo-5940846.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Challenge</span>
+<h2>Two Minutes</h2>
+<p class="small">Four slides, one <span class="l1-word" data-l1="分">minute</span> each at most. <span class="l1-word" data-l1="する">Do</span> not <span class="l1-word" data-l1="読む">read</span> your notes.</p>
+<div class="question-card"><p class="question-text"><span class="l1-word" data-l1="どちら">Which</span> slide will <span class="l1-word" data-l1="取る">take</span> you the longest?</p>
+<p class="follow-ups"><b><span class="l1-word" data-l1="行く">Go</span> further:</b> <span class="l1-word" data-l1="何">What</span> will you <span class="l1-word" data-l1="切る">cut</span> <span class="l1-word" data-l1="もし">if</span> you <span class="l1-word" data-l1="走る">run</span> over <span class="l1-word" data-l1="時間">time</span>?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal <span class="l1-word" data-l1="答える">Answer</span></button>
+<div class="model-answer"><div class="answer-label">Possible <span class="l1-word" data-l1="答える">answer</span></div><div class="answer-text">Slide two, <span class="l1-word" data-l1="なぜなら">because</span> I <span class="l1-word" data-l1="大好き">love</span> describing rooms. I will <span class="l1-word" data-l1="切る">cut</span> the furniture list.</div></div></div>
+<div class="question-card"><p class="question-text"><span class="l1-word" data-l1="どう">How</span> will you end the talk?</p>
+<p class="follow-ups"><b><span class="l1-word" data-l1="行く">Go</span> further:</b> <span class="l1-word" data-l1="何">What</span> <span class="l1-word" data-l1="質問">question</span> will you leave the <span class="l1-word" data-l1="授業">class</span> with?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal <span class="l1-word" data-l1="答える">Answer</span></button>
+<div class="model-answer"><div class="answer-label">Possible <span class="l1-word" data-l1="答える">answer</span></div><div class="answer-text">I will <span class="l1-word" data-l1="聞く">ask</span> <span class="l1-word" data-l1="どこ">where</span> they would build their dream <span class="l1-word" data-l1="家">home</span> <span class="l1-word" data-l1="もし">if</span> <span class="l1-word" data-l1="お金">money</span> did not matter.</div></div></div>
+</div></section><section class="slide" data-slide="10" style="background-image:url('https://images.pexels.com/photos/1116302/pexels-photo-1116302.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Compliment Circle</span>
+<h2><span class="l1-word" data-l1="聞く">Listen</span> and Respond</h2>
+<p class="small"><span class="l1-word" data-l1="後で">After</span> each talk, <span class="l1-word" data-l1="あげる">give</span> one specific compliment. No vague praise.</p>
+<div class="question-card"><p class="question-text"><span class="l1-word" data-l1="何">What</span> makes a compliment <span class="l1-word" data-l1="感じる">feel</span> real rather than polite?</p>
+<p class="follow-ups"><b><span class="l1-word" data-l1="行く">Go</span> further:</b> <span class="l1-word" data-l1="あげる">Give</span> one you received this <span class="l1-word" data-l1="年">year</span>.</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal <span class="l1-word" data-l1="答える">Answer</span></button>
+<div class="model-answer"><div class="answer-label">Possible <span class="l1-word" data-l1="答える">answer</span></div><div class="answer-text">Naming the exact <span class="l1-word" data-l1="もの">thing</span>. My <span class="l1-word" data-l1="先生">teacher</span> said my <span class="l1-word" data-l1="話">story</span> had a <span class="l1-word" data-l1="良い">good</span> <span class="l1-word" data-l1="最後">last</span> line, and I remembered it.</div></div></div>
+<div class="question-card"><p class="question-text"><span class="l1-word" data-l1="何">What</span> would you <span class="l1-word" data-l1="言う">say</span> <span class="l1-word" data-l1="もし">if</span> a classmate forgot half their talk?</p>
+<p class="follow-ups"><b><span class="l1-word" data-l1="行く">Go</span> further:</b> <span class="l1-word" data-l1="どちら">Which</span> words <span class="l1-word" data-l1="手伝う">help</span> them <span class="l1-word" data-l1="試す">try</span> <span class="l1-word" data-l1="再び">again</span>?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal <span class="l1-word" data-l1="答える">Answer</span></button>
+<div class="model-answer"><div class="answer-label">Possible <span class="l1-word" data-l1="答える">answer</span></div><div class="answer-text">I would <span class="l1-word" data-l1="言う">say</span> the <span class="l1-word" data-l1="絵">picture</span> part was <span class="l1-word" data-l1="明確な">clear</span>. <span class="l1-word" data-l1="次に">Then</span> I would <span class="l1-word" data-l1="聞く">ask</span> about the part they skipped.</div></div></div>
+<div class="question-card"><p class="question-text"><span class="l1-word" data-l1="何">What</span> did you <span class="l1-word" data-l1="学ぶ">learn</span> about a classmate from their dream <span class="l1-word" data-l1="家">home</span>?</p>
+<p class="follow-ups"><b><span class="l1-word" data-l1="行く">Go</span> further:</b> <span class="l1-word" data-l1="何">What</span> surprised you?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal <span class="l1-word" data-l1="答える">Answer</span></button>
+<div class="model-answer"><div class="answer-label">Possible <span class="l1-word" data-l1="答える">answer</span></div><div class="answer-text">That my <span class="l1-word" data-l1="静かな">quiet</span> <span class="l1-word" data-l1="友達">friend</span> wants a huge <span class="l1-word" data-l1="台所">kitchen</span>. I had no <span class="l1-word" data-l1="考え">idea</span> she loved cooking.</div></div></div>
+</div></section><section class="slide" data-slide="11" style="background-image:url('https://images.pexels.com/photos/14890717/pexels-photo-14890717.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Wrap-Up</span>
+<h2>One <span class="l1-word" data-l1="年">Year</span> of Speaking</h2>
+<p class="small">You described a <span class="l1-word" data-l1="絵">picture</span>, reported a <span class="l1-word" data-l1="メッセージ">message</span>, explained a process, and gave a talk. <span class="l1-word" data-l1="続ける">Keep</span> going.</p>
+<div class="question-card"><p class="question-text"><span class="l1-word" data-l1="どちら">Which</span> deck from this <span class="l1-word" data-l1="年">year</span> changed <span class="l1-word" data-l1="どう">how</span> you <span class="l1-word" data-l1="話す">speak</span>?</p>
+<p class="follow-ups"><b><span class="l1-word" data-l1="行く">Go</span> further:</b> <span class="l1-word" data-l1="何">What</span> will you <span class="l1-word" data-l1="取る">take</span> into <span class="l1-word" data-l1="次の">next</span> <span class="l1-word" data-l1="年">year</span>?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal <span class="l1-word" data-l1="答える">Answer</span></button>
+<div class="model-answer"><div class="answer-label">Possible <span class="l1-word" data-l1="答える">answer</span></div><div class="answer-text">The <span class="l1-word" data-l1="話">story</span> deck. I <span class="l1-word" data-l1="まだ">still</span> <span class="l1-word" data-l1="見る">look</span> for <span class="l1-word" data-l1="小さい">small</span> details <span class="l1-word" data-l1="前に">before</span> I <span class="l1-word" data-l1="説明する">describe</span> anything.</div></div></div>
+</div></section>
+<div class="nav"><button class="tool" id="l1Btn" onclick="toggleL1()" aria-label="Toggle Japanese word translations">L1</button>
+<button onclick="prev()" aria-label="Previous slide">&#8592;</button>
+<span class="counter" id="counter">1 / 12</span>
+<button onclick="next()" aria-label="Next slide">&#8594;</button>
+<button class="tool" onclick="cycleTheme()" aria-label="Change theme">Theme</button>
+</div>
+<script>
+var KEY='u11-year-end-presentation';
+
+var slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));
+var idx=0;
+var THEMES=[
+ ['#0a1628','10,22,40','#22d3ee','34,211,238','#a78bfa','167,139,250','#f1f5f9','#cbd5e1'],
+ ['#160c1f','22,12,31','#f472b6','244,114,182','#c4b5fd','196,181,253','#fdf2f8','#e9d5ff'],
+ ['#071a16','7,26,22','#34d399','52,211,153','#fbbf24','251,191,36','#ecfdf5','#a7f3d0'],
+ ['#1a1005','26,16,5','#fbbf24','251,191,36','#fb7185','251,113,133','#fffbeb','#fde68a'],
+ ['#0d1024','13,16,36','#818cf8','129,140,248','#67e8f9','103,232,249','#eef2ff','#c7d2fe'],
+ ['#1a0a14','26,10,20','#fb7185','251,113,133','#fda4af','253,164,175','#fff1f2','#fecdd3']
+];
+var vars=['--bg','--bg-rgb','--accent','--accent-rgb','--accent2','--accent2-rgb','--text','--text-dim'];
+var theme=0;
+function applyTheme(n){theme=n%THEMES.length;THEMES[theme].forEach(function(v,i){document.documentElement.style.setProperty(vars[i],v)});try{localStorage.setItem(KEY+'-theme',theme)}catch(e){}}
+function cycleTheme(){applyTheme(theme+1)}
+var actx=null;
+function ensureAudio(){if(!actx){try{actx=new (window.AudioContext||window.webkitAudioContext)()}catch(e){}}}
+function tone(f,d,type,g){if(!actx)return;var o=actx.createOscillator(),v=actx.createGain();o.type=type||'sine';o.frequency.value=f;v.gain.setValueAtTime(g||.05,actx.currentTime);v.gain.exponentialRampToValueAtTime(.001,actx.currentTime+d);o.connect(v);v.connect(actx.destination);o.start();o.stop(actx.currentTime+d)}
+function swish(){ensureAudio();tone(440,.12,'sine',.035)}
+function ding(){ensureAudio();tone(880,.18,'sine',.06);setTimeout(function(){tone(1320,.22,'sine',.04)},80)}
+function show(n){n=Math.max(0,Math.min(slides.length-1,n));slides[idx].classList.remove('active');idx=n;slides[idx].classList.add('active');document.getElementById('counter').textContent=(idx+1)+' / '+slides.length;document.getElementById('progressBar').style.width=((idx+1)/slides.length*100)+'%';slides[idx].scrollTop=0;swish();try{localStorage.setItem(KEY+'-pos',idx)}catch(e){}}
+function next(){show(idx+1)}
+function prev(){show(idx-1)}
+function revealAnswer(b){var a=b.nextElementSibling;a.classList.toggle('open');b.textContent=a.classList.contains('open')?'Hide Answer':'Reveal Answer';ding()}
+function toggleMarkComplete(b){b.classList.toggle('done');var done=b.classList.contains('done');b.textContent=done?'Completed':'Mark Complete';try{localStorage.setItem(KEY+'-done',done?'1':'0')}catch(e){}if(ding)ding()}
+var sel=null;
+function pickMatch(el){if(el.classList.contains('done'))return;if(!sel){sel=el;el.classList.add('selected');return}if(el.dataset.match===sel.dataset.match){el.classList.add('done');sel.classList.add('done');ding()}else{sel.classList.remove('selected');tone(180,.15,'square',.03)}sel=null}
+function appendToken(el,row){if(el.classList.contains('used'))return;el.classList.add('used');var t=document.querySelector('#tgt-'+row);t.textContent+=(t.textContent?' ':'')+el.textContent.trim();tone(660,.08,'sine',.03)}
+function resetRow(row){document.querySelectorAll('#tokens-'+row+' .token').forEach(function(b){b.classList.remove('used')});document.getElementById('tgt-'+row).textContent=''}
+function checkRow(row){var t=document.getElementById('tgt-'+row);var want=t.getAttribute('data-answer').toLowerCase().replace(/[^a-z0-9 ]/g,'');var got=t.textContent.toLowerCase().replace(/[^a-z0-9 ]/g,'');if(got===want){t.style.color='var(--green)';ding()}else{t.style.color='var(--red)';tone(180,.18,'square',.03)}}
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next()}if(e.key==='ArrowLeft'){e.preventDefault();prev()}});
+try{var p=parseInt(localStorage.getItem(KEY+'-pos')||'0',10);if(!isNaN(p)&&p<slides.length){slides[idx].classList.remove('active');idx=p;slides[idx].classList.add('active');document.getElementById('counter').textContent=(idx+1)+' / '+slides.length;document.getElementById('progressBar').style.width=((idx+1)/slides.length*100)+'%'}var t=parseInt(localStorage.getItem(KEY+'-theme')||'0',10);if(!isNaN(t))applyTheme(t);if(localStorage.getItem(KEY+'-done')==='1'){var m=document.getElementById('markCompleteBtn');if(m){m.classList.add('done');m.textContent='Completed'}}}catch(e){}
+
+</script>
+<script>
+
+function toggleL1(){document.body.classList.toggle('show-l1');var on=document.body.classList.contains('show-l1');var b=document.getElementById('l1Btn');if(b){b.textContent=on?'L1 ON':'L1';b.style.color=on?'#fbbf24':''}try{localStorage.setItem(location.pathname+'-l1',on?'1':'0')}catch(e){}}
+try{if(localStorage.getItem(location.pathname+'-l1')==='1')document.body.classList.add('show-l1')}catch(e){}
+
+</script>
+</body>
+</html>
