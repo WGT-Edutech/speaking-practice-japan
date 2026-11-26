@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speaking Practice for Japanese Teens - Summer Vacation — Present Perfect Continuous</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #1a0a14;
+  --rose: #fb7185;
+  --pink: #f472b6;
+  --lavender: #c4b5fd;
+  --coral: #fda4af;
+  --green: #34d399;
+  --text: #fce7f3;
+  --text-dim: #e9d5ff;
+  --b1-blue: #81d4fa;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.7;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(251,113,133,.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(244,114,182,.06) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(196,181,253,.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.slide {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--bg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 3vh 5vw 10vh;
+  overflow-y: auto;
+}
+.slide::-webkit-scrollbar { width: 0; background: transparent; }
+.slide { scrollbar-width: none; -ms-overflow-style: none; }
+.slide.active { opacity: 1; pointer-events: auto; z-index: 2; }
+.slide:not(.active) { z-index: 0; }
+
+.slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(26,10,20,.92) 0%,
+    rgba(26,10,20,.65) 40%,
+    rgba(26,10,20,.25) 100%);
+  z-index: 0;
+}
+
+.slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at top left, rgba(251,113,133,.12) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom right, rgba(196,181,253,.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  width: min(80vw, 1100px);
+  max-width: 80vw;
+  background: linear-gradient(145deg,
+    rgba(26,10,20,.88) 0%,
+    rgba(40,15,30,.8) 50%,
+    rgba(26,10,20,.88) 100%);
+  border: 1px solid rgba(251,113,133,.35);
+  box-shadow:
+    0 0 30px rgba(251,113,133,.2),
+    0 0 60px rgba(244,114,182,.08),
+    inset 0 1px 0 rgba(255,255,255,.05);
+  border-radius: 20px;
+  padding: 2.8em 3.2em;
+  backdrop-filter: blur(12px);
+  margin: auto 0;
+}
+
+@media (min-width: 1600px) { .content { max-width: 60vw; width: min(60vw, 1100px); } }
+@media (max-width: 768px) { .content { max-width: 92vw; padding: 1.5em 1.8em; } }
+
+/* Progress bar */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--rose), var(--pink), var(--lavender));
+  z-index: 200;
+  transition: width .4s ease;
+  box-shadow: 0 0 10px rgba(251,113,133,.5);
+}
+
+/* Navigation */
+.nav {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1.2em;
+  z-index: 200;
+  background: rgba(26,10,20,.9);
+  border: 1px solid rgba(251,113,133,.3);
+  border-radius: 40px;
+  padding: 12px 28px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0,0,0,.3);
+}
+.nav button {
+  background: none;
+  border: 1px solid rgba(251,113,133,.4);
+  color: var(--rose);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all .25s;
+  min-width: 48px;
+  min-height: 48px;
+  font-weight: 500;
+}
+.nav button:hover {
+  background: rgba(251,113,133,.15);
+  box-shadow: 0 0 20px rgba(251,113,133,.25);
+  transform: translateY(-1px);
+}
+.nav .slide-counter {
+  font-family: 'Inter', monospace;
+  color: var(--text-dim);
+  font-size: .85rem;
+  min-width: 60px;
+  text-align: center;
+  letter-spacing: .05em;
+}
+
+/* Typography */
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  background: linear-gradient(135deg, var(--rose) 0%, var(--pink) 50%, var(--lavender) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 25px rgba(251,113,133,.4));
+  margin-bottom: .4em;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+}
+h2 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  color: var(--rose);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: .6em;
+  text-shadow: 0 0 15px rgba(251,113,133,.3);
+}
+h3 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: var(--pink);
+  margin: 1em 0 .5em;
+}
+p, li { margin-bottom: .5em; }
+.subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--text-dim);
+  margin-top: -.2em;
+  font-weight: 400;
+}
+
+/* Section badges */
+.section-badge {
+  display: inline-block;
+  font-size: .7rem;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin-bottom: .8em;
+}
+.badge-green { background: rgba(52,211,153,.12); color: var(--green); border: 1px solid rgba(52,211,153,.35); }
+.badge-coral { background: rgba(253,164,175,.12); color: var(--coral); border: 1px solid rgba(253,164,175,.35); }
+.badge-pink { background: rgba(244,114,182,.12); color: var(--pink); border: 1px solid rgba(244,114,182,.35); }
+.badge-rose { background: rgba(251,113,133,.12); color: var(--rose); border: 1px solid rgba(251,113,133,.35); }
+.badge-blue { background: rgba(129,212,250,.12); color: var(--b1-blue); border: 1px solid rgba(129,212,250,.35); }
+.badge-lavender { background: rgba(196,181,253,.12); color: var(--lavender); border: 1px solid rgba(196,181,253,.35); }
+
+/* Question cards */
+.question-card {
+  background: linear-gradient(135deg, rgba(251,113,133,.06), rgba(244,114,182,.04));
+  border: 1px solid rgba(251,113,133,.25);
+  border-radius: 14px;
+  padding: 1.2em 1.5em;
+  margin: .8em 0;
+  transition: all .25s;
+  position: relative;
+  overflow: hidden;
+}
+.question-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--rose), var(--pink));
+  border-radius: 4px 0 0 4px;
+}
+.question-card:hover {
+  border-color: rgba(251,113,133,.4);
+  box-shadow: 0 4px 20px rgba(251,113,133,.1);
+  transform: translateX(4px);
+}
+.question-card .question-text {
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: .4em;
+}
+.follow-ups {
+  font-size: .85rem;
+  color: var(--text-dim);
+  font-style: italic;
+  margin-top: .4em;
+  padding-left: 1em;
+  border-left: 2px solid rgba(251,113,133,.2);
+}
+
+/* Picture description box */
+.pic-desc-box {
+  background: linear-gradient(135deg, rgba(251,113,133,.08), rgba(196,181,253,.06));
+  border: 2px solid rgba(251,113,133,.35);
+  border-radius: 16px;
+  padding: 1.5em;
+  margin: 1em 0;
+  text-align: center;
+}
+.pic-desc-box .pic-img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1em;
+  box-shadow: 0 4px 20px rgba(0,0,0,.3);
+}
+.pic-desc-box .pic-prompt {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2rem;
+  color: var(--rose);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: .5em;
+}
+.pic-desc-box .pic-question {
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: .5em;
+}
+
+/* Vocab word tooltips */
+.vocab-word {
+  border-bottom: 2px dotted var(--b1-blue);
+  cursor: pointer;
+  position: relative;
+  color: var(--text);
+  transition: color .2s;
+}
+.vocab-word:hover { color: var(--b1-blue); }
+.vocab-tooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(26,10,20,.95);
+  border: 1px solid var(--b1-blue);
+  border-radius: 10px;
+  padding: .6em .9em;
+  min-width: 220px;
+  max-width: 300px;
+  z-index: 100;
+  box-shadow: 0 0 15px rgba(129,212,250,.3);
+}
+.vocab-tooltip .level-badge {
+  display: inline-block;
+  font-size: .65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(129,212,250,.2);
+  color: var(--b1-blue);
+  margin-bottom: .3em;
+}
+.vocab-tooltip .def-text {
+  font-size: .85rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+.vocab-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: var(--b1-blue) transparent transparent transparent;
+}
+.vocab-word.active .vocab-tooltip { display: block; }
+
+/* Model answer */
+.model-answer {
+  background: rgba(52,211,153,.06);
+  border: 1px solid rgba(52,211,153,.3);
+  border-radius: 12px;
+  padding: 1.2em 1.5em;
+  margin: .8em 0;
+}
+.model-answer .answer-label {
+  font-size: .75rem;
+  color: var(--green);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: .5em;
+}
+.model-answer .answer-text { color: var(--text); line-height: 1.8; }
+.model-answer.hidden-answer { display: none; }
+
+/* Reveal button */
+.reveal-btn {
+  display: inline-block;
+  margin-top: .8em;
+  background: linear-gradient(135deg, rgba(52,211,153,.12), rgba(251,113,133,.12));
+  border: 1px solid rgba(52,211,153,.4);
+  color: var(--green);
+  font-family: 'Inter', sans-serif;
+  font-size: .95rem;
+  padding: 12px 28px;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all .25s;
+  min-width: 48px;
+  min-height: 48px;
+  font-weight: 600;
+}
+.reveal-btn:hover {
+  background: rgba(52,211,153,.2);
+  box-shadow: 0 0 20px rgba(52,211,153,.25);
+  transform: translateY(-2px);
+}
+.reveal-btn:active { transform: translateY(0) scale(.97); }
+.reveal-btn.revealed {
+  background: linear-gradient(135deg, rgba(52,211,153,.25), rgba(168,224,99,.15));
+  border-color: rgba(168,224,99,.6);
+  box-shadow: 0 0 25px rgba(168,224,99,.3);
+}
+
+/* Grammar boxes */
+.grammar-box {
+  background: linear-gradient(135deg, rgba(129,212,250,.06), rgba(251,113,133,.06));
+  border: 2px solid rgba(129,212,250,.3);
+  border-radius: 16px;
+  padding: 1.4em 1.8em;
+  margin: 1em 0;
+  position: relative;
+  overflow: hidden;
+}
+.grammar-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(129,212,250,.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+.grammar-box .rule-label {
+  font-weight: 700;
+  color: var(--b1-blue);
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: .6em;
+}
+.grammar-box .rule-formula {
+  font-family: 'Inter', monospace;
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  color: var(--pink);
+  font-weight: 700;
+  margin-bottom: .4em;
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: .6em;
+  margin: 1em 0;
+  padding-left: 1.8em;
+  border-left: 3px solid;
+  border-image: linear-gradient(180deg, var(--rose), var(--lavender)) 1;
+}
+.timeline-item {
+  position: relative;
+  padding-left: 1.2em;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2.05em;
+  top: .55em;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--rose);
+  box-shadow: 0 0 12px rgba(251,113,133,.5);
+  border: 2px solid var(--bg);
+}
+.timeline-item .time-text {
+  font-weight: 700;
+  color: var(--rose);
+  font-size: .9rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.timeline-item .event-text {
+  color: var(--text);
+  font-size: 1.05em;
+}
+
+/* Speaking task box */
+.task-box {
+  background: linear-gradient(135deg, rgba(253,164,175,.08), rgba(251,113,133,.06));
+  border: 2px solid rgba(253,164,175,.35);
+  border-radius: 16px;
+  padding: 1.4em 1.8em;
+  margin: 1em 0;
+}
+.task-box .task-title {
+  font-weight: 700;
+  color: var(--coral);
+  font-size: 1.2rem;
+  margin-bottom: .6em;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.task-box .task-instruction { color: var(--text); margin-bottom: .6em; }
+
+/* Match Game */
+.match-game {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 1em;
+}
+.match-game .match-columns {
+  display: flex;
+  gap: 1.5em;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.match-game .match-col {
+  display: flex;
+  flex-direction: column;
+  gap: .6em;
+  min-width: 220px;
+}
+.match-game .match-btn {
+  background: rgba(251,113,133,.08);
+  border: 1.5px solid rgba(251,113,133,.3);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: .95rem;
+  padding: .8em 1.1em;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all .2s;
+  text-align: left;
+}
+.match-game .match-btn:hover {
+  background: rgba(251,113,133,.18);
+  box-shadow: 0 4px 15px rgba(251,113,133,.15);
+  transform: translateY(-2px);
+}
+.match-game .match-btn.selected {
+  border-color: var(--rose);
+  background: rgba(251,113,133,.2);
+  box-shadow: 0 0 15px rgba(251,113,133,.25);
+}
+.match-game .match-btn.matched {
+  border-color: var(--green);
+  background: rgba(52,211,153,.15);
+  color: var(--green);
+  cursor: default;
+}
+.match-game .match-btn.wrong {
+  border-color: #f87171;
+  background: rgba(248,113,113,.15);
+  animation: shake .3s ease;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+}
+.match-game .match-status {
+  text-align: center;
+  font-size: .9rem;
+  color: var(--text-dim);
+  min-height: 1.5em;
+}
+.win-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(26,10,20,.75);
+  backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.win-overlay.show { display: flex; }
+.win-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  background: linear-gradient(135deg, var(--green), var(--b1-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 30px rgba(52,211,153,.5));
+  animation: popIn .5s cubic-bezier(.175,.885,.32,1.275);
+}
+@keyframes popIn {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.sparkle {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: var(--rose);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--pink), 0 0 20px var(--lavender);
+  pointer-events: none;
+  z-index: 600;
+  animation: sparkleFloat 1.2s ease-out forwards;
+}
+@keyframes sparkleFloat {
+  0% { transform: translate(0,0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--sx), var(--sy)) scale(0); opacity: 0; }
+}
+
+/* Reorder words */
+.reorder-game { margin: 1em 0; }
+.reorder-game .reorder-sentence {
+  background: rgba(129,212,250,.04);
+  border: 1px solid rgba(129,212,250,.25);
+  border-radius: 14px;
+  padding: 1.2em 1.4em;
+  margin: .8em 0;
+}
+.reorder-game .reorder-tokens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5em;
+  margin: .6em 0;
+  min-height: 2.5em;
+}
+.reorder-game .reorder-token {
+  background: rgba(251,113,133,.1);
+  border: 1.5px solid rgba(251,113,133,.4);
+  border-radius: 10px;
+  padding: .5em .8em;
+  font-size: .95rem;
+  cursor: pointer;
+  transition: all .2s;
+  color: var(--text);
+  user-select: none;
+}
+.reorder-game .reorder-token:hover {
+  background: rgba(251,113,133,.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(251,113,133,.15);
+}
+.reorder-game .reorder-token.placed {
+  opacity: .25;
+  pointer-events: none;
+  text-decoration: line-through;
+}
+.reorder-game .reorder-slot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5em;
+  min-height: 2.5em;
+  padding: .6em;
+  background: rgba(52,211,153,.04);
+  border: 1px dashed rgba(52,211,153,.3);
+  border-radius: 10px;
+}
+.reorder-game .reorder-slot .reorder-token {
+  background: rgba(52,211,153,.12);
+  border-color: var(--green);
+  cursor: pointer;
+}
+.reorder-game .reorder-slot .reorder-token:hover {
+  background: rgba(52,211,153,.25);
+}
+.reorder-game .reorder-answer {
+  margin-top: .5em;
+  font-size: .9rem;
+  color: var(--green);
+  font-weight: 600;
+}
+.reorder-game .reorder-answer.hidden-answer { display: none; }
+.reorder-game .reorder-btn {
+  background: rgba(251,113,133,.08);
+  border: 1px solid rgba(251,113,133,.35);
+  color: var(--rose);
+  font-family: 'Inter', sans-serif;
+  font-size: .85rem;
+  padding: 8px 16px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all .2s;
+  min-width: 48px;
+  min-height: 48px;
+  margin-right: .6em;
+  margin-top: .5em;
+}
+.reorder-game .reorder-btn:hover {
+  background: rgba(251,113,133,.18);
+  box-shadow: 0 2px 8px rgba(251,113,133,.15);
+}
+.reorder-game .reorder-btn.reset-btn {
+  border-color: rgba(248,113,135,.35);
+  color: #f87171;
+}
+
+/* Theme cycle button */
+.theme-cycle-btn {
+  position: fixed; top: 1em; right: 1em; z-index: 20;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all .3s ease;
+  display: flex; align-items: center; justify-content: center;
+}
+.theme-cycle-btn:hover {
+  background: rgba(255,255,255,0.08);
+  transform: scale(1.1) rotate(30deg);
+  box-shadow: 0 0 20px rgba(251,113,133,.3);
+}
+.theme-icon-fill { fill: var(--rose); transition: fill .3s ease; }
+.theme-label {
+  position: fixed; top: calc(1em + 52px); right: 1em; z-index: 20;
+  font-size: .65rem; color: var(--text-dim); text-transform: uppercase;
+  display: none; letter-spacing: .05em;
+}
+
+/* Mark Complete */
+.mark-complete-btn {
+  background: rgba(52,211,153,.08);
+  border: 1px solid rgba(52,211,153,.35);
+  color: var(--green);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  padding: 12px 28px;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all .25s;
+  font-weight: 600;
+}
+.mark-complete-btn:hover {
+  background: rgba(52,211,153,.18);
+  box-shadow: 0 0 20px rgba(52,211,153,.25);
+  transform: translateY(-2px);
+}
+.mark-complete-btn.completed {
+  background: rgba(52,211,153,.2);
+  border-color: rgba(52,211,153,.6);
+  box-shadow: 0 0 25px rgba(52,211,153,.35);
+}
+.start-prompt {
+  color: var(--text-dim);
+  font-size: .9rem;
+  margin-top: 1em;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: .5; }
+  50% { opacity: 1; }
+}
+.goals-list { list-style: none; padding: 0; }
+.goals-list li {
+  padding: .5em 0 .5em 1.8em;
+  position: relative;
+}
+.goals-list li::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  color: var(--rose);
+  font-weight: 700;
+}
+
+/* Activity cards grid */
+.fun-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1em;
+  margin-top: 1em;
+}
+.fun-card {
+  background: linear-gradient(145deg, rgba(251,113,133,.08), rgba(244,114,182,.04));
+  border: 1px solid rgba(251,113,133,.25);
+  border-radius: 14px;
+  padding: 1.4em 1.2em;
+  text-align: center;
+  transition: all .3s;
+  position: relative;
+  overflow: hidden;
+}
+.fun-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--rose), var(--pink), var(--lavender));
+  border-radius: 3px 3px 0 0;
+}
+.fun-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(251,113,133,.15);
+  border-color: rgba(251,113,133,.4);
+}
+.fun-card .fun-icon {
+  font-size: 2.2rem;
+  margin-bottom: .4em;
+  display: block;
+}
+.fun-card .fun-name {
+  font-weight: 700;
+  color: var(--rose);
+  font-size: 1.15rem;
+  margin-bottom: .3em;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+}
+.fun-card .fun-desc {
+  font-size: .85rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+/* JP hints */
+.jp-hint {
+  font-size: .8rem;
+  color: var(--text-dim);
+  font-style: italic;
+  margin-top: .2em;
+  padding-left: .2em;
+  display: none;
+}
+.jp-hint.visible { display: block; }
+.l1-toggle-btn {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  z-index: 20;
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid rgba(255,255,255,0.1);
+  color: var(--text-dim);
+  font-family: 'Inter', sans-serif;
+  font-size: .7rem;
+  padding: 10px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all .3s ease;
+  min-width: 48px;
+  min-height: 48px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.l1-toggle-btn:hover {
+  background: rgba(255,255,255,0.08);
+  transform: scale(1.05);
+}
+.l1-toggle-btn.active {
+  background: rgba(129,212,250,0.15);
+  border-color: var(--b1-blue);
+  color: var(--b1-blue);
+}
+
+@media (max-width: 768px) {
+  .theme-cycle-btn { top: .7em; right: .7em; }
+  .theme-label { top: calc(.7em + 52px); right: .7em; }
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.4rem; }
+  .nav { bottom: 12px; padding: 10px 20px; gap: .8em; }
+  .nav button { padding: 8px 14px; font-size: .9rem; }
+  .match-game .match-columns { flex-direction: column; align-items: center; }
+}
+
+/* Theme palettes */
+[data-theme="2"] { --bg: #0c1a1a; --rose: #34d399; --pink: #2dd4bf; --lavender: #5eead4; --coral: #6ee7b7; --b1-blue: #67e8f9; }
+[data-theme="3"] { --bg: #1a0f2e; --rose: #a78bfa; --pink: #c4b5fd; --lavender: #ddd6fe; --coral: #c4b5fd; --b1-blue: #a5b4fc; }
+[data-theme="4"] { --bg: #1a1405; --rose: #f59e0b; --pink: #fbbf24; --lavender: #fcd34d; --coral: #fbbf24; --b1-blue: #fde68a; }
+[data-theme="5"] { --bg: #1a0a0f; --rose: #fb7185; --pink: #f472b6; --lavender: #f9a8d4; --coral: #fda4af; --b1-blue: #fbcfe8; }
+[data-theme="6"] { --bg: #06141a; --rose: #22d3ee; --pink: #2dd4bf; --lavender: #a5f3fc; --coral: #67e8f9; --b1-blue: #22d3ee; }
+
+.l1-word{border-bottom:1px dotted #fbbf24;cursor:help;position:relative}
+.l1-word:hover{color:#fbbf24}
+body.show-l1 .l1-word:hover::after{content:attr(data-l1);position:absolute;left:0;bottom:calc(100% + 8px);width:max-content;max-width:300px;white-space:normal;background:#0a1628;border:1px solid #fbbf24;border-radius:8px;padding:7px 10px;font-size:.82rem;color:#fff;z-index:50;box-shadow:0 6px 20px rgba(0,0,0,.55);line-height:1.5}
+body.show-l1 .l1-word{background:rgba(251,191,36,.09)}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar" style="width: 8.3%;"></div>
+
+<!-- SLIDE 1: Title - Beach scene -->
+<section class="slide active" data-slide="0" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1280');">
+  <div class="content" style="text-align:center;">
+    <h1>SUMMER VACATION</h1>
+    <p class="subtitle"><span class="l1-word" data-l1="何">What</span> <span class="l1-word" data-l1="持つ">Have</span> You Been Doing?</p>
+    <p style="color:var(--text-dim); font-size:clamp(.95rem,1.4vw,1.15rem); margin:.5em 0 1.2em; max-width:500px; margin-left:auto; margin-right:auto;">
+      Present Perfect Continuous — A2 <span class="l1-word" data-l1="文法">Grammar</span> &amp; Speaking
+    </p>
+    <div style="display:flex; gap:12px; justify-content:center; margin-top:1.5em;">
+      <button class="mark-complete-btn" id="markCompleteBtn" onclick="toggleMarkComplete(this)">Mark Complete</button>
+    </div>
+    <p class="start-prompt">Press &rarr; or Space to <span class="l1-word" data-l1="始める">start</span></p>
+  </div>
+</section>
+
+<!-- SLIDE 2: Goals - Mountains/nature -->
+<section class="slide" data-slide="1" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1280');">
+  <div class="content">
+    <span class="section-badge badge-rose"><span class="l1-word" data-l1="授業">Lesson</span> Goals</span>
+    <h2><span class="l1-word" data-l1="何">What</span> You Will <span class="l1-word" data-l1="学ぶ">Learn</span></h2>
+    <ul class="goals-list">
+      <li><span class="l1-word" data-l1="理解する">Understand</span> the <span class="vocab-word" onclick="toggleTooltip(this)">difference<em class="vocab-tooltip"><span class="level-badge">A2</span><span class="def-text">違い (chigai) — the <span class="l1-word" data-l1="方法">way</span> two things are not the <span class="l1-word" data-l1="同じ">same</span></span></em></span> between present perfect and present perfect continuous.</li>
+      <li><span class="l1-word" data-l1="学ぶ">Learn</span> <span class="l1-word" data-l1="どう">how</span> to form the present perfect continuous: <strong><span class="l1-word" data-l1="持つ">have</span>/has + been + verb-ing</strong>.</li>
+      <li>Talk about <span class="vocab-word" onclick="toggleTooltip(this)">activities<em class="vocab-tooltip"><span class="level-badge">A2</span><span class="def-text">活動 (katsudou) — things you <span class="l1-word" data-l1="する">do</span></span></em></span> that started in the past and continue now.</li>
+      <li>Use <strong>for</strong> and <strong>since</strong> to talk about <span class="l1-word" data-l1="どう">how</span> long you <span class="l1-word" data-l1="持つ">have</span> been doing something.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SLIDE 3: Grammar Intro - Hourglass/time passing -->
+<section class="slide" data-slide="2" style="background-image:url('https://images.unsplash.com/photo-1501139083538-0139583c060f?w=1280');">
+  <div class="content">
+    <span class="section-badge badge-blue"><span class="l1-word" data-l1="文法">Grammar</span>: Present Perfect Continuous</span>
+    <h2>Actions That Continue Until Now</h2>
+    <div class="grammar-box">
+      <div class="rule-label">Present Perfect Continuous Rule</div>
+      <div class="rule-formula">Subject + <strong><span class="l1-word" data-l1="持つ">have</span>/has + been</strong> + verb-<strong>ing</div>
+      <p style="font-size:.85rem; color:var(--text-dim);">
+        
+      </p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="time-text">June 2020</div>
+        <div class="event-text">Started studying <span class="l1-word" data-l1="英語">English</span></div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-text">July 2022</div>
+        <div class="event-text">Started playing baseball</div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-text">January 2024</div>
+        <div class="event-text">Started watching anime</div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-text">NOW</div>
+        <div class="event-text"><span class="l1-word" data-l1="まだ">Still</span> doing all three!</div>
+      </div>
+    </div>
+    <p style="font-size:.85rem; color:var(--text-dim); margin-top:.5em;">
+      Use this tense to talk about actions that started in the past and are <span class="l1-word" data-l1="まだ">still</span> happening.<br>
+      
+    </p>
+  </div>
+</section>
+
+<!-- SLIDE 4: For vs Since - Calendar/time -->
+<section class="slide" data-slide="3" style="background-image:url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1280');">
+  <div class="content">
+    <span class="section-badge badge-lavender">For vs Since</span>
+    <h2><span class="l1-word" data-l1="どう">How</span> Long <span class="l1-word" data-l1="持つ">Have</span> You Been...?</h2>
+    <div class="grammar-box">
+      <div class="rule-label"><span class="l1-word" data-l1="時間">Time</span> Expressions</div>
+      <div class="rule-formula"><strong>For</strong> + a period of <span class="l1-word" data-l1="時間">time</span> (3 years, 2 months, a <span class="l1-word" data-l1="週">week</span>)</div>
+      <div class="rule-formula"><strong>Since</strong> + a point in <span class="l1-word" data-l1="時間">time</span> (2020, June, <span class="l1-word" data-l1="最後">last</span> summer)</div>
+      <p style="font-size:.85rem; color:var(--text-dim);">
+        
+      </p>
+    </div>
+    <div class="question-card">
+      <p class="question-text">"I <strong><span class="l1-word" data-l1="持つ">have</span> been studying</strong> <span class="l1-word" data-l1="英語">English</span> <strong>for</strong> 4 years."</p>
+      <div class="jp-hint">私は4年間英語を勉強しています。</div>
+    </div>
+    <div class="question-card">
+      <p class="question-text">"She <strong>has been playing</strong> the piano <strong>since</strong> 2019."</p>
+      <div class="jp-hint">彼女は2019年からピアノを弾いています。</div>
+    </div>
+    <div class="question-card">
+      <p class="question-text">"We <strong><span class="l1-word" data-l1="持つ">have</span> been waiting</strong> <strong>for</strong> 30 minutes!"</p>
+      <div class="jp-hint">私たちは30分も待っています！</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: Picture Description 1 - Beach scene -->
+<section class="slide" data-slide="4" style="background-image:url('https://images.unsplash.com/photo-1702396716027-820a5b5c79e8?auto=format&fit=crop&w=1600&q=80');">
+  <div class="content">
+    <span class="section-badge badge-green"><span class="l1-word" data-l1="絵">Picture</span> Description</span>
+    <h2><span class="l1-word" data-l1="説明する">Describe</span> <span class="l1-word" data-l1="何">What</span> You <span class="l1-word" data-l1="見る">See</span></h2>
+    <div class="pic-desc-box">
+      <img class="pic-img" src="https://images.unsplash.com/photo-1702396716027-820a5b5c79e8?auto=format&fit=crop&w=1200&q=80" alt="A crowded sunny beach with golden sand, a blue sea, and people swimming and relaxing on towels" loading="lazy" onerror="this.style.display='none'">
+      <div class="pic-prompt"><span class="l1-word" data-l1="説明する">Describe</span> the scene</div>
+      <div class="pic-question"><span class="l1-word" data-l1="何">What</span> can you <span class="l1-word" data-l1="見る">see</span>? <span class="l1-word" data-l1="何">What</span> season is it? <span class="l1-word" data-l1="どう">How</span> does the <span class="l1-word" data-l1="場所">place</span> <span class="l1-word" data-l1="感じる">feel</span>?</div>
+    </div>
+    <div class="question-card">
+      <p class="question-text"><span class="l1-word" data-l1="説明する">Describe</span> the <span class="l1-word" data-l1="天気">weather</span> and the colours in the <span class="l1-word" data-l1="絵">picture</span>.</p>
+      <div class="follow-ups">Is it <span class="l1-word" data-l1="暑い">hot</span> or <span class="l1-word" data-l1="寒い">cold</span>? <span class="l1-word" data-l1="何">What</span> can you <span class="l1-word" data-l1="見る">see</span> in the background?</div>
+    </div>
+    <button class="reveal-btn" onclick="revealAnswer(this)">Reveal Model <span class="l1-word" data-l1="答える">Answer</span></button>
+    <div class="model-answer hidden-answer">
+      <div class="answer-label">Model <span class="l1-word" data-l1="答える">Answer</span></div>
+      <div class="answer-text">It is a <span class="l1-word" data-l1="暑い">hot</span> summer <span class="l1-word" data-l1="日">day</span> at the beach. The sand is golden and the <span class="l1-word" data-l1="海">sea</span> is blue. There are some <span class="l1-word" data-l1="人々">people</span> swimming in the <span class="l1-word" data-l1="水">water</span> and others are relaxing on towels on the sand. I can <span class="l1-word" data-l1="見る">see</span> a <span class="l1-word" data-l1="明るい">bright</span> red umbrella near the front. The <span class="l1-word" data-l1="空">sky</span> is <span class="l1-word" data-l1="明確な">clear</span> and the <span class="l1-word" data-l1="太陽">sun</span> is shining. It looks <span class="l1-word" data-l1="好き">like</span> a perfect <span class="l1-word" data-l1="日">day</span> for a summer vacation.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: Match Game 1 - Food/activities -->
+<section class="slide" data-slide="5" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1280');">
+  <div class="content">
+    <span class="section-badge badge-pink">Vocab <span class="l1-word" data-l1="ゲーム">Game</span> 1</span>
+    <h2><span class="l1-word" data-l1="試合">Match</span> the Words!</h2>
+    <p style="margin-bottom:1em; color:var(--text-dim);">Click a <span class="l1-word" data-l1="単語">word</span> from Column A, <span class="l1-word" data-l1="次に">then</span> click its meaning from Column B.</p>
+    <div class="match-game" id="matchGame1">
+      <div class="match-columns">
+        <div class="match-col" id="colA1"></div>
+        <div class="match-col" id="colB1"></div>
+      </div>
+      <div class="match-status" id="matchStatus1"></div>
+    </div>
+    <div class="win-overlay" id="winOverlay1">
+      <div class="win-text">Amazing!</div>
+      <button class="reveal-btn" style="margin-top:1.5em;" onclick="closeWin('winOverlay1')">Continue &rarr;</button>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7: Reorder Words 1 - Nature scene -->
+<section class="slide" data-slide="6" style="background-image:url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1280');">
+  <div class="content">
+    <span class="section-badge badge-coral">Reorder the Words</span>
+    <h2>Put the Words in Order!</h2>
+    <p style="margin-bottom:.5em; color:var(--text-dim);">Click words in the right order to <span class="l1-word" data-l1="作る">make</span> a present perfect continuous <span class="l1-word" data-l1="文">sentence</span>.</p>
+    <div class="reorder-game" id="reorderGame1"></div>
+  </div>
+</section>
+
+<!-- SLIDE 8: Picture Description 2 - Student reading/studying -->
+<section class="slide" data-slide="7" style="background-image:url('https://images.unsplash.com/photo-1741699428220-65f37f3fbbcb?w=1280');">
+  <div class="content">
+    <span class="section-badge badge-green"><span class="l1-word" data-l1="絵">Picture</span> Description</span>
+    <h2><span class="l1-word" data-l1="説明する">Describe</span> <span class="l1-word" data-l1="何">What</span> You <span class="l1-word" data-l1="見る">See</span></h2>
+    <div class="pic-desc-box">
+      <img class="pic-img" src="https://images.unsplash.com/photo-1741699428220-65f37f3fbbcb?w=800" alt="Student studying in library with books" loading="lazy" onerror="this.style.display='none'">
+      <div class="pic-prompt"><span class="l1-word" data-l1="説明する">Describe</span> the scene</div>
+      <div class="pic-question"><span class="l1-word" data-l1="どこ">Where</span> is the <span class="l1-word" data-l1="学生">student</span>? <span class="l1-word" data-l1="何">What</span> can you <span class="l1-word" data-l1="見る">see</span> around them?</div>
+    </div>
+    <div class="question-card">
+      <p class="question-text"><span class="l1-word" data-l1="説明する">Describe</span> the <span class="l1-word" data-l1="場所">place</span> and the atmosphere.</p>
+      <div class="follow-ups">Is it <span class="l1-word" data-l1="静かな">quiet</span> or noisy? <span class="l1-word" data-l1="何">What</span> colours can you <span class="l1-word" data-l1="見る">see</span>? <span class="l1-word" data-l1="どう">How</span> does the <span class="l1-word" data-l1="場所">place</span> <span class="l1-word" data-l1="感じる">feel</span>?</div>
+    </div>
+    <button class="reveal-btn" onclick="revealAnswer(this)">Reveal Model <span class="l1-word" data-l1="答える">Answer</span></button>
+    <div class="model-answer hidden-answer">
+      <div class="answer-label">Model <span class="l1-word" data-l1="答える">Answer</span></div>
+      <div class="answer-text">The <span class="l1-word" data-l1="学生">student</span> is in a library. It is a <span class="l1-word" data-l1="静かな">quiet</span> <span class="l1-word" data-l1="場所">place</span> with many books on the shelves. The <span class="l1-word" data-l1="学生">student</span> is sitting at a <span class="l1-word" data-l1="机">desk</span> and reading. The <span class="l1-word" data-l1="部屋">room</span> has <span class="l1-word" data-l1="暖かい">warm</span> lighting and it feels calm and <span class="l1-word" data-l1="静かで穏やかな">peaceful</span>. It is a <span class="l1-word" data-l1="良い">good</span> <span class="l1-word" data-l1="場所">place</span> to <span class="l1-word" data-l1="勉強する">study</span>.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9: Match Game 2 - Friends talking -->
+<section class="slide" data-slide="8" style="background-image:url('https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1280');">
+  <div class="content">
+    <span class="section-badge badge-pink">Vocab <span class="l1-word" data-l1="ゲーム">Game</span> 2</span>
+    <h2><span class="l1-word" data-l1="試合">Match</span> the Words!</h2>
+    <p style="margin-bottom:1em; color:var(--text-dim);">Click a <span class="l1-word" data-l1="単語">word</span> from Column A, <span class="l1-word" data-l1="次に">then</span> click its meaning from Column B.</p>
+    <div class="match-game" id="matchGame2">
+      <div class="match-columns">
+        <div class="match-col" id="colA2"></div>
+        <div class="match-col" id="colB2"></div>
+      </div>
+      <div class="match-status" id="matchStatus2"></div>
+    </div>
+    <div class="win-overlay" id="winOverlay2">
+      <div class="win-text">Fantastic!</div>
+      <button class="reveal-btn" style="margin-top:1.5em;" onclick="closeWin('winOverlay2')">Continue &rarr;</button>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10: Picture Description 3 - Friends walking/talking -->
+<section class="slide" data-slide="9" style="background-image:url('https://images.unsplash.com/photo-1783028345688-af43e20ea6de?auto=format&fit=crop&w=1600&q=80');">
+  <div class="content">
+    <span class="section-badge badge-green"><span class="l1-word" data-l1="絵">Picture</span> Description</span>
+    <h2><span class="l1-word" data-l1="説明する">Describe</span> <span class="l1-word" data-l1="何">What</span> You <span class="l1-word" data-l1="見る">See</span></h2>
+    <div class="pic-desc-box">
+      <img class="pic-img" src="https://images.unsplash.com/photo-1783028345688-af43e20ea6de?auto=format&fit=crop&w=1200&q=80" alt="Three people walking and laughing together on a sunny city bridge" loading="lazy" onerror="this.style.display='none'">
+      <div class="pic-prompt"><span class="l1-word" data-l1="説明する">Describe</span> the scene</div>
+      <div class="pic-question"><span class="l1-word" data-l1="どこ">Where</span> are the <span class="l1-word" data-l1="人々">people</span>? <span class="l1-word" data-l1="何">What</span> is the <span class="l1-word" data-l1="天気">weather</span> <span class="l1-word" data-l1="好き">like</span>?</div>
+    </div>
+    <div class="question-card">
+      <p class="question-text"><span class="l1-word" data-l1="説明する">Describe</span> the <span class="l1-word" data-l1="場所">place</span> and the <span class="l1-word" data-l1="人々">people</span>'s appearance.</p>
+      <div class="follow-ups"><span class="l1-word" data-l1="何">What</span> are they wearing? <span class="l1-word" data-l1="何">What</span> <span class="l1-word" data-l1="時間">time</span> of <span class="l1-word" data-l1="日">day</span> is it? <span class="l1-word" data-l1="何">What</span> season does it <span class="l1-word" data-l1="見る">look</span> <span class="l1-word" data-l1="好き">like</span>?</div>
+    </div>
+    <button class="reveal-btn" onclick="revealAnswer(this)">Reveal Model <span class="l1-word" data-l1="答える">Answer</span></button>
+    <div class="model-answer hidden-answer">
+      <div class="answer-label">Model <span class="l1-word" data-l1="答える">Answer</span></div>
+      <div class="answer-text">The <span class="l1-word" data-l1="人々">people</span> are walking on a bridge in a city. Two of them are walking <span class="l1-word" data-l1="一緒に">together</span> and laughing, and they are wearing light, casual clothes <span class="l1-word" data-l1="なぜなら">because</span> it is a <span class="l1-word" data-l1="暖かい">warm</span> <span class="l1-word" data-l1="日">day</span>. There are <span class="l1-word" data-l1="古い">old</span> buildings and green trees around them. It is daytime and the <span class="l1-word" data-l1="太陽">sun</span> is shining. It looks <span class="l1-word" data-l1="好き">like</span> a nice <span class="l1-word" data-l1="日">day</span> to <span class="l1-word" data-l1="行く">go</span> for a <span class="l1-word" data-l1="散歩">walk</span> with friends.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11: Reorder Words 2 - City scene -->
+<section class="slide" data-slide="10" style="background-image:url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1280');">
+  <div class="content">
+    <span class="section-badge badge-coral">Reorder the Words</span>
+    <h2>More Sentences to Unscramble!</h2>
+    <p style="margin-bottom:.5em; color:var(--text-dim);">Click words in the right order to <span class="l1-word" data-l1="作る">make</span> a present perfect continuous <span class="l1-word" data-l1="文">sentence</span>.</p>
+    <div class="reorder-game" id="reorderGame2"></div>
+  </div>
+</section>
+
+<!-- SLIDE 12: Wrap-Up - Sunset/nature -->
+<section class="slide" data-slide="11" style="background-image:url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1280');">
+  <div class="content">
+    <span class="section-badge badge-green">Wrap-Up</span>
+    <h2>Well Done!</h2>
+    <p style="margin-bottom:1em;"><span class="l1-word" data-l1="今日">Today</span> you learned <span class="l1-word" data-l1="どう">how</span> to use the present perfect continuous to talk about actions that continue until now. Great <span class="l1-word" data-l1="仕事">work</span>!</p>
+    <h3><span class="l1-word" data-l1="宿題">Homework</span></h3>
+    <ul class="goals-list">
+      <li><span class="l1-word" data-l1="書く">Write</span> <strong>5 sentences</strong> about <span class="l1-word" data-l1="何">what</span> you <span class="l1-word" data-l1="持つ">have</span> been doing this summer vacation.</li>
+      <li>Use <strong>for</strong> or <strong>since</strong> in each <span class="l1-word" data-l1="文">sentence</span>.</li>
+      <li><span class="l1-word" data-l1="例">Example</span>: "I <span class="l1-word" data-l1="持つ">have</span> been reading One Piece for 2 months." / "I <span class="l1-word" data-l1="持つ">have</span> been playing baseball since I was 8."</li>
+      <li><span class="l1-word" data-l1="持ってくる">Bring</span> your sentences to the <span class="l1-word" data-l1="次の">next</span> <span class="l1-word" data-l1="授業">lesson</span>.</li>
+    </ul>
+    <div style="text-align:center; margin-top:1.5em;">
+      <button class="mark-complete-btn" id="markCompleteBtn2" onclick="toggleMarkComplete(this)">Mark Complete</button>
+    </div>
+  </div>
+</section>
+
+<!-- L1 toggle button -->
+<div class="l1-toggle-btn" id="l1ToggleBtn" onclick="toggleL1(this)" title="Show Japanese translations" tabindex="0" role="button" aria-label="Toggle Japanese">JP</div>
+
+<!-- Theme cycle button -->
+<div class="theme-cycle-btn" id="themeCycleBtn" title="Click to cycle theme" tabindex="0" role="button" aria-label="Cycle color theme">
+  <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
+    <path class="theme-icon-fill" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.8 0 3.5-0.5 5-1.4-1.8-0.9-3-2.8-3-4.8 0-2.8 2.2-5 5-5 2 0 3.6 1.2 4.4 3C23.3 6.9 18.3 2 12 2z"/>
+  </svg>
+</div>
+<div class="theme-label" id="themeLabel">Classic</div>
+
+<!-- Navigation -->
+<div class="nav"><button class="tool" id="l1Btn" onclick="toggleL1()" aria-label="Toggle Japanese word translations">L1</button>
+  <button id="prevBtn" aria-label="Previous slide">Prev</button>
+  <span class="slide-counter" id="slideCounter">1 / 12</span>
+  <button id="nextBtn" aria-label="Next slide"><span class="l1-word" data-l1="次の">Next</span></button>
+</div>
+
+<script>
+// ========== AUDIO ==========
+let audioCtx = null, reverbNode = null;
+function ensureAudio() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var rate = audioCtx.sampleRate;
+    var length = rate * 1.2;
+    var impulse = audioCtx.createBuffer(2, length, rate);
+    for (var ch = 0; ch < 2; ch++) {
+      var data = impulse.getChannelData(ch);
+      for (var i = 0; i < length; i++) {
+        data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, 2.5);
+      }
+    }
+    reverbNode = audioCtx.createConvolver();
+    reverbNode.buffer = impulse;
+    var reverbGain = audioCtx.createGain();
+    reverbGain.gain.value = 0.4;
+    reverbNode.connect(reverbGain);
+    reverbGain.connect(audioCtx.destination);
+  }
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+}
+function playSwish(direction) {
+  ensureAudio();
+  var now = audioCtx.currentTime;
+  var bufferSize = Math.floor(audioCtx.sampleRate * 0.18);
+  var buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+  var data = buffer.getChannelData(0);
+  for (var i = 0; i < bufferSize; i++) {
+    var env = Math.sin((i / bufferSize) * Math.PI);
+    data[i] = (Math.random() * 2 - 1) * env;
+  }
+  var src = audioCtx.createBufferSource();
+  src.buffer = buffer;
+  var filter = audioCtx.createBiquadFilter();
+  filter.type = 'bandpass';
+  filter.Q.value = 8;
+  if (direction === 'forward') {
+    filter.frequency.setValueAtTime(800, now);
+    filter.frequency.exponentialRampToValueAtTime(4000, now + 0.15);
+  } else {
+    filter.frequency.setValueAtTime(4000, now);
+    filter.frequency.exponentialRampToValueAtTime(800, now + 0.15);
+  }
+  var gain = audioCtx.createGain();
+  gain.gain.setValueAtTime(0, now);
+  gain.gain.linearRampToValueAtTime(0.12, now + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+  var dryGain = audioCtx.createGain();
+  dryGain.gain.value = 0.6;
+  var wetGain = audioCtx.createGain();
+  wetGain.gain.value = 0.4;
+  src.connect(filter);
+  filter.connect(gain);
+  gain.connect(dryGain);
+  gain.connect(wetGain);
+  dryGain.connect(audioCtx.destination);
+  wetGain.connect(reverbNode);
+  src.start(now);
+  src.stop(now + 0.2);
+  var osc = audioCtx.createOscillator();
+  osc.type = 'sine';
+  var oscGain = audioCtx.createGain();
+  if (direction === 'forward') {
+    osc.frequency.setValueAtTime(600, now);
+    osc.frequency.exponentialRampToValueAtTime(1200, now + 0.1);
+  } else {
+    osc.frequency.setValueAtTime(1200, now);
+    osc.frequency.exponentialRampToValueAtTime(600, now + 0.1);
+  }
+  oscGain.gain.setValueAtTime(0, now);
+  oscGain.gain.linearRampToValueAtTime(0.04, now + 0.02);
+  oscGain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+  osc.connect(oscGain);
+  oscGain.connect(audioCtx.destination);
+  osc.start(now);
+  osc.stop(now + 0.15);
+}
+function playDing() {
+  ensureAudio();
+  var now = audioCtx.currentTime;
+  var osc = audioCtx.createOscillator();
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(880, now);
+  var gain = audioCtx.createGain();
+  gain.gain.setValueAtTime(0, now);
+  gain.gain.linearRampToValueAtTime(0.15, now + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start(now);
+  osc.stop(now + 0.4);
+}
+function playWinSound() {
+  ensureAudio();
+  var now = audioCtx.currentTime;
+  var notes = [523.25, 659.25, 783.99, 1046.50];
+  notes.forEach(function(freq, i) {
+    var osc = audioCtx.createOscillator();
+    osc.type = 'sine';
+    osc.frequency.value = freq;
+    var gain = audioCtx.createGain();
+    gain.gain.setValueAtTime(0, now + i * 0.12);
+    gain.gain.linearRampToValueAtTime(0.1, now + i * 0.12 + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.12 + 0.4);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start(now + i * 0.12);
+    osc.stop(now + i * 0.12 + 0.4);
+  });
+}
+function playWrongSound() {
+  ensureAudio();
+  var now = audioCtx.currentTime;
+  var osc = audioCtx.createOscillator();
+  osc.type = 'sawtooth';
+  osc.frequency.setValueAtTime(200, now);
+  osc.frequency.exponentialRampToValueAtTime(100, now + 0.2);
+  var gain = audioCtx.createGain();
+  gain.gain.setValueAtTime(0, now);
+  gain.gain.linearRampToValueAtTime(0.08, now + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start(now);
+  osc.stop(now + 0.25);
+}
+
+// ========== SPARKLES ==========
+function spawnSparkles(x, y) {
+  for (var i = 0; i < 20; i++) {
+    var el = document.createElement('div');
+    el.className = 'sparkle';
+    var angle = Math.random() * Math.PI * 2;
+    var dist = 60 + Math.random() * 120;
+    var sx = Math.cos(angle) * dist + 'px';
+    var sy = Math.sin(angle) * dist + 'px';
+    el.style.cssText = 'left:' + x + 'px;top:' + y + 'px;--sx:' + sx + ';--sy:' + sy + ';background:hsl(' + (Math.random()*60+320) + ',80%,70%)';
+    document.body.appendChild(el);
+    setTimeout(function() { el.remove(); }, 1200);
+  }
+}
+
+// ========== L1 TOGGLE ==========
+var l1Visible = false;
+function toggleL1(btn) {
+  l1Visible = !l1Visible;
+  document.querySelectorAll('.jp-hint').forEach(function(el) {
+    el.classList.toggle('visible', l1Visible);
+  });
+  btn.classList.toggle('active', l1Visible);
+  btn.title = l1Visible ? 'Hide Japanese' : 'Show Japanese translations';
+}
+
+// ========== TOOLTIP ==========
+function toggleTooltip(el) {
+  document.querySelectorAll('.vocab-word.active').forEach(function(w) {
+    if (w !== el) w.classList.remove('active');
+  });
+  el.classList.toggle('active');
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.vocab-word')) {
+    document.querySelectorAll('.vocab-word.active').forEach(function(w) { w.classList.remove('active'); });
+  }
+});
+
+// ========== REVEAL ==========
+function revealAnswer(btn) {
+  var answer = btn.nextElementSibling;
+  if (!answer) return;
+  if (answer.classList.contains('hidden-answer')) {
+    answer.classList.remove('hidden-answer');
+    btn.textContent = 'Hide Answer';
+    btn.classList.add('revealed');
+  } else {
+    answer.classList.add('hidden-answer');
+    btn.textContent = 'Reveal Model Answer';
+    btn.classList.remove('revealed');
+  }
+}
+
+// ========== MARK COMPLETE ==========
+function toggleMarkComplete(btn) {
+  var deckId = 'summer-vacation-ppc';
+  var progress = JSON.parse(localStorage.getItem('esl-progress') || '{}');
+  if (btn.classList.contains('completed')) {
+    btn.classList.remove('completed');
+    btn.textContent = 'Mark Complete';
+    if (progress[deckId]) progress[deckId].completed = false;
+  } else {
+    btn.classList.add('completed');
+    btn.textContent = 'Completed!';
+    if (!progress[deckId]) progress[deckId] = {};
+    progress[deckId].completed = true;
+    progress[deckId].date = new Date().toISOString().split('T')[0];
+  }
+  localStorage.setItem('esl-progress', JSON.stringify(progress));
+}
+(function restoreProgress() {
+  var deckId = 'summer-vacation-ppc';
+  var progress = JSON.parse(localStorage.getItem('esl-progress') || '{}');
+  document.querySelectorAll('.mark-complete-btn').forEach(function(btn) {
+    if (progress[deckId] && progress[deckId].completed) {
+      btn.classList.add('completed');
+      btn.textContent = 'Completed!';
+    }
+  });
+})();
+
+// ========== NAVIGATION ==========
+var slides = document.querySelectorAll('.slide');
+var current = 0;
+var prevBtn = document.getElementById('prevBtn');
+var nextBtn = document.getElementById('nextBtn');
+var slideCounter = document.getElementById('slideCounter');
+var progressBar = document.getElementById('progressBar');
+
+function update() {
+  slides.forEach(function(s, i) { s.classList.toggle('active', i === current); });
+  slideCounter.textContent = (current + 1) + ' / ' + slides.length;
+  progressBar.style.width = (((current + 1) / slides.length) * 100) + '%';
+  var isTitle = current === 0;
+  document.getElementById('themeCycleBtn').style.display = isTitle ? 'flex' : 'none';
+  document.getElementById('themeLabel').style.display = isTitle ? 'block' : 'none';
+}
+
+prevBtn.addEventListener('click', function() {
+  if (current > 0) { current--; playSwish('back'); } update();
+});
+nextBtn.addEventListener('click', function() {
+  if (current < slides.length - 1) { current++; playSwish('forward'); } update();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowRight' || e.key === ' ') {
+    e.preventDefault();
+    if (current < slides.length - 1) { current++; playSwish('forward'); } update();
+  }
+  if (e.key === 'ArrowLeft') {
+    if (current > 0) { current--; playSwish('back'); } update();
+  }
+});
+update();
+
+// ========== THEME CYCLE ==========
+var themeNames = ["Classic","Forest","Violet","Gold","Crimson","Ocean"];
+var currentTheme = parseInt(localStorage.getItem('ielts-theme')) || 1;
+function applyTheme(n) {
+  currentTheme = n;
+  if (n === 1) document.body.removeAttribute('data-theme');
+  else document.body.setAttribute('data-theme', n);
+  localStorage.setItem('ielts-theme', n);
+  document.getElementById('themeLabel').textContent = themeNames[n-1];
+}
+document.getElementById('themeCycleBtn').addEventListener('click', function() {
+  var next = currentTheme === 6 ? 1 : currentTheme + 1;
+  applyTheme(next);
+});
+applyTheme(currentTheme);
+
+// ========== MATCH GAME ENGINE ==========
+function initMatchGame(gameId, pairs) {
+  var colA = document.getElementById('colA' + gameId);
+  var colB = document.getElementById('colB' + gameId);
+  var status = document.getElementById('matchStatus' + gameId);
+  var overlay = document.getElementById('winOverlay' + gameId);
+  var selectedA = null;
+  var selectedB = null;
+  var matchedCount = 0;
+  var aItems = pairs.map(function(p, i) { return { text: p[0], id: i }; }).sort(function() { return Math.random() - 0.5; });
+  var bItems = pairs.map(function(p, i) { return { text: p[1], id: i }; }).sort(function() { return Math.random() - 0.5; });
+  // Ensure no answer is directly next to its vocab word
+  while (aItems.some(function(item, i) { return bItems[i].id === item.id; })) {
+    bItems.sort(function() { return Math.random() - 0.5; });
+  }
+  function renderCol(items, side) {
+    items.forEach(function(item) {
+      var btn = document.createElement('button');
+      btn.className = 'match-btn';
+      btn.textContent = item.text;
+      btn.dataset.id = item.id;
+      btn.dataset.side = side;
+      btn.onclick = function() { handleClick(btn, side); };
+      if (side === 'A') colA.appendChild(btn);
+      else colB.appendChild(btn);
+    });
+  }
+  function handleClick(btn, side) {
+    if (btn.classList.contains('matched')) return;
+    if (side === 'A') {
+      if (selectedA) selectedA.classList.remove('selected');
+      selectedA = btn;
+      btn.classList.add('selected');
+      playDing();
+    } else {
+      if (selectedB) selectedB.classList.remove('selected');
+      selectedB = btn;
+      btn.classList.add('selected');
+      playDing();
+    }
+    if (selectedA && selectedB) {
+      if (selectedA.dataset.id === selectedB.dataset.id) {
+        selectedA.classList.remove('selected');
+        selectedB.classList.remove('selected');
+        selectedA.classList.add('matched');
+        selectedB.classList.add('matched');
+        selectedA = null;
+        selectedB = null;
+        matchedCount++;
+        status.textContent = matchedCount + ' / ' + pairs.length + ' matched!';
+        if (matchedCount === pairs.length) {
+          setTimeout(function() {
+            var rect = status.getBoundingClientRect();
+            spawnSparkles(rect.left + rect.width/2, rect.top + rect.height/2);
+            playWinSound();
+            overlay.classList.add('show');
+          }, 300);
+        }
+      } else {
+        var wrongA = selectedA;
+        var wrongB = selectedB;
+        wrongA.classList.add('wrong');
+        wrongB.classList.add('wrong');
+        playWrongSound();
+        status.textContent = 'Not a match. Try again!';
+        setTimeout(function() {
+          wrongA.classList.remove('wrong', 'selected');
+          wrongB.classList.remove('wrong', 'selected');
+          selectedA = null;
+          selectedB = null;
+        }, 500);
+      }
+    }
+  }
+  renderCol(aItems, 'A');
+  renderCol(bItems, 'B');
+}
+function closeWin(id) {
+  document.getElementById(id).classList.remove('show');
+}
+
+// ========== MATCH GAME DATA ==========
+initMatchGame('1', [
+  ['studying', 'learning at school or home'],
+  ['playing', 'doing a sport or game'],
+  ['watching', 'looking at something'],
+  ['reading', 'looking at a book'],
+  ['waiting', 'staying until something happens']
+]);
+initMatchGame('2', [
+  ['practising', 'doing something again to improve'],
+  ['travelling', 'going to different places'],
+  ['exploring', 'discovering new things'],
+  ['relaxing', 'resting and feeling calm'],
+  ['improving', 'getting better at something']
+]);
+
+// ========== REORDER ENGINE ==========
+function initReorderGame(gameId, sentences) {
+  var container = document.getElementById('reorderGame' + gameId);
+  sentences.forEach(function(s, idx) {
+    var div = document.createElement('div');
+    div.className = 'reorder-sentence';
+    var tokens = s.scramble.split(' ');
+    var answer = s.answer;
+    var tokenBtns = [];
+    var slotDiv = document.createElement('div');
+    slotDiv.className = 'reorder-slot';
+    slotDiv.id = 'reorderSlot' + gameId + '_' + idx;
+    var poolDiv = document.createElement('div');
+    poolDiv.className = 'reorder-tokens';
+    poolDiv.id = 'reorderPool' + gameId + '_' + idx;
+    tokens.forEach(function(word, ti) {
+      var btn = document.createElement('span');
+      btn.className = 'reorder-token';
+      btn.textContent = word;
+      btn.dataset.word = word;
+      btn.dataset.index = ti;
+      btn.onclick = function() { moveToken(btn, poolDiv, slotDiv, gameId, idx); };
+      poolDiv.appendChild(btn);
+      tokenBtns.push(btn);
+    });
+    var answerDiv = document.createElement('div');
+    answerDiv.className = 'reorder-answer hidden-answer';
+    answerDiv.id = 'reorderAnswer' + gameId + '_' + idx;
+    answerDiv.textContent = 'Answer: ' + answer;
+    var btnRow = document.createElement('div');
+    btnRow.style.marginTop = '.5em';
+    var checkBtn = document.createElement('button');
+    checkBtn.className = 'reorder-btn';
+    checkBtn.textContent = 'Check';
+    checkBtn.onclick = function() { checkReorder(slotDiv, answerDiv, answer); };
+    var revealBtn = document.createElement('button');
+    revealBtn.className = 'reorder-btn';
+    revealBtn.textContent = 'Reveal';
+    revealBtn.onclick = function() { answerDiv.classList.toggle('hidden-answer'); };
+    var resetBtn = document.createElement('button');
+    resetBtn.className = 'reorder-btn reset-btn';
+    resetBtn.textContent = 'Reset';
+    resetBtn.onclick = function() { resetReorder(poolDiv, slotDiv, answerDiv, tokenBtns); };
+    btnRow.appendChild(checkBtn);
+    btnRow.appendChild(revealBtn);
+    btnRow.appendChild(resetBtn);
+    div.appendChild(poolDiv);
+    div.appendChild(slotDiv);
+    div.appendChild(answerDiv);
+    div.appendChild(btnRow);
+    container.appendChild(div);
+  });
+}
+function moveToken(btn, pool, slot, gameId, idx) {
+  if (btn.parentElement === pool) {
+    slot.appendChild(btn);
+    btn.classList.add('placed');
+  } else {
+    pool.appendChild(btn);
+    btn.classList.remove('placed');
+  }
+}
+function checkReorder(slot, answerDiv, correct) {
+  var words = [];
+  slot.querySelectorAll('.reorder-token').forEach(function(t) { words.push(t.dataset.word); });
+  var userAnswer = words.join(' ');
+  if (userAnswer.toLowerCase() === correct.toLowerCase()) {
+    slot.style.borderColor = 'var(--green)';
+    slot.style.background = 'rgba(52,211,153,.1)';
+    answerDiv.classList.remove('hidden-answer');
+    playWinSound();
+  } else {
+    slot.style.borderColor = '#f87171';
+    slot.style.background = 'rgba(248,113,113,.1)';
+    playWrongSound();
+    setTimeout(function() {
+      slot.style.borderColor = 'rgba(52,211,153,.3)';
+      slot.style.background = 'rgba(52,211,153,.06)';
+    }, 1000);
+  }
+}
+function resetReorder(pool, slot, answerDiv, tokenBtns) {
+  tokenBtns.forEach(function(btn) {
+    pool.appendChild(btn);
+    btn.classList.remove('placed');
+  });
+  slot.style.borderColor = 'rgba(52,211,153,.3)';
+  slot.style.background = 'rgba(52,211,153,.06)';
+  answerDiv.classList.add('hidden-answer');
+}
+
+// ========== REORDER GAME DATA ==========
+initReorderGame('1', [
+  { scramble: 'I been have English studying for 4 years', answer: 'I have been studying English for 4 years' },
+  { scramble: 'She has playing been piano the since 2019', answer: 'She has been playing the piano since 2019' },
+  { scramble: 'We have waiting been for 30 minutes', answer: 'We have been waiting for 30 minutes' }
+]);
+initReorderGame('2', [
+  { scramble: 'I have reading been for this book 2 months', answer: 'I have been reading this book for 2 months' },
+  { scramble: 'They have since been April practising', answer: 'They have been practising since April' },
+  { scramble: 'He has been guitar learning for 1 year', answer: 'He has been learning guitar for 1 year' }
+]);
+</script>
+<script>
+
+function toggleL1(){document.body.classList.toggle('show-l1');var on=document.body.classList.contains('show-l1');var b=document.getElementById('l1Btn');if(b){b.textContent=on?'L1 ON':'L1';b.style.color=on?'#fbbf24':''}try{localStorage.setItem(location.pathname+'-l1',on?'1':'0')}catch(e){}}
+try{if(localStorage.getItem(location.pathname+'-l1')==='1')document.body.classList.add('show-l1')}catch(e){}
+
+</script>
+</body>
+</html>
